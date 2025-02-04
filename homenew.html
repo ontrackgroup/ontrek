@@ -237,15 +237,15 @@
             return "Rp " + ribuan;
         }
         document.getElementById("saldo_user").innerText = rubah(document.getElementById("saldo_user").textContent);
-    
+
         function myFunction() {
             var x = document.getElementById("saldo_user");
             var y = document.getElementById("iconShow")
-            if (x.textContent === "{{saldo_user}}") {
-                x.textContent = "******";
+            if (x.innerText === rubah(x.textContent)) {
+                x.innerText = "******";
                 y.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
             } else {
-                x.textContent = "{{saldo_user}}";
+                x.innerText = rubah(x.textContent);
                 y.innerHTML = '<i class="fa-solid fa-eye"></i>';
             }
         }
