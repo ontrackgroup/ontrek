@@ -1,0 +1,6 @@
+:root {
+    /* WARNA UTAMA */
+    --main: #ff6f00;
+    --subMain: #ffffff;
+}
+body{background-color: #ff6f00;}
