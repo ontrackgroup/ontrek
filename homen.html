@@ -57,50 +57,6 @@
 
         }
 
-        .gx-search {
-            border: 2px solid #eaeaea;
-        }
-
-        .gx-search:focus {
-            border: 2px solid var(--my-color);
-            box-shadow: none;
-        }
-
-        /* Fade */
-        .gx-kategori-e-game {
-            vertical-align: middle;
-            -webkit-transform: perspective(1px) translateZ(0);
-            transform: perspective(1px) translateZ(0);
-            box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-            overflow: hidden;
-            background: aliceblue;
-            -webkit-transition-duration: 0.3s;
-            transition-duration: 0.3s;
-            -webkit-transition-property: color, background-color;
-            transition-property: color,
-        }
-
-        .gx-kategori-e-game:hover,
-        .gx-kategori-e-game:focus,
-        .gx-kategori-e-game:active {
-            background-color: #eaeaea;
-            color: #000000;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .visible {
-            display: block;
-        }
-
-        .notification {
-            background-color: #f44336;
-            color: white;
-            padding: 10px;
-            margin-top: 10px;
-        }
 
         .scale-in-center {
             -webkit-animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
@@ -146,28 +102,8 @@
             font-size: 12px;
             font-weight: bold;
         }
-
-        .modal.fade .modal-dialog.modal-dialog-scrollable {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            margin: 0;
-            width: 100%;
-            transform: translate(0, 100%);
-            transition: transform 0.3s ease-out;
-        }
-
-        .modal-content {
-            border: 7px solid #ffffff;
-            border-radius: 20px 20px 0px 0px;
-        }
-
-        .modal.show .modal-dialog.modal-dialog-scrollable {
-            transform: translate(0, 0);
-        }
     </style>
 </head>
-
 <body>
     <nav class="navbar">
         <div class="navbar-brand d-flex align-items-center">
@@ -251,13 +187,16 @@
                         <div>Game</div>
                     </a>
                 </div>
-                <div class="col" data-toggle="modal" data-target="#Voucher">
-                    <img src="https://i.imgur.com/C9GGu7K.png" alt="" />
-                    <div>Voucher</div>
+                <div class="col">
+                    <a href="#">
+                        <img src="https://i.imgur.com/C9GGu7K.png" alt="" />
+                        <div>Voucher</div>
+                    </a>
                 </div>
-                <div class="col" data-toggle="modal" data-target="#paketTv">
-                    <img src="https://i.imgur.com/OBcGRIX.png" alt="" />
-                    <div>Paket TV</div>
+                <div class="col"><a href="#">
+                        <img src="https://i.imgur.com/OBcGRIX.png" alt="" />
+                        <div>Paket TV</div>
+                    </a>
                 </div>
             </div>
         </div>
