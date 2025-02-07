@@ -573,6 +573,33 @@
             }
         }
     </script>
+    <script type="text/javascript">
+        let saldoAsli = document.getElementById("saldo_user").textContent.trim();
+        let saldoTersembunyi = true;
+        function rubah(angka) {
+            var reverse = angka.toString().split("").reverse().join(""),
+                ribuan = reverse.match(/\d{1,3}/g);
+            ribuan = ribuan.join(".").split("").reverse().join("");
+            return "Rp " + ribuan;
+        }
+
+        document.getElementById("saldo_user").innerText = rubah(saldoAsli);
+
+        function myFunction() {
+            var saldoElem = document.getElementById("saldo_user");
+            var iconElem = document.getElementById("iconShow");
+
+            if (saldoTersembunyi) {
+                saldoElem.innerText = rubah(saldoAsli);
+                iconElem.innerHTML = '<i class="fa-solid fa-eye"></i>';
+            } else {
+                saldoElem.innerText = "**";
+                iconElem.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
+            }
+
+            saldoTersembunyi = !saldoTersembunyi;
+        }
+    </script>
 </body>
 
 </html>
