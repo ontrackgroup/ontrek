@@ -45,10 +45,11 @@
             }
 
             .text-informasi {
+                display: none; /*hapus untuk munculkan btn kategori*/
                 font-size: 15px;
                 background: #fff;
-                margin-top: -5px;
-                margin-bottom: 20px;
+                margin-top: 0px;
+                margin-bottom: 0px;
                 border-radius: 10px;
             }
 
@@ -68,6 +69,7 @@
             .box-in-header .logo-and-input {
                 display: flex;
                 align-items: center;
+                margin-bottom: 20px;
             }
 
             .box-in-header .logo {
@@ -260,6 +262,13 @@
                     transform: rotate(360deg);
                 }
             }
+            .boxcekid {
+                padding: 5px;
+                font-size: 15px;
+                background: #fff;
+
+                border-radius: 10px;
+            }
         </style>
     </head>
 
@@ -282,6 +291,20 @@
                                 <i class="bi bi-qr-code-scan"></i>
                             </div>
                         </a>
+                    </div>
+                    <div class="boxcekid">
+                        <div style="display: flex">
+                            <div class="modal-label" style="font-size: 12px; font-weight: bold">Nama :</div>
+                            <div class="modal-value" style="font-size: 13px; margin-left: 3px" id="result">
+                                xxxxxxxx
+                            </div>
+                        </div>
+                        <div style="display: flex; border-top: 1px dashed #333">
+                            <div class="modal-label" style="font-size: 12px; font-weight: bold">Power :</div>
+                            <div class="modal-value" style="font-size: 13px; margin-left: 3px" id="powerid">
+                                xxxxxxxx
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -309,14 +332,14 @@
                                     <td class="modal-label" style="font-size: 13px; font-weight: bold">No Meter :</td>
                                     <td class="modal-value text-right" id="nomorTujuanModal"></td>
                                 </tr>
-                                <tr style="border-top: 1px dashed #333">
+                                <!-- <tr style="border-top: 1px dashed #333">
                                     <td class="modal-label" style="font-size: 13px; font-weight: bold">Nama :</td>
                                     <td class="modal-value text-right" id="result">xxxxxxxx</td>
                                 </tr>
                                 <tr style="border-top: 1px dashed #333">
                                     <td class="modal-label" style="font-size: 13px; font-weight: bold">Power :</td>
                                     <td class="modal-value text-right" id="powerid">xxxxxxxx</td>
-                                </tr>
+                                </tr> -->
                                 <tr style="border-top: 1px dashed #333">
                                     <td class="modal-label" style="font-size: 13px; font-weight: bold">Produk:</td>
                                     <td class="modal-value text-right" id="productNameModal"></td>
