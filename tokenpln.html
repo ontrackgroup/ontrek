@@ -309,54 +309,31 @@
     <div id="produk-list-container" style="margin-top: 40px; padding: 20px">
         <ul id="produk-list"></ul>
     </div>
-    <div class="fixed-bottom">
-        <div>Detail Transaksi</div>
-    </div>
-    <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <p>Detail transaksi</p>
+
+    <div class="fixed-bottom" id="productModal">
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <p>Detail transaksi</p>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="col " id="productNameModal"></div>
+
+                    <div class="col " id="productPriceModal"></div>
+
+
                 </div>
-                <div class="modal-body" style="padding: 0 10px">
-                    <table class="table">
-                        <tbody>
-                            <tr>
-                                <td class="modal-label" style="font-size: 13px; font-weight: bold">No Meter :</td>
-                                <td class="modal-value text-right" id="nomorTujuanModal"></td>
-                            </tr>
-                            <!-- <tr style="border-top: 1px dashed #333">
-                                    <td class="modal-label" style="font-size: 13px; font-weight: bold">Nama :</td>
-                                    <td class="modal-value text-right" id="result">xxxxxxxx</td>
-                                </tr>
-                                <tr style="border-top: 1px dashed #333">
-                                    <td class="modal-label" style="font-size: 13px; font-weight: bold">Power :</td>
-                                    <td class="modal-value text-right" id="powerid">xxxxxxxx</td>
-                                </tr> -->
-                            <tr style="border-top: 1px dashed #333">
-                                <td class="modal-label" style="font-size: 13px; font-weight: bold">Produk:</td>
-                                <td class="modal-value text-right" id="productNameModal"></td>
-                            </tr>
-                            <tr style="border-top: 1px dashed #333">
-                                <td class="modal-label" style="font-size: 13px; font-weight: bold">Harga:</td>
-                                <td class="modal-value text-right" id="productPriceModal"></td>
-                            </tr>
-                            <tr style="border-top: 1px dashed #333">
-                                <td colspan="2" style="padding: 5px; font-size: 10px; font-weight: bold"
-                                    id="deskripsiPanjangModal"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="group-button">
-                        <div class="codingqu">
-                            <button data-dismiss="modal" style="color: red">Batal</button>
-                            <button class="sumit">Proses</button>
-                        </div>
+                <div class="group-button">
+                    <div class="codingqu">
+
+                        <button>Proses</button>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
     <script>
         // ganti token open api
@@ -508,7 +485,7 @@
                                 descriptionContainer.appendChild(node.cloneNode(true));
                             });
 
-                            $("#productModal").modal("show");
+                            $("#productModal").modal("");
                         });
 
                         productItem.appendChild(productName);
