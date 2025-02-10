@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head></head>
+
+<body>
+    <div class="form">
+        <p> <u> Please Select the Items Below. (A Maximum of (3) can be selected) </u> </p>
+        <br>
+        <div class="specializations-list">
+            <div class="list-items">
+                <input class="item-list" type="checkbox" value="Item-1">Item 1
+                <br>
+                <input class="item-list" type="checkbox" value="Item-2">Item 2
+                <br>
+                <input class="item-list" type="checkbox" value="Item-3">Item 3
+                <br>
+                <input class="item-list" type="checkbox" value="Item-4">Item 4
+                <br>
+                <input class="item-list" type="checkbox" value="Item-5">Item 5
+                <br>
+                <input class="item-list" type="checkbox" value="Item-6">Item 6
+                <br>
+                <input class="item-list" type="checkbox" value="Item-7">Item 7
+            </div>
+
+            <span></span>
+        </div>
+    </div>
+    <script>
+        const iMax = 3;
+
+        document.querySelectorAll('.item-list').forEach(chk => {
+            chk.addEventListener('click', function (e) {
+                if (document.querySelectorAll('.item-list:checked').length > iMax) {
+                    e.preventDefault();
+                    let span = this.parentNode.nextElementSibling;
+                    span.textContent = `A maximum of ${iMax} can be selected`;
+                    setTimeout(() => span.textContent = '', 2500);
+                    return false;
+                }
+            });
+        })
+    </script>
+</body>
+
+</html>
