@@ -20,12 +20,12 @@
             products.forEach(function (product) {
                 if (product.checked) {
                     var quantity = document.getElementById('quantity_' + product.value).value;
-                    orderDetails += `Product: ${product.value}, Quantity: ${quantity}%0A`;
+                    orderDetails += `Paket: ${product.value}`;
                 }
             });
 
             // Format the message
-            var formattedMessage = `Name: ${name}%0ADelivery Address: ${address}%0A%0AOrder Details:%0A${orderDetails}`;
+            var formattedMessage = `Nama: ${name}%0ADelivery Address: ${address}%0A%0AOrder Details:%0A${orderDetails}`;
 
             // Your WhatsApp number (in international format, without '+' or '00')
             var whatsappNumber = '6281249488933'; // Replace with your number
@@ -58,15 +58,13 @@
                 <label class="form-label">Select Products:</label><br>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="product1" name="product" value="Product1">
-                    <label class="form-check-label" for="product1">Product 1</label>
-                    <input type="number" class="form-control mt-1" id="quantity_Product1" placeholder="Quantity" min="1"
-                        value="1">
+                    <label class="form-check-label" for="product1">STARTER</label>
+                    
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="product2" name="product" value="Product2">
-                    <label class="form-check-label" for="product2">Product 2</label>
-                    <input type="number" class="form-control mt-1" id="quantity_Product2" placeholder="Quantity" min="1"
-                        value="1">
+                    <label class="form-check-label" for="product2">VALUE</label>
+                    
                 </div>
                 <!-- Add more products as needed -->
             </div>
