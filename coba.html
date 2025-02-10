@@ -13,15 +13,23 @@
     <style>
         .grid {
             display: grid;
-            grid-template-columns: auto auto;
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
+        }
+
+        .card-header {
+            font-size: 20px;
+        }
+
+        .card-footer {
+            font-size: 19px;
         }
     </style>
 </head>
 
 <body>
-    <div class="row container accordion mt-3" id="accordionExample">
-        <div class="col">
+    <div class="row  accordion mt-3" id="accordionExample">
+        <div class="col ">
             <button class="accordion-button border rounded fw-bold " type="button" data-bs-toggle="collapse"
                 data-bs-target="#PasangBaru" aria-expanded="true" aria-controls="PasangBaru">
                 Pasang Baru
@@ -37,7 +45,7 @@
             <div class=" accordion-body">
                 <div class="grid text-primary">
                     <div class="card  shadow-sm rounded-4 text-center border border-2 border-primary p-2 mb-3 ">
-                        <div class="card-header disabled fw-bold fs-1 text-dark" aria-disabled="true">STARTER</div>
+                        <div class="card-header disabled fw-bold text-dark" aria-disabled="true">STARTER</div>
                         <div class="card-body">
                             <div class="fw-bold">Speed UpTo 20 Mbps</div>
                             <hr>
@@ -47,18 +55,18 @@
                             <hr>
                             <div>Biaya Instalasi Rp. 100.000</div>
                             <hr>
-                            <div class="fw-bold fs-4">RP. 189.000
+                            <div class="fw-bold fs-5">RP. 189rb
                                 <span class="fw-normal fs-6">/bulan</span>
                             </div>
                             <div style="font-size: small;">Harga Sebelum PPN</div>
                         </div>
-                        <div class="card-footer d-flex justify-content-center">
-                            <button type="button" class=" rounded fw-bold fs-5 bg-primary btn text-white"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal">Chat Sales</button>
-                        </div>
+
+                        <button type="button" class="card-footer rounded fw-bold bg-primary btn text-white"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">Chat Sales</button>
+
                     </div>
                     <div class="card shadow-sm rounded-4 text-center border border-2 border-primary p-2 mb-3">
-                        <div class="card-header disabled fw-bold fs-1 text-dark" aria-disabled="true">VALUE</div>
+                        <div class="card-header disabled fw-bold  text-dark" aria-disabled="true">VALUE</div>
                         <div class="card-body">
                             <div class=""><span class="text-decoration-line-through text-danger">30 Mbps
                                 </span><span class="fw-bold">50 Mbps</span></div>
@@ -72,16 +80,16 @@
                             <div><span class="fw-bold">GRATIS!!
                                 </span>Biaya Instalasi Rp. 100.000</div>
                             <hr>
-                            <div class="fw-bold fs-5">Rp. 229.000<span class="fw-normal fs-6">/bulan</span></div>
+                            <div class="fw-bold fs-5">Rp. 229rb<span class="fw-normal ">/bulan</span></div>
                             <div style="font-size: small;">Harga Sebelum PPN</div>
                         </div>
-                        <div class="card-footer d-flex justify-content-center">
-                            <button type="button" class=" rounded fw-bold fs-5 bg-primary btn text-white"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal">Chat Sales</button>
-                        </div>
+
+                        <button type="button" class="card-footer rounded fw-bold bg-primary btn text-white"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">Chat Sales</button>
+
                     </div>
                     <div class="card shadow-sm rounded-4 text-center border border-2 border-primary p-2 mb-3">
-                        <div class="card-header disabled fw-bold fs-1 text-dark" aria-disabled="true">SMART</div>
+                        <div class="card-header disabled fw-bold text-dark" aria-disabled="true">SMART</div>
                         <div class="card-body">
                             <div class=""><span class="text-decoration-line-through text-danger">50 Mbps
                                 </span><span class="fw-bold">75 Mbps</span></div>
@@ -96,16 +104,16 @@
                                 <span class="fw-bold">GRATIS!! </span>Biaya Instalasi Rp. 100.000
                             </div>
                             <hr>
-                            <div class="fw-bold fs-3">Rp. 239.000<span class="fw-normal fs-6">/bulan</span></div>
+                            <div class="fw-bold fs-5">Rp. 239rb<span class="fw-normal fs-6">/bulan</span></div>
                             <div style="font-size: small;">Harga Sebelum PPN</div>
                         </div>
-                        <div class="card-footer d-flex justify-content-center">
-                            <button type="button" class=" rounded fw-bold fs-5 bg-primary btn text-white"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal">Chat Sales</button>
-                        </div>
+
+                        <button type="button" class="card-footer rounded fw-bold  bg-primary btn text-white"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">Chat Sales</button>
+
                     </div>
                     <div class="card shadow-sm rounded-4 text-center border border-2 border-primary p-2 mb-3">
-                        <div class="card-header disabled fw-bold fs-1 text-dark" aria-disabled="true">FAMILY</div>
+                        <div class="card-header disabled fw-bold  text-dark" aria-disabled="true">FAMILY</div>
                         <div class="card-body">
                             <div class=""><span class="text-decoration-line-through text-danger">100 Mbps
                                 </span><span class="fw-bold">150 Mbps</span></div>
@@ -118,16 +126,16 @@
                             <hr>
                             <div><span class="fw-bold">GRATIS!! </span>Biaya Instalasi Rp. 100.000</div>
                             <hr>
-                            <div class="fw-bold fs-3">Rp. 319.000<span class="fw-normal fs-6">/bulan</span></div>
+                            <div class="fw-bold fs-5">Rp. 319rb<span class="fw-normal fs-6">/bulan</span></div>
                             <div style="font-size: small;">Harga Sebelum PPN</div>
                         </div>
-                        <div class="card-footer d-flex justify-content-center">
-                            <button type="button" class=" rounded fw-bold fs-5 bg-primary btn text-white"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal">Chat Sales</button>
-                        </div>
+
+                        <button type="button" class="card-footer rounded fw-bold bg-primary btn text-white"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">Chat Sales</button>
+
                     </div>
                     <div class="card shadow-sm rounded-4 text-center border border-2 border-primary p-2 mb-3">
-                        <div class="card-header disabled fw-bold fs-1 text-dark" aria-disabled="true">SUPERUSER</div>
+                        <div class="card-header disabled fw-bold text-dark" aria-disabled="true">SUPERUSER</div>
                         <div class="card-body">
                             <div class=""><span class="text-decoration-line-through text-danger">150 Mbps
                                 </span><span class="fw-bold">200 Mbps</span></div>
@@ -140,13 +148,13 @@
                             <hr>
                             <div><span class="fw-bold">GRATIS!! </span>Biaya Instalasi Rp. 100.000</div>
                             <hr>
-                            <div class="fw-bold fs-4">Rp. 369.000 <span class="fw-normal fs-6">/bulan</span></div>
+                            <div class="fw-bold fs-5">Rp. 369rb <span class="fw-normal fs-6">/bulan</span></div>
                             <div style="font-size: small;">Harga Sebelum PPN</div>
                         </div>
-                        <div class="card-footer  d-flex justify-content-center">
-                            <button type="button" class=" btn rounded fw-bold fs-5 bg-primary text-white"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal">Chat Sales</button>
-                        </div>
+
+                        <button type="button" class="card-footer btn rounded fw-bold bg-primary text-white"
+                            data-bs-toggle="modal" data-bs-target="#exampleModal">Chat Sales</button>
+
                     </div>
                 </div>
             </div>
