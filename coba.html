@@ -1,44 +1,259 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-<link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
 
-<head></head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+</head>
 
 <body>
-    <div class="form">
-        <p> <u> Please Select the Items Below. (A Maximum of (3) can be selected) </u> </p>
-        <br>
-        <div class="specializations-list">
-            <div class="list-items">
-                <input class="item-list" type="checkbox" value="Item-1">Item 1
-                <br>
-                <input class="item-list" type="checkbox" value="Item-2">Item 2
-                <br>
-                <input class="item-list" type="checkbox" value="Item-3">Item 3
-                <br>
-                <input class="item-list" type="checkbox" value="Item-4">Item 4
-                <br>
-                <input class="item-list" type="checkbox" value="Item-5">Item 5
-                <br>
+    <div class="row container accordion mt-3" id="accordionExample">
+        <div class="col">
+            <button class="accordion-button border rounded fw-bold " type="button" data-bs-toggle="collapse"
+                data-bs-target="#PasangBaru" aria-expanded="true" aria-controls="PasangBaru">
+                Pasang Baru
+            </button>
+        </div>
+        <div class="col">
+            <button class="accordion-button border rounded fw-bold collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#BayarTagihan" aria-expanded="false" aria-controls="BayarTagihan">
+                Bayar Tagihan
+            </button>
+        </div>
+        <div id="PasangBaru" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="grid text-primary">
+                    <div class="shadow-sm rounded-4 text-center border border-2 border-primary p-2 mb-3 ">
+                        <div class="disabled fw-bold fs-1 text-dark" aria-disabled="true">STARTER</div>
+                        <hr>
+                        <div class="fw-bold">Speed UpTo 20 Mbps</div>
+                        <hr>
+                        <div>8GB Kouta Hp Sekeluarga</div>
+                        <hr>
+                        <div class="">Gratis 2 kartu perdana XL</div>
+                        <hr>
+                        <div>Biaya Instalasi Rp. 100.000</div>
+                        <hr>
+                        <div class="fw-bold fs-3">RP. 189.000
+                            <span class="fw-normal fs-6">/bulan</span>
+                        </div>
+                        <div style="font-size: small;">Harga Sebelum PPN</div>
+                        <hr>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class=" rounded fw-bold fs-5 bg-primary btn text-white"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal">Chat Sales</button>
+                        </div>
+                    </div>
+                    <div class="shadow-sm rounded-4 text-center border border-2 border-primary p-2 mb-3">
+                        <div class="disabled fw-bold fs-1 text-dark" aria-disabled="true">VALUE</div>
+                        <hr>
+                        <div class=""><span class="text-decoration-line-through text-danger">30 Mbps
+                            </span><span class="fw-bold">50 Mbps</span></div>
+                        <hr>
+                        <div>Bonus Upgrade Speed 6 Bulan</div>
+                        <hr>
+                        <div class="">10GB Kouta Hp Sekeluarga</div>
+                        <hr>
+                        <div class="">Gratis 2 kartu perdana XL</div>
+                        <hr>
+                        <div><span class="fw-bold">GRATIS!!
+                            </span>Biaya Instalasi Rp. 100.000</div>
+                        <hr>
+                        <div class="fw-bold fs-3">Rp. 229.000<span class="fw-normal fs-6">/bulan</span></div>
+                        <div style="font-size: small;">Harga Sebelum PPN</div>
+                        <hr>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class=" btn rounded fw-bold fs-5 bg-primary  text-white">Chat
+                                Sales</button>
+                        </div>
+                    </div>
+                    <div class="shadow-sm rounded-4 text-center border border-2 border-primary p-2 mb-3">
+                        <div class="disabled fw-bold fs-1 text-dark" aria-disabled="true">SMART</div>
+                        <hr>
+                        <div class=""><span class="text-decoration-line-through text-danger">50 Mbps
+                            </span><span class="fw-bold">75 Mbps</span></div>
+                        <hr>
+                        <div>Bonus Upgrade Speed 6 Bulan</div>
+                        <hr>
+                        <div class="">15GB Kouta Hp Sekeluarga</div>
+                        <hr>
+                        <div class="">Gratis 2 kartu perdana XL</div>
+                        <hr>
+                        <div>
+                            <span class="fw-bold">GRATIS!! </span>Biaya Instalasi Rp. 100.000
+                        </div>
+                        <hr>
+                        <div class="fw-bold fs-3">Rp. 239.000<span class="fw-normal fs-6">/bulan</span></div>
+                        <div style="font-size: small;">Harga Sebelum PPN</div>
+                        <hr>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class=" btn rounded fw-bold fs-5 bg-primary  text-white">Chat
+                                Sales</button>
+                        </div>
+                    </div>
+                    <div class="shadow-sm rounded-4 text-center border border-2 border-primary p-2 mb-3">
+                        <div class="disabled fw-bold fs-1 text-dark" aria-disabled="true">FAMILY</div>
+                        <hr>
+                        <div class=""><span class="text-decoration-line-through text-danger">100 Mbps
+                            </span><span class="fw-bold">150 Mbps</span></div>
+                        <hr>
+                        <div>Bonus Upgrade Speed 6 Bulan</div>
+                        <hr>
+                        <div class="">25GB Kouta Hp Sekeluarga</div>
+                        <hr>
+                        <div class="">Gratis 2 kartu perdana XL</div>
+                        <hr>
+                        <div><span class="fw-bold">GRATIS!! </span>Biaya Instalasi Rp. 100.000</div>
+                        <hr>
+                        <div class="fw-bold fs-3">Rp. 319.000<span class="fw-normal fs-6">/bulan</span></div>
+                        <div style="font-size: small;">Harga Sebelum PPN</div>
+                        <hr>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class=" btn rounded fw-bold fs-5 bg-primary  text-white">Chat
+                                Sales</button>
+                        </div>
+                    </div>
+                    <div class="shadow-sm rounded-4 text-center border border-2 border-primary p-2 mb-3">
+                        <div class="disabled fw-bold fs-1 text-dark" aria-disabled="true">SUPERUSER</div>
+                        <hr>
+                        <div class=""><span class="text-decoration-line-through text-danger">150 Mbps
+                            </span><span class="fw-bold">200 Mbps</span></div>
+                        <hr>
+                        <div>Bonus Upgrade Speed 6 Bulan</div>
+                        <hr>
+                        <div class="">50GB Kouta Hp Sekeluarga</div>
+                        <hr>
+                        <div class="">Gratis 2 kartu perdana XL</div>
+                        <hr>
+                        <div><span class="fw-bold">GRATIS!! </span>Biaya Instalasi Rp. 100.000</div>
+                        <hr>
+                        <div class="fw-bold fs-3">Rp. 369.000 <span class="fw-normal fs-6">/bulan</span></div>
+                        <div style="font-size: small;">Harga Sebelum PPN</div>
+                        <hr>
+                        <div class="d-flex justify-content-center">
+                            <button type="button" class=" btn rounded fw-bold fs-5 bg-primary text-white"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal">Chat Sales</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div id="BayarTagihan" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the
+                collapse plugin adds the appropriate classes that we use to style each element. These classes
+                control the overall appearance, as well as the showing and hiding via CSS transitions. You can
+            </div>
+        </div>
+    </div>
+    <!--MODAL PASANG BARU-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Kirim Pesanmu</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
 
-            <span></span>
+                    <div class="container ">
+
+                        <form onsubmit="sendOrderToWhatsApp(); return false;">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nama:</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Alamat:</label>
+                                <textarea class="form-control" id="address" rows="2" required></textarea>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label class="form-label">Pilih Paket:</label><br>
+
+                                <input class="form-check-input" type="checkbox" id="product1" name="product"
+                                    value="STARTER">
+                                <label class="form-check-label" for="STARTER">STARTER</label>
+                                <br>
+
+                                <input class="form-check-input" type="checkbox" id="product2" name="product"
+                                    value="VALUE">
+                                <label class="form-check-label" for="VALUE">VALUE</label>
+
+                                <br>
+                                <input class="form-check-input" type="checkbox" id="product1" name="product"
+                                    value="SMART">
+                                <label class="form-check-label" for="SMART">SMART</label>
+                                <br>
+
+                                <input class="form-check-input" type="checkbox" id="product2" name="product"
+                                    value="FAMILY">
+                                <label class="form-check-label" for="FAMILY">FAMILY</label>
+
+                                <br>
+                                <input class="form-check-input" type="checkbox" id="product2" name="product"
+                                    value="SUPERUSER">
+                                <label class="form-check-label" for="SUPERUSER">SUPERUSER</label>
+
+                                <!-- Add more products as needed -->
+                            </div>
+                            <div></div>
+                            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
     <script>
-        const iMax = 3;
+        function sendOrderToWhatsApp() {
+            // Retrieve form values
+            var name = document.getElementById('name').value;
 
-        document.querySelectorAll('.item-list').forEach(chk => {
+            var address = document.getElementById('address').value;
+
+            // Retrieve product selections
+            var products = document.getElementsByName('product');
+            var orderDetails = '';
+            products.forEach(function (product) {
+                if (product.checked) {
+                    var quantity = document.getElementById('quantity_' + product.value).value;
+                    orderDetails += `Paket: ${product.value}`;
+                }
+            });
+
+            // Format the message
+            var formattedMessage = `Nama: ${name}%0AAlamat: ${address}%0A%0ADetail Paket:%0A${orderDetails}`;
+
+            // Your WhatsApp number (in international format, without '+' or '00')
+            var whatsappNumber = '6281249488933'; // Replace with your number
+
+            // Create the WhatsApp URL
+            var whatsappURL = `https://wa.me/${whatsappNumber}?text=${formattedMessage}`;
+
+            // Open WhatsApp with the pre-filled message
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+    <script>
+        const iMax = 1;
+
+        document.querySelectorAll('.form-check-input').forEach(chk => {
             chk.addEventListener('click', function (e) {
-                if (document.querySelectorAll('.item-list:checked').length > iMax) {
+                if (document.querySelectorAll('.form-check-input:checked').length > iMax) {
                     e.preventDefault();
                     let span = this.parentNode.nextElementSibling;
-                    span.textContent = `A maximum of ${iMax} can be selected`;
+                    span.textContent = `Hanya boleh pilih ${iMax} paket`;
                     setTimeout(() => span.textContent = '', 2500);
                     return false;
                 }
