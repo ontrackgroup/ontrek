@@ -131,62 +131,102 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Kirim Pesanmu</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="container">
-                        <div class="col-lg-6 col-lg-offset-3">
-                            
-                            <div class="panel panel-success">
-                                <div class="panel-heading">
-                                    Send To WhatsApp
-                                </div>
-                                <div class="panel-body">
-                                    <div class="form-group">
-                                        <label>Name</label>
-                                        <textarea name="name" class="form-control" rows="3" placeholder="Name"
-                                            id="name"></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-success send">Send Form Via WhatsApp</button>
-                                    </div>
 
-                                    <div id="text-info"></div>
-                                </div>
+                    <div class="container ">
+                        
+                        <form onsubmit="sendOrderToWhatsApp(); return false;">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nama:</label>
+                                <input type="text" class="form-control" id="name" required>
                             </div>
-                        </div>
+                
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Alamat:</label>
+                                <textarea class="form-control" id="address" rows="2" required></textarea>
+                            </div>
+                
+                
+                            <div class="mb-3">
+                                <label class="form-label">Pilih Paket:</label><br>
+                
+                                <input class="form-check-input" type="checkbox" id="product1" name="product" value="STARTER">
+                                <label class="form-check-label" for="STARTER">STARTER</label>
+                                <br>
+                
+                                <input class="form-check-input" type="checkbox" id="product2" name="product" value="VALUE">
+                                <label class="form-check-label" for="VALUE">VALUE</label>
+                
+                                <br>
+                                <input class="form-check-input" type="checkbox" id="product1" name="product" value="SMART">
+                                <label class="form-check-label" for="SMART">SMART</label>
+                                <br>
+                
+                                <input class="form-check-input" type="checkbox" id="product2" name="product" value="FAMILY">
+                                <label class="form-check-label" for="FAMILY">FAMILY</label>
+                
+                                <br>
+                                <input class="form-check-input" type="checkbox" id="product2" name="product" value="SUPERUSER">
+                                <label class="form-check-label" for="SUPERUSER">SUPERUSER</label>
+                
+                                <!-- Add more products as needed -->
+                            </div>
+                            <div></div>
+                            <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+                        </form>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </div>
     <script>
-        $(document).on('click', '.send', function() {
-            /* Form Input */
-            var input_name = $("#name").val();
-            /* Whatsapp Setting */
-            var walink = 'https://web.whatsapp.com/send',
-                phone = '6281249488933',
-                text = 'Hello I want to make website',
-                text_yes = 'Your order was successfully sent.',
-                text_no = 'Fill this form to order.';
-            /* Smartphone Support */
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                var walink = 'whatsapp://send';
-            }
-            if (input_name != "") {
-                /* Whatsapp URL */
-                var checkout_whatsapp = walink + '?phone=' + phone + '&text=' + text + '%0A%0A' +
-                    '*Nama* : ' + input_name + '%0A';
-                /* Whatsapp Window Open */
-                window.open(checkout_whatsapp, '_blank');
-                document.getElementById("text-info").innerHTML = '<div class="alert alert-success">' + text_yes + '</div>';
-            } else {
-                document.getElementById("text-info").innerHTML = '<div class="alert alert-danger">' + text_no + '</div>';
-            }
-        });
+        function sendOrderToWhatsApp() {
+            // Retrieve form values
+            var name = document.getElementById('name').value;
+
+            var address = document.getElementById('address').value;
+
+            // Retrieve product selections
+            var products = document.getElementsByName('product');
+            var orderDetails = '';
+            products.forEach(function (product) {
+                if (product.checked) {
+                    var quantity = document.getElementById('quantity_' + product.value).value;
+                    orderDetails += `Paket: ${product.value}`;
+                }
+            });
+
+            // Format the message
+            var formattedMessage = `Nama: ${name}%0AAlamat: ${address}%0A%0ADetail Paket:%0A${orderDetails}`;
+
+            // Your WhatsApp number (in international format, without '+' or '00')
+            var whatsappNumber = '6281249488933'; // Replace with your number
+
+            // Create the WhatsApp URL
+            var whatsappURL = `https://wa.me/${whatsappNumber}?text=${formattedMessage}`;
+
+            // Open WhatsApp with the pre-filled message
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
+    <script>
+        const iMax = 1;
+
+        document.querySelectorAll('.form-check-input').forEach(chk => {
+            chk.addEventListener('click', function (e) {
+                if (document.querySelectorAll('.form-check-input:checked').length > iMax) {
+                    e.preventDefault();
+                    let span = this.parentNode.nextElementSibling;
+                    span.textContent = `Hanya boleh pilih ${iMax} paket`;
+                    setTimeout(() => span.textContent = '', 2500);
+                    return false;
+                }
+            });
+        })
     </script>
 </body>
 
