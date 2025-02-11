@@ -30,10 +30,12 @@
             padding: 0;
 
         }
-.card-body{
-   
-    padding: 5px;
-}
+
+        .card-body {
+
+            padding: 5px;
+        }
+
         .card-body div {
             font-size: 14px;
 
@@ -50,10 +52,7 @@
 
         hr {
             margin: 7px 0px;
-           
-
         }
-       
     </style>
 </head>
 
@@ -79,7 +78,7 @@
                         <div class="card-body">
                             <div class="fw-bold">Speed UpTo 20 Mbps</div>
                             <hr>
-                            <div >8GB Kouta Hp Sekeluarga</div>
+                            <div>8GB Kouta Hp Sekeluarga</div>
                             <hr>
                             <div class="">Gratis 2 kartu perdana XL</div>
                             <hr>
@@ -275,7 +274,7 @@
             var orderDetails = '';
             products.forEach(function (product) {
                 if (product.checked) {
-                    var quantity = document.getElementById('quantity_' + product.value).value;
+                    
                     orderDetails += `Paket: ${product.value}`;
                 }
             });
