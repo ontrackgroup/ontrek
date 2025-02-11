@@ -686,6 +686,22 @@
         }
         document.getElementById("a").click();
     </script>
+    <script type="text/javascript">
+        var json_checkout = {{ json_checkout }};
+
+        $(document).ready(function () {
+
+            if (json_checkout && json_checkout.status == "ok" && json_checkout.hasOwnProperty('list_data_transaksi') && json_checkout.list_data_transaksi.length > 0) {
+
+                //jika is_pascabayar bernilai true, maka pengecekan tagihan harus dilakukan,
+                //ubah teks pada tombol bayar.
+                if (json_checkout.is_pascabayar) {
+                    $('#buyButton').text("Cek Tagihan");
+                }
+
+            }
+        });
+    </script>
 </body>
 
 </html>
