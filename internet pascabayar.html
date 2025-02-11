@@ -423,8 +423,7 @@
                 $("#productPrice").text(selectedProduct.formattedPrice);
                 $("#productDescription").text(selectedProduct.deskripsi_panjang);
                 $("#productImage").attr("src", selectedProduct.url_gambar_produk); // Menambahkan gambar produk
-                $("#buyButton").attr("href", `${selectedProduct.url_produk}?catatan=${$("#userId").val()}`);
-                openSidebar(); // Membuka sidebar saat detail produk ditampilkan
+                 openSidebar(); // Membuka sidebar saat detail produk ditampilkan
             }
 
             $(document).ready(function () {
