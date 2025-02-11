@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <title>Beli Produk</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body class="background-utama">
+
+  <div class="container-fluid">
+
+    <div class="fixed-bottom">
+      <div class="container" style="width:100%;background:#dddddd;">
+        <div class="d-flex pb-4 pt-4">
+          <div class="d-flex flex-fill ms-4 flex-column">
+            <span class="ukuran_teks_detail">Total Belanja</span>
+            <span class="fw-bold" id="totalbayar"></span>
+          </div>
+          <a href="{{url_website_baru}}/start_transaksi" class="btn btn-primary me-4 align-self-center shadow" style="font-size:10pt;width:40%" id="tombol_bayar">Bayar</a>
+
+        </div>
+      </div>
+
+    </div>
+    <div id="pesan_alert"></div>
+    <div id="area_voucher"></div>
+
+    <div id="keranjang_transaksi">
+    </div>
+
+    <div class="card mt-4">
+      <div class="card-header">
+        <span class="font-monospace"> <i class="bi bi-credit-card-2-front"></i> Pilih Pembayaran</span>
+      </div>
+      <a href="{{url_website_baru}}/ganti_metode_bayar" class="link-underline link-underline-opacity-0">
+        <div class="card-body">
+          <div class="card mt-1 mb-1">
+            <div class="card-body bg-active">
+              <div class="d-flex align-items-center">
+                <div class="flex-grow-1 pe-4">
+                  <img class="img-fluid" alt="" style="max-height:30px;object-fit: scale-down;object-position: left;" id="icon_metode_bayar">
+                  <span class="card-title mb-0 ms-2" id="judul_metode_bayar"></span>
+                </div>
+                <i class="bi bi-chevron-compact-right align-self-center" style="font-size:18pt"></i>
+              </div>
+            </div>
+
+            <div class="card-footer text-body-secondary bg-warning bg-opacity-25 d-none ukuran_teks_detail" id="bayar_keterangan_tambahan">
+            </div>
+
+          </div>
+        </div>
+      </a>
+      <div class="card-footer text-body-secondary bg-success text-dark bg-opacity-10">
+        <div class="d-flex align-items-center ms-1">
+          <i class="bi bi-postcard-heart me-2 fw-bold" style="color:#d08a0a;font-size:20pt"></i>
+          <a href="{{url_website_baru}}/input_voucher" class="link-underline link-underline-opacity-0"><span class="ukuran_teks_detail text-body flex-grow-1 fw-semibold">Gunakan Voucher</span></a>
+
+          <i class="bi bi-chevron-compact-right align-self-center" style="font-size:15pt"></i>
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="card mt-2" id="card_alamat">
+      <div class="card-header">
+        <span class="font-monospace"> <i class="bi bi-rocket-takeoff"></i> Alamat Pengiriman</span>
+      </div>
+
+      <div class="card-body">
+
+        <div class="card mt-1 mb-2">
+          <a href="{{url_website_baru}}/ganti_alamat" class="link-underline link-underline-opacity-0 text-body">
+            <div class="card-body bg-active">
+              <div class="d-flex">
+                <span class="flex-grow-1">
+                  <i class="bi bi-geo-alt"></i>
+                  <span id="alamat_lengkap"></span><br>
+                  <span style="font-size:10pt" id="lokasi_tujuan"></span>
+                  <br>
+                  <span style="font-size:8pt" class="fst-italic" id="nama_penerima"></span>
+                </span>
+                <i class="bi bi-chevron-compact-right align-self-center" style="font-size:18pt"></i>
+              </div>
+
+            </div>
+          </a>
+          <div class="card-footer text-body-secondary bg-success text-dark bg-opacity-10 d-none" id="informasi_data_dropship">
+            <span class="fw-bold"> <i class="bi bi-people "></i> Data Dropship</span>
+          </div>
+        </div>
+
+        <a href="{{url_website_baru}}/isi_dropship" class="text-decoration-none d-none" id="link-dropship">
+        <span class="fw-light text-end text-dark-emphasis d-block mt-2" style="font-size:9pt">Kirim atas nama saya (dropship)<span>
+        </a>
+        </div>
+
+      </div>
+
+      <div class="card mt-2">
+        <div class="card-header">
+          <span class="font-monospace"> <i class="bi bi-bag-check"></i> Ringkasan Belanja</span>
+        </div>
+        <div class="card-body">
+          <div class="d-flex flex-column pl-1" id="ringkasan_belanja">
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div style="height:120px">
+    </div>
+
+  </body>
+
+
+  <style media="screen">:root{
+    --bo-warna-utama:{{warna_utama}};
+    --bo-warna-gelap:{{warna_gelap}};
+    --bo-warna-terang:{{warna_terang}};
+
+  }
+  .background-utama {
+    background: #e6e6e6;
+  }
+  .text-primary{
+    color:var(--bo-warna-utama) !important;
+  }
+
+  .btn-primary {
+    --bs-btn-bg: var(--bo-warna-utama);
+    --bs-btn-border-color: var(--bo-warna-utama);
+    --bs-btn-hover-bg: var(--bo-warna-gelap);
+    --bs-btn-hover-border-color: var(--bo-warna-gelap);
+    --bs-btn-active-bg:var(--bo-warna-terang);
+    --bs-btn-active-border-color:var(--bo-warna-terang);
+  }
+  .btn-outline-primary {
+    --bs-btn-border-color: var(--bo-warna-utama);
+    --bs-btn-hover-bg: var(--bo-warna-terang);
+    --bs-btn-hover-border-color: var(--bo-warna-gelap);
+    --bs-btn-active-bg:var(--bo-warna-utama);
+    --bs-btn-active-border-color:var(--bo-warna-utama);
+    color: var(--bo-warna-utama);
+  }
+  .dot_horizontal_line{
+    height: .75rem;
+    border-top: 1px dashed #cacaca;
+  }
+  .ukuran_teks_detail{
+    font-size:10pt;
+  }
+  .sticky-content {
+    width: 100%;
+    height: 100px;
+    margin-top:-100px; /*same as height*/
+    margin-bottom:20px; /*to avoid going under the bottom:20px we want*/
+    position: sticky;
+    top:calc(100vh - 100px - 20px);
+    background-color: rgba(0,0,0,0.5);
+  }
+  .bg-active:active{
+    background: var(--bo-warna-terang);
+  }
+</style>
+<script
+src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+crossorigin="anonymous"></script>
+<script type="text/javascript">
+var json_checkout={{json_checkout}};
+
+
+$(document).ready(function(){
+
+  if(json_checkout && json_checkout.status=="ok" && json_checkout.hasOwnProperty('list_data_transaksi') && json_checkout.list_data_transaksi.length>0){
+    if("alamat_user" in json_checkout && json_checkout.alamat_user){
+      setAlamatUser(json_checkout.alamat_user);
+      //cek apakah beli produk digital saja
+      //jika hanya beli produk digital saja, maka sembunyikan alamat user
+      if(json_checkout.list_data_transaksi.length==1 && json_checkout.list_data_transaksi[0].list_data_produk.length==1 && json_checkout.list_data_transaksi[0].data_ongkir.id_select_ongkir=="digital"){
+        $('#card_alamat').hide();
+      }
+    }else{
+      $('#card_alamat').hide();
+    }
+
+    //jika is_pascabayar bernilai true, maka pengecekan tagihan harus dilakukan,
+    //ubah teks pada tombol bayar.
+    if(json_checkout.is_pascabayar){
+      $('#tombol_bayar').text("Cek Tagihan");
+    }
+
+    let nomor_keranjang=1;
+    json_checkout.list_data_transaksi.forEach((data_keranjang) => {
+      setKeranjang(data_keranjang,nomor_keranjang);
+      nomor_keranjang++;
+    });
+
+    $('#saldo_user').text(formatRupiah(json_checkout.saldo));
+    setMetodeBayar();
+    setDataDropship();
+    showInfoVoucher();
+    startPerhitungan();
+  }
+});
+
+function setKeranjang(data_keranjang,nomor_keranjang){
+
+  let html_keranjang=`
+  <div class="card mt-2">
+  <div class="card-header">
+  <span class="font-monospace"><i class="bi bi-receipt"></i> PESANAN `+nomor_keranjang+`</span>
+  </div>
+  <div class="card-body">
+  <div class="row">`;
+
+  //cek apakah ada ongkir pada keranjang
+  if(!data_keranjang.data_ongkir){
+    if(!json_checkout.alamat_user){
+      window.location.href = "{{url_website_baru}}/ganti_alamat";
+    }
+    html_keranjang+=`<div class="alert alert-warning" role="alert">Produk tidak bisa dipesan karena ongkos kirim tidak ditemukan</div>`;
+    $('#tombol_bayar').hide();
+  }else{
+
+    var membership_teks=data_keranjang.data_ongkir.membership?`
+    <p class='text-success fw-semibold mt-3 ukuran_teks_detail'>Level Membership : `+data_keranjang.data_ongkir.membership.nama_membership+`</p><span class="ukuran_teks_detail">`+data_keranjang.data_ongkir.membership.teks_membership+`</span>`:"";
+
+    //cek jika ada biaya tambahan pada ongkos kirim
+    if(data_keranjang.data_ongkir.biaya_tambahan){
+      membership_teks+=`<p class='text-success fw-semibold mt-3 mb-0 ukuran_teks_detail'>Biaya Tambahan</p><div class="ukuran_teks_detail mb-2 text-warning-emphasis">`+data_keranjang.data_ongkir.biaya_tambahan.nama_biaya+` : `+formatRupiah(data_keranjang.data_ongkir.biaya_tambahan.jumlah_biaya)+`</div>`;
+    }
+
+
+    //looping data produk
+    data_keranjang.list_data_produk.forEach((data_produk, index) => {
+      html_keranjang+=setDataProduk(data_produk);
+    });
+    html_keranjang+=`</div>
+    </div>`;
+
+    if(data_keranjang.data_ongkir.id_select_ongkir!="digital"){
+      html_keranjang+=`
+      <div class="card-footer text-body-secondary">
+      <i class="bi bi-truck mr-2"></i>
+      <label class="ukuran_teks_detail"> Pilih Ongkos Kirim</label>
+      <a href="`+data_keranjang.url_pilih_ongkir+`" class="link-underline link-underline-opacity-0">
+      <div class="card mt-1 mb-1">
+      <div class="card-body bg-active">
+      <div class="d-flex">
+      <span class="flex-grow-1">
+      <i class="bi bi-box-seam me-2"></i>
+      <span>`+data_keranjang.data_ongkir.nama_ekspedisi+`</span><br>
+      <span style="font-size:10pt" id="">`+data_keranjang.data_ongkir.service+` - `+formatRupiah(data_keranjang.data_ongkir.cost.value)+`</span>
+      <br>
+
+      </span>
+      <i class="bi bi-chevron-compact-right align-self-center" style="font-size:18pt"></i>
+      </div>
+
+      </div>
+      </div>
+      </a>
+      `+membership_teks+`
+      </div>`;
+    }
+  }
+
+
+  html_keranjang+=`
+  </div>`;
+  $('#keranjang_transaksi').append(html_keranjang);
+}
+
+function setDataProduk(data_produk) {
+  let html_produk=`
+  <div class="col-12 mt-1 mb-2">
+
+  <div class="row no-gutters">
+  <div class="col-3 pr-3">
+  <img src="`+data_produk.url_gambar_barang+`" class="img-thumbnail mt-2" style="width:100%">
+  </div>
+  <div class="col-9 d-flex flex-column pl-1">
+  <p class="card-title fw-bold">`+data_produk.nama_barang+`</p>
+  <div class="dot_horizontal_line"></div>
+  `+setDetailPembelianProduk(data_produk)+`
+  </div>
+  </div>
+  `+getTableTagihan(data_produk)+`
+  </div>`;
+  return html_produk;
+}
+function setDetailPembelianProduk(data_produk) {
+  let teks_detail="";
+
+  //Total harga produk
+  teks_detail+=`
+  <div class="d-flex flex-row">
+  <span class="ukuran_teks_detail font-light">Harga</span>
+  <span class="ukuran_teks_detail fw-bold ms-auto">`+data_produk.jumlah_barang+` x <b>`+formatRupiah(data_produk.harga_barang)+`</b></span>
+  </div>`;
+
+
+  //Catatan Tambahan
+  if(data_produk.berat>0){
+    teks_detail+=`<div class="d-flex flex-row">
+    <span class="ukuran_teks_detail font-light w-75">Berat</span>
+    <span class="ukuran_teks_detail fw-bold ms-auto">`+data_produk.berat+`g</span>
+    </div>`;
+  }
+
+  if(data_produk.catatan_tambahan && $.isArray(data_produk.catatan_tambahan)){
+    data_produk.catatan_tambahan.forEach((item) => {
+      teks_detail+=`<div class="d-flex flex-row">
+      <span class="ukuran_teks_detail font-light w-75">`+item.nama_key+`</span>
+      <span class="ukuran_teks_detail fw-bold ms-auto text-end">`+item.isi_key+`</span>
+      </div>`;
+    });
+
+
+  }
+
+  //Catatan pemesanan
+  if(data_produk.catatan && data_produk.catatan!=""){
+    teks_detail+=`<div class="d-flex flex-row">
+    <span class="ukuran_teks_detail font-light">No. Tujuan</span>
+    <span class="ukuran_teks_detail fw-bold ms-auto">`+data_produk.catatan+`</span>
+    </div>`;
+  }
+
+  if(data_produk.membership){
+    teks_detail+="<p class='text-success mt-2 mb-0 fw-semibold ukuran_teks_detail'>Level Membership : "+data_produk.membership.nama_membership+"</p><span class='ukuran_teks_detail'>"+data_produk.membership.teks_membership+"</span>";
+  }
+  if(data_produk.poin>0){
+    teks_detail+=`<div class="alert bg-success text-dark bg-opacity-10 d-flex align-items-center ukuran_teks_detail mt-2" role="alert"><i class="bi bi-star me-2"></i><div>Anda akan mendapatkan `+data_produk.poin+` poin setelah transaksi selesai</div></div>`;
+  }
+  if(data_produk.data_cashback){
+    teks_detail+=`<div class="alert bg-success text-dark bg-opacity-10 d-flex align-items-center ukuran_teks_detail mt-2" role="alert"><i class="bi bi-cash-coin me-2"></i><div>`+data_produk.data_cashback.caption_cashback+`<br>Cashback `+formatRupiah(data_produk.data_cashback.jumlah_cashback)+` akan masuk ke saldo Anda setelah transaksi selesai.</div></div>`;
+  }
+  return teks_detail;
+}
+
+function startPerhitungan() {
+  if(json_checkout.perhitungan_transaksi){
+    $('#totalbayar').text(formatRupiah(json_checkout.perhitungan_transaksi.total_transaksi));
+
+    setHTMLPerhitunganTransaksi("Total Harga Produk",json_checkout.perhitungan_transaksi.total_harga_produk,"");
+    setHTMLPerhitunganTransaksi("Total Ongkos Kirim",json_checkout.perhitungan_transaksi.total_ongkir,"");
+
+    if(json_checkout.perhitungan_transaksi.total_potongan_voucher>0){
+      setHTMLPerhitunganTransaksi("Potongan Harga Voucher",json_checkout.perhitungan_transaksi.total_potongan_voucher,"text-danger");
+    }
+    if(json_checkout.perhitungan_transaksi.keuntungan_reseller>0){
+      setHTMLPerhitunganTransaksi("Keuntungan Reseller",json_checkout.perhitungan_transaksi.keuntungan_reseller,"");
+    }
+  }
+}
+
+function setHTMLPerhitunganTransaksi(judul,harga,textdanger) {
+  $('#ringkasan_belanja').append(`<div class="d-flex flex-row">
+  <span class="ukuran_teks_detail font-light `+textdanger+`">`+judul+`</span>
+  <span class="ukuran_teks_detail ms-auto `+textdanger+`" >`+formatRupiah(harga)+`</span>
+  </div>`);
+}
+
+function setMetodeBayar() {
+  if(json_checkout.metode_bayar){
+    if(json_checkout.metode_bayar.status=="error"){
+      $('#tombol_bayar').hide();
+    }
+
+
+    if(json_checkout.metode_bayar.tipe_bayar=="saldo"){
+      $('#judul_metode_bayar').text(json_checkout.metode_bayar.judul_bayar + " ("+formatRupiah(json_checkout.saldo)+")");
+    }else{
+      $('#judul_metode_bayar').text(json_checkout.metode_bayar.judul_bayar);
+    }
+    if(json_checkout.metode_bayar.keterangan_tambahan){
+      $('#bayar_keterangan_tambahan').removeClass("d-none");
+      $('#bayar_keterangan_tambahan').text(json_checkout.metode_bayar.keterangan_tambahan);
+      if(json_checkout.metode_bayar.tipe_bayar=="saldo"){
+        buatAlert(json_checkout.metode_bayar.keterangan_tambahan);
+      }
+    }
+
+    $('#icon_metode_bayar').attr("src",json_checkout.metode_bayar.url_icon);
+  }else{
+    $('#tombol_bayar').hide();
+    buatAlert("Tidak ada metode pembayaran tersedia");
+  }
+}
+
+
+function setAlamatUser(alamat_user) {
+  $('#nama_penerima').text(alamat_user.nama_penerima);
+  $('#alamat_lengkap').text(alamat_user.alamat_lengkap);
+  $('#lokasi_tujuan').text(alamat_user.kota+", "+alamat_user.kecamatan+", "+alamat_user.provinsi);
+  $('#nama_penerima').text(alamat_user.nama_penerima+" - "+alamat_user.nomor_telepon);
+}
+
+
+
+function setDataDropship() {
+  if(json_checkout.data_dropship && json_checkout.data_dropship.status){
+    $('#link-dropship').removeClass("d-none");
+    if(json_checkout.data_dropship.data_pengirim){
+      $('#informasi_data_dropship').removeClass("d-none");
+      setInformasiDropship("Nama Pengirim",json_checkout.data_dropship.data_pengirim.nama_pengirim);
+      setInformasiDropship("Nomor Telepon Pengirim",json_checkout.data_dropship.data_pengirim.nomor_pengirim);
+      if(json_checkout.data_dropship.data_pengirim.keuntungan_reseller){
+        setInformasiDropship("Keuntungan Reseller",formatRupiah(json_checkout.data_dropship.data_pengirim.keuntungan_reseller));
+      }
+    }
+  }
+}
+
+function setInformasiDropship(judul,data) {
+  $('#informasi_data_dropship').append(`<div class="d-flex mt-2">
+  <span class="ukuran_teks_detail font-light">`+judul+`</span>
+  <span class="ukuran_teks_detail ms-auto">`+data+`</span>
+  </div>`);
+}
+
+function showInfoVoucher() {
+  if(typeof json_checkout.voucher == 'object' && json_checkout.voucher.status=="ok"){
+
+    if(json_checkout.voucher.total_potongan){
+      $("#area_voucher").html(`<div class="card text-bg-success mt-2">
+      <div class="card-header"><i class="bi bi-gift me-2"></i>Voucher <b>'`+json_checkout.voucher.kode_voucher+`'</b> berhasil dipasang!</div>
+      <div class="card-body">
+      <p class="card-text">`+json_checkout.voucher.pesan+`</p>
+      </div>
+      </div>`);
+      return json_checkout.voucher.total_potongan;
+    }
+  }else if(json_checkout.voucher.status=="not_found"){
+    buatAlert(json_checkout.voucher.pesan);
+  }
+}
+
+function buatAlert(pesan) {
+  $("#pesan_alert").html(`<div class="alert alert-warning alert-dismissible fade show" role="alert" style="position: fixed;z-index:9999;width: 100%;top: 0px;left:0px ">`+pesan+`<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`);
+}
+
+function getTableTagihan(data_produk) {
+  //cek apakah data_produk memiliki objek "data_pascabayar"
+  if(data_produk.data_pascabayar){
+    //cek apakah nilai_tagihan bernilai true.
+    //jika bernilai true, maka tagihan ditemukan, jika false, maka tagihan gagal dicek atau sudah dibayar
+    if(data_produk.data_pascabayar.status_tagihan){
+
+      let teks_table=`<div class="col-12 d-flex flex-column pl-1">
+      <div class="mb-3 fw-semibold"><i class="bi bi-bar-chart-steps"></i> Data Tagihan Anda</div>
+
+      <table class="table table-striped ukuran_teks_detail"><tbody>`;
+      data_produk.data_pascabayar.list_data_tagihan.forEach((item, i) => {
+        teks_table+=`
+        <tr>
+        <td class="text-capitalize">`+item.nama_key.toLowerCase()+`</td>
+        <td>:</td>
+        <td>`+item.isi_key+`</td>
+        </tr>
+        `;
+      });
+      teks_table+=`</tbody></table></div>`;
+
+      return teks_table;
+    }else{
+      // tagihan gagal di cek. transaksi tidak bisa dilanjutkan, sembunyikan tombol bayar
+      $('#tombol_bayar').hide();
+      return `
+      <div class="alert alert-danger mt-3" role="alert">`+data_produk.data_pascabayar.pesan+`</div>
+      `;
+    }
+  }
+  return "";
+}
+
+
+function formatRupiah(angka){
+  if (angka === undefined) {
+    return "Gagal muat";
+  }
+  angka=angka.toString();
+  let is_minus=angka.charAt(0)=='-'?true:false;
+  if(is_minus){
+    angka=angka.substring(1);
+  }
+  var number_string = angka.toString().replace(/[^,\d]/g, '').toString(),
+  split   		= number_string.split(','),
+  sisa     		= split[0].length % 3,
+  rupiah     		= split[0].substr(0, sisa),
+  ribuan     		= split[0].substr(sisa).match(/\d{3}/gi);
+
+  // tambahkan titik jika yang di input sudah menjadi angka ribuan
+  if(ribuan){
+    separator = sisa ? '.' : '';
+    rupiah += separator + ribuan.join('.');
+  }
+
+  rupiah = split[1] != undefined ? rupiah + ',' + split[1] : rupiah;
+  let minus_sign=is_minus?"-":"";
+  return minus_sign+'Rp' + rupiah;
+}
+</script>
+</html>
