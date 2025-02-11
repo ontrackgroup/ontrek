@@ -135,6 +135,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+<<<<<<< Updated upstream
 
                     <div class="container ">
                         
@@ -176,6 +177,58 @@
                             </div>
                             <div></div>
                             <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+=======
+                    <div class="container ">
+                        <h2>Detail Pesan</h2>
+                        <form onsubmit="sendOrderToWhatsApp(); return false;">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name:</label>
+                                <input type="text" class="form-control" id="name" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="address" class="form-label">Delivery Address:</label>
+                                <textarea class="form-control" id="address" rows="2" required></textarea>
+                            </div>
+
+
+                            <div class="mb-3">
+                                <label class="form-label">Pilih Paket:</label><br>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="product1" name="product"
+                                        value="STARTER">
+                                    <label class="form-check-label" for="STARTER">STARTER</label>
+
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="product2" name="product"
+                                        value="VALUE">
+                                    <label class="form-check-label" for="VALUE">VALUE</label>
+
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="product1" name="product"
+                                        value="SMART">
+                                    <label class="form-check-label" for="SMART">SMART</label>
+
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="product2" name="product"
+                                        value="FAMILY">
+                                    <label class="form-check-label" for="FAMILY">FAMILY</label>
+
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="product2" name="product"
+                                        value="SUPERUSER">
+                                    <label class="form-check-label" for="SUPERUSER">SUPERUSER</label>
+
+                                </div>
+                                <span></span>
+                                <!-- Add more products as needed -->
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit Order</button>
+>>>>>>> Stashed changes
                         </form>
                     </div>
                 </div>
@@ -201,7 +254,11 @@
             });
 
             // Format the message
+<<<<<<< Updated upstream
             var formattedMessage = `Nama: ${name}%0AAlamat: ${address}%0A%0ADetail Paket:%0A${orderDetails}`;
+=======
+            var formattedMessage = `Nama: ${name}%0ADelivery Address: ${address}%0A%0AOrder Details:%0A${orderDetails}`;
+>>>>>>> Stashed changes
 
             // Your WhatsApp number (in international format, without '+' or '00')
             var whatsappNumber = '6281249488933'; // Replace with your number
@@ -212,6 +269,24 @@
             // Open WhatsApp with the pre-filled message
             window.open(whatsappURL, '_blank');
         }
+<<<<<<< Updated upstream
+    </script>
+    <script>
+        const iMax = 1;
+
+        document.querySelectorAll('.form-check-input').forEach(chk => {
+            chk.addEventListener('click', function (e) {
+                if (document.querySelectorAll('.form-check-input:checked').length > iMax) {
+                    e.preventDefault();
+                    let span = this.parentNode.nextElementSibling;
+                    span.textContent = `Hanya boleh pilih ${iMax} paket`;
+                    setTimeout(() => span.textContent = '', 2500);
+                    return false;
+                }
+            });
+        })
+=======
+>>>>>>> Stashed changes
     </script>
     <script>
         const iMax = 1;
@@ -228,6 +303,7 @@
             });
         })
     </script>
+
 </body>
 
 </html>
