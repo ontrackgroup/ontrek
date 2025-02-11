@@ -329,20 +329,7 @@
     <div class="container">
 
         <div class=" p-1 my-2   rounded">
-            <!--<div class="gx-button1 rounded-1" style="background: #eaeaea; padding: 9px 0">
-                    <div class="row">
-                        <div class="col-11">
-                            <select class="form-select gx-option-costum" style="margin-left: 12px">
-                                <option class="" data-value="635553">BASIC</option>
-                                <option class="" data-value="635588">KIDS</option>
-                                <option class="" data-value="635589">LIGA INDONESIA</option>
-                                <option class="" data-value="635613">JAWA</option>
-                                <option class="" data-value="635614">TIMNAS</option>
 
-                            </select>
-                        </div>
-                    </div>
-                </div>-->
             <div class="gx-icon d-flex align-items-center">
                 <div class="col fw-semibold">Pilihan Produk</div>
                 <!-- Image button for List Dan Grid -->
@@ -482,13 +469,8 @@
 
                 $.each(allProducts, function (index, product) {
                     let item = isListView ?
-                        `
-            <div class="col-12 mb-3">
-        ` :
-                        `
-            <div class="col-6 mb-3">
-        `;
-
+                        `<div class="col-12 mb-3"> ` :
+                        `<div class="col-6 mb-3"> `;
                     let formattedPrice = new Intl.NumberFormat("id-ID", {
                         style: "currency",
                         currency: "IDR",
@@ -505,9 +487,7 @@
                         <p class="card-text" style="font-size:14px;color:#3949ab;font-weight:600;margin-top:-18px;">${formattedPrice}</p>
                     </div>
                 </div>
-            </a>
-        `;
-
+            </a>`;
                     $("#productList").append(item);
                 });
 
@@ -521,8 +501,6 @@
                             currency: "IDR",
                             maximumFractionDigits: 0
                         }).format(allProducts[productId].harga_produk),
-                        deskripsi_panjang: allProducts[productId].deskripsi_panjang,
-                        url_gambar_produk: allProducts[productId].url_gambar_produk,
                         url_produk: allProducts[productId].url_produk
                     };
                     showProductDetails();
@@ -550,23 +528,6 @@
                 } else {
                     window.location.href = productUrl;
                 }
-                if (productUrl === "0") {
-                    Swal.fire({
-                        text: "Produk Belum Dipilih.",
-                        position: "top",
-                        showConfirmButton: false,
-                        timer: 1500,
-                        background: "#ffcccc",
-                        showClass: {
-                            popup: "animate__animated animate__fadeInDown"
-                        },
-                        customClass: {
-                            popup: "animate__animated animate__fadeInDown bg-danger text-white rounded-4 width-25px"
-                        }
-                    });
-                }
-
-
             });
 
             // Fungsi untuk menampilkan animasi loading
@@ -593,22 +554,6 @@
                 }
             }
 
-            $(document).ready(function () {
-                $(".gx-option-costum").change(function () {
-                    var selectedOption = $(this).find(":selected");
-                    var selectedOptionValue = selectedOption.attr("data-value"); // Mengambil data-value dari opsi yang dipilih
-                    changeKa(selectedOptionValue); // Memanggil fungsi changeKa dengan nilai data-value yang dipilih
-
-                    //   var title = selectedOption.attr('data-title');
-                    //    var image = selectedOption.attr('data-image');
-
-                    // Mengubah teks pada elemen productTitle
-                    //  $('#productTitle').text(title);
-
-                    // Mengubah atribut src pada elemen productImageTitle
-                    //   $('#productImageTitle').attr('src', image);
-                });
-            });
 
             $(document).ready(function () {
                 for (let page = 1; page <= 5; page++) {
@@ -617,16 +562,7 @@
             });
         });
     </script>
-    <script>
-        const buttons = document.querySelectorAll(".gx-button-test");
 
-        buttons.forEach((button) => {
-            button.addEventListener("click", function () {
-                buttons.forEach((btn) => btn.classList.remove("active"));
-                this.classList.add("active");
-            });
-        });
-    </script>
     <script>
         function toggleInput() {
             var input = document.getElementById("input");
