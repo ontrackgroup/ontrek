@@ -365,10 +365,12 @@
             <div class="col mb-2" id="productName">Belum ada item terpilih</div>
             <div id="productPrice">Rp 0</div>
         </div>
-        <button type="button" id="buyButton" class="btn w-100 fw-semibold text-white"
+        <a href="{{url_website_baru}}/start_transaksi" class="btn btn-primary me-4 align-self-center shadow" style="font-size:10pt;width:40%" id="tombol_bayar">Bayar</a>
+
+      <!--  <button type="button" id="buyButton" class="btn w-100 fw-semibold text-white"
             style="background-color: var(--my-color);">
             Lanjut Pembayaran
-        </button>
+        </button>-->
     </div>
     <!-- End Sidebar -->
 
@@ -423,7 +425,8 @@
                 $("#productPrice").text(selectedProduct.formattedPrice);
                 $("#productDescription").text(selectedProduct.deskripsi_panjang);
                 $("#productImage").attr("src", selectedProduct.url_gambar_produk); // Menambahkan gambar produk
-                 openSidebar(); // Membuka sidebar saat detail produk ditampilkan
+                $("#buyButton").attr("href", `${selectedProduct.url_produk}?catatan=${$("#userId").val()}`);
+                openSidebar(); // Membuka sidebar saat detail produk ditampilkan
             }
 
             $(document).ready(function () {
@@ -695,7 +698,7 @@
                 //jika is_pascabayar bernilai true, maka pengecekan tagihan harus dilakukan,
                 //ubah teks pada tombol bayar.
                 if (json_checkout.is_pascabayar) {
-                    $('#buyButton').text("Cek Tagihan");
+                    $('#tombol_bayar').text("Cek Tagihan");
                 }
 
             }
