@@ -1,525 +1,529 @@
 <!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+        <title>Voucher Alfamart</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        <script src="https://kit.fontawesome.com/d16a2d0aca.js" crossorigin="anonymous"></script>
 
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11" />
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
-    <title>Voucher Alfamart</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-    <script src="https://kit.fontawesome.com/d16a2d0aca.js" crossorigin="anonymous"></script>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
-
-        :root {
-            /* WARNA UTAMA */
-            --main: #f66b0e;
-            --subMain: #ecf0f3;
-        }
-
-        body {
-            font-family: "Plus Jakarta Sans", sans-serif;
-            background: var(--subMain);
-            animation: fade-in 2s linear;
-        }
-
-        form {
-            position: relative;
-            z-index: 99;
-        }
-
-        .pil-produk {
-            display: flex;
-            align-items: center;
-            width: 100%;
-            background: var(--subMain);
-            border-radius: 20px;
-            padding: 10px;
-            box-shadow:
-                inset -3px -3px 7px #ebebeb,
-                inset 3px 3px 5px #ceced1;
-            position: relative;
-            padding-bottom: 50px;
-            border: 5px solid #ffffff;
-        }
-
-        .pil-produk img {
-            width: 55px;
-            position: absolute;
-            right: 0;
-            top: 0;
-            border-radius: 2px 17px 2px 20px;
-            background: var(--subMain);
-            padding: 5px;
-            box-shadow:
-                inset -3px -3px 7px #f9f9f9,
-                inset 3px 3px 5px #ceced1;
-            border: 1px solid #f8f8f8;
-        }
-
-        .pil-produk h4 {
-            font-size: 17px;
-            font-weight: 700;
-            color: black;
-            margin: 4px;
-        }
-
-        .pil-produk p {
-            font-size: 10px;
-            font-weight: 600;
-            color: black;
-            margin-bottom: 5px;
-            position: absolute;
-            left: 0;
-            bottom: 5px;
-            padding: 2px;
-            padding-left: 5px;
-            padding-right: 5px;
-            border-radius: 5px;
-            background: var(--main);
-            color: white;
-            margin-left: 10px;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .mood2 {
-            display: grid;
-            grid-template-columns: repeat(1, 1.5fr);
-            grid-gap: 10px;
-            align-items: center;
-        }
-
-        .mood1 {
-            display: grid;
-            grid-template-columns: repeat(1, 1.5fr);
-            grid-gap: 10px;
-            align-items: center;
-        }
-
-        .mood1 .pil-produk {
-            border-radius: 20px;
-        }
-
-        .mood1 .nama--produks {
-            font-size: 17px;
-            margin-bottom: -7px;
-        }
-
-        .mood1 img {
-            width: 55px;
-            border-radius: 10px 10px 10px 20px;
-            padding: 5px;
-            border: 1px solid #ffffff;
-        }
-
-        .toast-header {
-            background: red;
-        }
-
-        .toast {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            z-index: 9999;
-            width: auto;
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px !important;
-            border-radius: 10px;
-            display: none;
-        }
-
-        .pilihan {
-            background: var(--main);
-            border-radius: 25px;
-            padding: 15px;
-            margin-top: 5px;
-            border: 3px solid var(--subMain);
-        }
-
-        #id {
-            background: var(--subMain);
-            outline: none;
-            font-size: 15px;
-            font-weight: 700;
-            padding: 6px;
-            border-radius: 8px;
-            box-shadow: none;
-            height: auto;
-            color: black;
-            margin-bottom: 8px;
-            box-shadow:
-                inset -3px -3px 7px #ffffff,
-                inset 3px 3px 5px #ceced1;
-            border: 5px solid #ecf0f3;
-        }
-
-        .logo img {
-            width: 35px;
-            background: #ecf0f3;
-            padding: 2px;
-            border-radius: 50px;
-            margin-right: 10px;
-            box-shadow:
-                -3px -3px 7px #f8f8f8,
-                3px 3px 5px #000;
-        }
-
-        .text-ewallet {
-            margin-bottom: 1px;
-        }
-
-        .text-ewallet h5 {
-            color: #ffffff;
-            font-size: 15px;
-            font-weight: 700;
-            margin: 0px;
-        }
-
-        .text-ewallet p {
-            color: #ffffff;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        .tab-pane {
-            display: none;
-        }
-
-        .tab-pane.active {
-            display: block;
-        }
-
-        .tab2 {
-            overflow: hidden;
-            background-color: transparent;
-        }
-
-        .product-icon {
-            display: none !important;
-        }
-
-        .headers {
-            background: var(--subMain);
-            height: 0px;
-            top: 0;
-        }
-
-        .toast {
-            display: none;
-        }
-
-        ul {
-            padding: 0px !important;
-        }
-
-        .box {
-            display: flex;
-            text-align: center;
-        }
-
-        .box a {
-            width: 100%;
-            color: var(--subMain);
-            font-size: 13px;
-            font-weight: 500;
-            background: var(--main);
-            border-radius: 35px;
-            padding-top: 5px;
-            padding-bottom: 0px;
-            margin-right: 25px;
-            text-decoration: none;
-            box-shadow:
-                -3px -3px 7px #f8f8f8,
-                3px 3px 5px #000;
-        }
-
-        .box i {
-            font-size: 13px;
-           
-            margin-right: 5px;
-        }
-
-        .icon i {
-            color: #ffffff;
-            font-size: 25px;
-        }
-
-        .icon button {
-            width: 100%;
-            background: transparent;
-            border: none;
-            padding-top: 1px;
-            margin-top: 3px;
-        }
-
-        #toggleMoodButton,
-        #toggleMoodButton:hover {
-            width: 100%;
-            border: none;
-            box-shadow: none;
-            outline: none;
-            padding: 0px;
-            padding-left: 6px;
-            padding-right: 0px;
-            padding-top: 3px;
-            padding-bottom: 0px;
-            background: var(--main);
-            box-shadow:
-                -3px -3px 7px #ffffff,
-                3px 3px 5px #000;
-            border-radius: 10px;
-        }
-
-        .informasi {
-            margin-top: 10px;
-            margin-bottom: 20px;
-            background: var(--subMain);
-            padding: 5px;
-            border-radius: 5px;
-            box-shadow:
-                -3px -3px 7px #ffffff,
-                3px 3px 5px #ceced1;
-        }
-
-        .informasi h5 {
-            font-size: 15px;
-            font-weight: 700;
-            color: orangered;
-        }
-
-        .pack--ceknick {
-            padding: 8px;
-            border-radius: 5px;
-            background: var(--subMain);
-            box-shadow:
-                inset -3px -3px 7px #ffffff,
-                inset 3px 3px 5px #ceced1;
-        }
-
-        .name p {
-            text-align: left;
-            font-size: 10px;
-            font-weight: bold;
-            font-weight: 700;
-            margin-right: 25px;
-            margin-bottom: 0;
-        }
-
-        .info p {
-            font-size: 10px;
-            font-weight: 400;
-            margin-bottom: 0;
-        }
-
-        #loadingSpinner {
-            display: none;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .loader {
-            border: 4px solid var(--main);
-            border-top: 4px solid #ffffff;
-            border-radius: 35%;
-            width: 20px;
-            height: 20px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
+            :root {
+                /* WARNA UTAMA */
+                --main: #f66b0e;
+                --subMain: #ecf0f3;
             }
 
-            100% {
-                transform: rotate(360deg);
+            body {
+                font-family: "Plus Jakarta Sans", sans-serif;
+                background: var(--subMain);
+                animation: fade-in 2s linear;
             }
-        }
 
-        .cq-1 {
-            width: 50px;
-            height: 50px;
-            background: var(--subMain);
-            right: 0;
-            top: 0;
-            position: absolute;
-            border-radius: 0px 15px 0px 35px;
-            box-shadow:
-                inset -3px -3px 7px #ffffff,
-                inset 3px 3px 5px #ceced1;
-            border: 4px solid #ecf0f3;
-        }
-    </style>
-</head>
+            form {
+                position: relative;
+                z-index: 99;
+            }
 
-<body>
-    <div class="sticky-top">
-        <div class="headers"></div>
-        <div class="container">
-            <div class="pilihan shadows"
-                style="padding: 15px; border-radius: 20px; top: 0px; position: relative; z-index: 1000">
-                <div class="cq-1"></div>
-                <form class="input_form" action="" method="get" accept-charset="utf-8">
-                    <div class="d-flex align-items-center mb-3">
-                        <div class="logo">
-                            <img src="https://bukaolshop.s3-id-jkt-1.kilatstorage.id/34912/458427490y.jpg" alt="" />
+            .pil-produk {
+                display: flex;
+                align-items: center;
+                width: 100%;
+                background: var(--subMain);
+                border-radius: 20px;
+                padding: 10px;
+                box-shadow:
+                    inset -3px -3px 7px #ebebeb,
+                    inset 3px 3px 5px #ceced1;
+                position: relative;
+                padding-bottom: 50px;
+                border: 5px solid #ffffff;
+            }
+
+            .pil-produk img {
+                width: 55px;
+                position: absolute;
+                right: 0;
+                top: 0;
+                border-radius: 2px 17px 2px 20px;
+                background: var(--subMain);
+                padding: 5px;
+                box-shadow:
+                    inset -3px -3px 7px #f9f9f9,
+                    inset 3px 3px 5px #ceced1;
+                border: 1px solid #f8f8f8;
+            }
+
+            .pil-produk h4 {
+                font-size: 17px;
+                font-weight: 700;
+                color: black;
+                margin: 4px;
+            }
+
+            .pil-produk p {
+                font-size: 10px;
+                font-weight: 600;
+                color: black;
+                margin-bottom: 5px;
+                position: absolute;
+                left: 0;
+                bottom: 5px;
+                padding: 2px;
+                padding-left: 5px;
+                padding-right: 5px;
+                border-radius: 5px;
+                background: var(--main);
+                color: white;
+                margin-left: 10px;
+            }
+
+            .hidden {
+                display: none;
+            }
+
+            .mood2 {
+                display: grid;
+                grid-template-columns: repeat(1, 1.5fr);
+                grid-gap: 10px;
+                align-items: center;
+            }
+
+            .mood1 {
+                display: grid;
+                grid-template-columns: repeat(1, 1.5fr);
+                grid-gap: 10px;
+                align-items: center;
+            }
+
+            .mood1 .pil-produk {
+                border-radius: 20px;
+            }
+
+            .mood1 .nama--produks {
+                font-size: 17px;
+                margin-bottom: -7px;
+            }
+
+            .mood1 img {
+                width: 55px;
+                border-radius: 10px 10px 10px 20px;
+                padding: 5px;
+                border: 1px solid #ffffff;
+            }
+
+            .toast-header {
+                background: red;
+            }
+
+            .toast {
+                position: fixed;
+                top: 10px;
+                right: 10px;
+                z-index: 9999;
+                width: auto;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px !important;
+                border-radius: 10px;
+                display: none;
+            }
+
+            .pilihan {
+                background: var(--main);
+                border-radius: 25px;
+                padding: 15px;
+                margin-top: 5px;
+                border: 3px solid var(--subMain);
+            }
+
+            #id {
+                background: var(--subMain);
+                outline: none;
+                font-size: 15px;
+                font-weight: 700;
+                padding: 6px;
+                border-radius: 8px;
+                box-shadow: none;
+                height: auto;
+                color: black;
+                margin-bottom: 8px;
+                box-shadow:
+                    inset -3px -3px 7px #ffffff,
+                    inset 3px 3px 5px #ceced1;
+                border: 5px solid #ecf0f3;
+            }
+
+            .logo img {
+                width: 35px;
+                background: #ecf0f3;
+                padding: 2px;
+                border-radius: 50px;
+                margin-right: 10px;
+                box-shadow:
+                    -3px -3px 7px #f8f8f8,
+                    3px 3px 5px #000;
+            }
+
+            .text-ewallet {
+                margin-bottom: 1px;
+            }
+
+            .text-ewallet h5 {
+                color: #ffffff;
+                font-size: 15px;
+                font-weight: 700;
+                margin: 0px;
+            }
+
+            .text-ewallet p {
+                color: #ffffff;
+                font-size: 12px;
+                font-weight: 500;
+            }
+
+            .tab-pane {
+                display: none;
+            }
+
+            .tab-pane.active {
+                display: block;
+            }
+
+            .tab2 {
+                overflow: hidden;
+                background-color: transparent;
+            }
+
+            .product-icon {
+                display: none !important;
+            }
+
+            .headers {
+                background: var(--subMain);
+                height: 0px;
+                top: 0;
+            }
+
+            .toast {
+                display: none;
+            }
+
+            ul {
+                padding: 0px !important;
+            }
+
+            .box {
+                display: flex;
+                text-align: center;
+            }
+
+            .box a {
+                width: 100%;
+                color: var(--subMain);
+                font-size: 13px;
+                font-weight: 500;
+                background: var(--main);
+                border-radius: 35px;
+                padding-top: 5px;
+                padding-bottom: 0px;
+                margin-right: 25px;
+                text-decoration: none;
+                box-shadow:
+                    -3px -3px 7px #f8f8f8,
+                    3px 3px 5px #000;
+            }
+
+            .box i {
+                font-size: 13px;
+                color: var !(--subMain);
+                margin-right: 5px;
+            }
+
+            .icon i {
+                color: #ffffff;
+                font-size: 25px;
+            }
+
+            .icon button {
+                width: 100%;
+                background: transparent;
+                border: none;
+                padding-top: 1px;
+                margin-top: 3px;
+            }
+
+            #toggleMoodButton,
+            #toggleMoodButton:hover {
+                width: 100%;
+                border: none;
+                box-shadow: none;
+                outline: none;
+                padding: 0px;
+                padding-left: 6px;
+                padding-right: 0px;
+                padding-top: 3px;
+                padding-bottom: 0px;
+                background: var(--main);
+                box-shadow:
+                    -3px -3px 7px #ffffff,
+                    3px 3px 5px #000;
+                border-radius: 10px;
+            }
+
+            .informasi {
+                margin-top: 10px;
+                margin-bottom: 20px;
+                background: var(--subMain);
+                padding: 5px;
+                border-radius: 5px;
+                box-shadow:
+                    -3px -3px 7px #ffffff,
+                    3px 3px 5px #ceced1;
+            }
+
+            .informasi h5 {
+                font-size: 15px;
+                font-weight: 700;
+                color: orangered;
+            }
+
+            .pack--ceknick {
+                padding: 8px;
+                border-radius: 5px;
+                background: var(--subMain);
+                box-shadow:
+                    inset -3px -3px 7px #ffffff,
+                    inset 3px 3px 5px #ceced1;
+            }
+
+            .name p {
+                text-align: left;
+                font-size: 10px;
+                font-weight: bold;
+                font-weight: 700;
+                margin-right: 25px;
+                margin-bottom: 0;
+            }
+
+            .info p {
+                font-size: 10px;
+                font-weight: 400;
+                margin-bottom: 0;
+            }
+
+            #loadingSpinner {
+                display: none;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .loader {
+                border: 4px solid var(--main);
+                border-top: 4px solid #ffffff;
+                border-radius: 35%;
+                width: 20px;
+                height: 20px;
+                animation: spin 1s linear infinite;
+            }
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .cq-1 {
+                width: 50px;
+                height: 50px;
+                background: var(--subMain);
+                right: 0;
+                top: 0;
+                position: absolute;
+                border-radius: 0px 15px 0px 35px;
+                box-shadow:
+                    inset -3px -3px 7px #ffffff,
+                    inset 3px 3px 5px #ceced1;
+                border: 4px solid #ecf0f3;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="sticky-top">
+            <div class="headers"></div>
+            <div class="container">
+                <div
+                    class="pilihan shadows"
+                    style="padding: 15px; border-radius: 20px; top: 0px; position: relative; z-index: 1000">
+                    <div class="cq-1"></div>
+                    <form class="input_form" action="" method="get" accept-charset="utf-8">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="logo">
+                                <img src="https://bukaolshop.s3-id-jkt-1.kilatstorage.id/34912/458427490y.jpg" alt="" />
+                            </div>
+                            <div class="text-ewallet">
+                                <h5>K-VISION</h5>
+                            </div>
                         </div>
-                        <div class="text-ewallet">
-                            <h5>K-VISION</h5>
+                        <div class="d-flex inpt">
+                            <input
+                                class="form-control {{hasil_kontak}}"
+                                type="tel"
+                                name="catatan"
+                                id="id"
+                                value=""
+                                placeholder="Id Pelanggan" />
                         </div>
-                    </div>
-                    <div class="d-flex inpt">
-                        <input class="form-control {{hasil_kontak}}" type="tel" name="catatan" id="id" value=""
-                            placeholder="Id Pelanggan" />
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <div class="container">
-        <div class="informasi">
-            <h5>Informasi !!</h5>
-            <div class="d-flex pack--ceknick">
-                <div class="name">
-                    <p>
-                        Cara cek ID pelanggan K-Vision:<br />Kirim pesan berikut <b>"CEK(spasi)Serial Number"</b> dan
-                        kirim ke salah satu saluran berikut: <br><br>LINE: @kvision <br>Telegram: @KvisionBot<br>WA:
-                        0811 8500 828 <br>SMS: 99333 (Telkomsel, Indosat, Tri)
-                        <br><br>Serial number bisa dilihat
-                        pada setiap dekoder K-Vision.
-                    </p>
+                    </form>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="container">
-        <div class="tab-content mt-2">
-            <div class="tab-pane fade show active" id="kategori1">
-                <ul style="list-style-type: none; padding-inline-start: 0" id="productList1" class="mood2"></ul>
+        <div class="container">
+            <div class="informasi">
+                <h5>Informasi !!</h5>
+                <div class="d-flex pack--ceknick">
+                    <div class="name">
+                        <p>
+                                                        Cara cek ID pelanggan K-Vision:<br />Kirim pesan berikut <b>"CEK(spasi)Serial Number"</b> dan
+                            kirim ke salah satu saluran berikut: <br><br>LINE: @kvision <br>Telegram: @KvisionBot<br>WA: 0811 8500 828 <br>SMS: 99333 (Telkomsel, Indosat, Tri) 
+                            <br><br>Serial number bisa dilihat
+                            pada setiap dekoder K-Vision.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="loadingSpinner">
-            <center>
-                <div class="loader"></div>
-                <p class="cp-load">Memuat Prod..</p>
-            </center>
+
+        <div class="container">
+            <div class="tab-content mt-2">
+                <div class="tab-pane fade show active" id="kategori1">
+                    <ul style="list-style-type: none; padding-inline-start: 0" id="productList1" class="mood2"></ul>
+                </div>
+            </div>
+            <div id="loadingSpinner">
+                <center>
+                    <div class="loader"></div>
+                    <p class="cp-load">Memuat Prod..</p>
+                </center>
+            </div>
         </div>
-    </div>
 
-    <div class="toast" id="emptyInputToast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
-        <div class="toast-header" style="border-radius: 10px">
-            <strong class="mr-auto text-white">Id Pelanggan Belum di isi</strong>
-            <button type="button" class="ml-2 mb-1 text-white close" data-dismiss="toast" aria-label="Close">
-                <span aria-hidden="true">×</span>
-            </button>
+        <div class="toast" id="emptyInputToast" role="alert" aria-live="assertive" aria-atomic="true" data-delay="3000">
+            <div class="toast-header" style="border-radius: 10px">
+                <strong class="mr-auto text-white">Id Pelanggan Belum di isi</strong>
+                <button type="button" class="ml-2 mb-1 text-white close" data-dismiss="toast" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
         </div>
-    </div>
 
-    <script>
-        // ID KATAGORI
-        var kategori1 = "624995";
-        // TOKEN OPEN API OLSHOP
-        var token = "eyJhcHAiOiIzMzkzMyIsImF1dGgiOiIyMDIwMDkwMyIsInNpZ24iOiI2NWhOM1dQQVRpTkZ1RzlEYU5MNVlnPT0ifQ==";
-    </script>
-    <script>
-        var kategoriAktif = kategori1;
-        var idInput = document.getElementById("id");
-        var productList = document.getElementById("productList");
+        <script>
+            // ID KATAGORI
+            var kategori1 = "624995";
+            // TOKEN OPEN API OLSHOP
+            var token = "eyJhcHAiOiIzMzkzMyIsImF1dGgiOiIyMDIwMDkwMyIsInNpZ24iOiI2NWhOM1dQQVRpTkZ1RzlEYU5MNVlnPT0ifQ==";
+        </script>
+        <script>
+            var kategoriAktif = kategori1;
+            var idInput = document.getElementById("id");
+            var productList = document.getElementById("productList");
 
-        function rubah(harga) {
-            var reverse = harga.toString().split("").reverse().join(""),
-                ribuan = reverse.match(/\d{1,3}/g);
-            ribuan = ribuan.join(".").split("").reverse().join("");
-            return "Rp " + ribuan;
-        }
-
-        function showProductDetails(productName, productDescription, productPrice, productUrl) {
-            var id = encodeURIComponent(idInput.value);
-            if (!id) {
-                $("#emptyInputToast").toast("show");
-                return;
-            }
-            var finalUrl = productUrl + (productUrl.includes("?") ? "&" : "?") + "catatan=" + id;
-            window.location.href = finalUrl;
-        }
-
-        function loadAllProducts(tabId, kategoriKode) {
-            var page = 1;
-            var totalProducts = [];
-            var loadingSpinner = document.getElementById("loadingSpinner");
-
-            function showLoading() {
-                loadingSpinner.style.display = "block";
+            function rubah(harga) {
+                var reverse = harga.toString().split("").reverse().join(""),
+                    ribuan = reverse.match(/\d{1,3}/g);
+                ribuan = ribuan.join(".").split("").reverse().join("");
+                return "Rp " + ribuan;
             }
 
-            function hideLoading() {
-                loadingSpinner.style.display = "none";
+            function showProductDetails(productName, productDescription, productPrice, productUrl) {
+                var id = encodeURIComponent(idInput.value);
+                if (!id) {
+                    $("#emptyInputToast").toast("show");
+                    return;
+                }
+                var finalUrl = productUrl + (productUrl.includes("?") ? "&" : "?") + "catatan=" + id;
+                window.location.href = finalUrl;
             }
 
-            function compareByPrice(a, b) {
-                return a.harga_produk - b.harga_produk;
-            }
+            function loadAllProducts(tabId, kategoriKode) {
+                var page = 1;
+                var totalProducts = [];
+                var loadingSpinner = document.getElementById("loadingSpinner");
 
-            function processProductPage() {
-                var xmlHttpRequest = new XMLHttpRequest();
-                showLoading();
-                xmlHttpRequest.open(
-                    "GET",
-                    `https://openapi.bukaolshop.net/v1/app/produk?token=${token}&page=${page}&id_kategori=${kategoriKode}`,
-                    true
-                );
-                xmlHttpRequest.onreadystatechange = function () {
-                    if (this.readyState == 4 && this.status == 200) {
-                        var response = JSON.parse(this.responseText);
-                        if (response && response.data && response.data.length > 0) {
-                            var filteredProducts = response.data.filter(function (product) {
-                                return product.id_kategori === kategoriKode;
-                            });
-                            totalProducts = totalProducts.concat(filteredProducts);
-                            if (response.data.length === 10) {
-                                page++;
-                                processProductPage();
-                            } else {
-                                totalProducts.sort(compareByPrice);
-                                displayProducts(tabId, totalProducts);
-                                hideLoading();
+                function showLoading() {
+                    loadingSpinner.style.display = "block";
+                }
+
+                function hideLoading() {
+                    loadingSpinner.style.display = "none";
+                }
+
+                function compareByPrice(a, b) {
+                    return a.harga_produk - b.harga_produk;
+                }
+
+                function processProductPage() {
+                    var xmlHttpRequest = new XMLHttpRequest();
+                    showLoading();
+                    xmlHttpRequest.open(
+                        "GET",
+                        `https://openapi.bukaolshop.net/v1/app/produk?token=${token}&page=${page}&id_kategori=${kategoriKode}`,
+                        true
+                    );
+                    xmlHttpRequest.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            var response = JSON.parse(this.responseText);
+                            if (response && response.data && response.data.length > 0) {
+                                var filteredProducts = response.data.filter(function (product) {
+                                    return product.id_kategori === kategoriKode;
+                                });
+                                totalProducts = totalProducts.concat(filteredProducts);
+                                if (response.data.length === 10) {
+                                    page++;
+                                    processProductPage();
+                                } else {
+                                    totalProducts.sort(compareByPrice);
+                                    displayProducts(tabId, totalProducts);
+                                    hideLoading();
+                                }
                             }
                         }
-                    }
-                };
-                xmlHttpRequest.send();
+                    };
+                    xmlHttpRequest.send();
+                }
+
+                processProductPage();
             }
 
-            processProductPage();
-        }
-
-        function displayProducts(tabId, products) {
-            var productList = document.getElementById("productList" + tabId.charAt(tabId.length - 1));
-            productList.innerHTML = "";
-            products.forEach(function (product) {
-                var listItem = document.createElement("li");
-                var hargaFormatted = rubah(product.harga_produk);
-                var productUrl = `${product.url_produk}`;
-                var produkImg = `${product.url_gambar_produk}`;
-                var deskripsi = encodeURIComponent(`${product.deskripsi_panjang}`);
-                var hargaNormal = `${product.harga_produk_asli}`;
-                listItem.setAttribute("data-product-name", product.nama_produk);
-                listItem.setAttribute("data-product-price", hargaFormatted);
-                listItem.setAttribute("data-product-img", product.url_gambar_produk);
-                listItem.setAttribute("data-product-diskon", product.harga_produk_asli);
-                listItem.setAttribute("data-product-url", product.url_produk); //CodingQu
-                listItem.innerHTML = `<div class="produks animate__animated animate__flipInX" onclick="showProductDetails('${product.nama_produk}', '${deskripsi}', ${product.harga_produk},'${productUrl}')">
+            function displayProducts(tabId, products) {
+                var productList = document.getElementById("productList" + tabId.charAt(tabId.length - 1));
+                productList.innerHTML = "";
+                products.forEach(function (product) {
+                    var listItem = document.createElement("li");
+                    var hargaFormatted = rubah(product.harga_produk);
+                    var productUrl = `${product.url_produk}`;
+                    var produkImg = `${product.url_gambar_produk}`;
+                    var deskripsi = encodeURIComponent(`${product.deskripsi_panjang}`);
+                    var hargaNormal = `${product.harga_produk_asli}`;
+                    listItem.setAttribute("data-product-name", product.nama_produk);
+                    listItem.setAttribute("data-product-price", hargaFormatted);
+                    listItem.setAttribute("data-product-img", product.url_gambar_produk);
+                    listItem.setAttribute("data-product-diskon", product.harga_produk_asli);
+                    listItem.setAttribute("data-product-url", product.url_produk); //CodingQu
+                    listItem.innerHTML = `<div class="produks animate__animated animate__flipInX" onclick="showProductDetails('${product.nama_produk}', '${deskripsi}', ${product.harga_produk},'${productUrl}')">
                     <div class="pil-produk">
                         <div class="w-100">
                           <div class="d-flex align-items-center">
@@ -532,16 +536,15 @@
                         </div>
                     </div>
                 </div>`;
-                productList.appendChild(listItem);
-                if (product.harga_produk_asli === 0) {
-                    listItem.querySelector(".harga-asli").classList.add("hidden");
-                }
+                    productList.appendChild(listItem);
+                    if (product.harga_produk_asli === 0) {
+                        listItem.querySelector(".harga-asli").classList.add("hidden");
+                    }
+                });
+            }
+            $(document).ready(function () {
+                loadAllProducts("kategori1", kategori1);
             });
-        }
-        $(document).ready(function () {
-            loadAllProducts("kategori1", kategori1);
-        });
-    </script>
-</body>
-
+        </script>
+    </body>
 </html>
