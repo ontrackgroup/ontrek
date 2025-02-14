@@ -22,6 +22,7 @@
     <script src="https://kit.fontawesome.com/8e3087d91d.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
     <link
         href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Courgette&family=Honk&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Rubik+Doodle+Shadow&family=Viga&display=swap"
         rel="stylesheet" />
@@ -49,8 +50,16 @@
             font-size: 13px;
         }
 
+        .col:hover {
+            display: inline-block;
+            animation: bounceIn;
+            /* referring directly to the animation's @keyframe declaration */
+            animation-duration: 2s;
+            /* don't forget to set a duration! */
+        }
+
         body {
-            background-color: whitesmoke;
+            background-color: #ecf0f3;
             font-family: "Poppins", sans-serif;
         }
 
@@ -58,7 +67,6 @@
             color: white;
             border: 1px solid rgba(255, 255, 255, 0.377);
             width: 100%;
-
         }
 
 
@@ -96,15 +104,9 @@
             }
         }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 9px;
-        }
-
-        .card-title {
-            font-size: 12px;
-            font-weight: bold;
+        .box-shadow {
+            box-shadow: -3px -3px 7px #ffff, 3px 3px 7px #a7a7a7;
+            border-radius: 10px;
         }
     </style>
 </head>
@@ -123,14 +125,15 @@
     </nav>
 
     <div class="container text-center">
-        <div class="row rounded mb-3 m-0 pt-3" style="background: var(--primary-color);">
+        <div class="row  mb-3 m-0 pt-3 box-shadow"
+            style=" background-image: linear-gradient(to top left, #ff6f00, #ffc549); ">
             <div class="col">
                 <a href="https://ontrackppob.my.id/refresh_saldo">
                     <i class="fa-solid fa-rotate-right h5"></i>
                     <p>Refresh</p>
                 </a>
             </div>
-            <div class="col">
+            <div class="col ">
                 <a href="https://ontrackppob.my.id/akun/?page=topup">
                     <i class="fa-solid fa-square-plus h5"></i>
                     <p>TopUp</p>
@@ -151,7 +154,7 @@
             <hr class="mb-10 mt-0">
         </div>
 
-        <div class="shadow-sm border rounded p-2 mb-3">
+        <div class="box-shadow p-2 mb-3">
             <div class="row mb-3 ">
                 <div class="col">
                     <a href="https://ontrackppob.my.id/digital/106141">
@@ -198,7 +201,7 @@
                         <div>Voucher</div>
                     </a>
                 </div>
-                <div class="col"><a href="#">
+                <div class="col"><a href="https://ontrackppob.my.id/digital/332513">
                         <img src="https://i.imgur.com/OBcGRIX.png" alt="" />
                         <div>Paket TV</div>
                     </a>
@@ -206,9 +209,9 @@
             </div>
         </div>
     </div>
-    <div class="container">
+    <div class="container ">
         <a href="https://ontrackppob.my.id/digital/332048">
-            <img class="w-100 rounded" src="https://i.imgur.com/cGa3WaL.png" alt="">
+            <img class="w-100 box-shadow" src="https://i.imgur.com/cGa3WaL.png" alt="">
         </a>
     </div>
     <!--
@@ -238,17 +241,17 @@
     <!--gambar-->
     <div class="container my-2">
         <div class="d-flex" style="padding: 0; gap: 7px">
-            <div class="shadow">
-                <img class="rounded" src="https://i.imgur.com/h3Aq7Hp.png" width="100%" alt="" />
+            <div>
+                <img class="box-shadow" src="https://i.imgur.com/h3Aq7Hp.png" width="100%" alt="" />
             </div>
-            <div class="shadow">
-                <img class="rounded" src="https://i.imgur.com/VwNgvze.png" width="100%" alt="" />
+            <div>
+                <img class="box-shadow" src="https://i.imgur.com/VwNgvze.png" width="100%" alt="" />
             </div>
         </div>
     </div>
     <!--KATEGORI TAGIHAN-->
-    <div class="container text-center my-3 ">
-        <div class="shadow-sm">
+    <div class="container text-center my-3  ">
+        <div class="box-shadow">
             <div class="row">
                 <div class="col">
                     <a href="https://ontrackppob.my.id/digital/270110">
