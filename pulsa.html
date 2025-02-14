@@ -1,820 +1,769 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Pulsa</title>
-        <link
-            href="https://fastly.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-            crossorigin="anonymous" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-            integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-            crossorigin="anonymous"
-            referrerpolicy="no-referrer" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
-            rel="stylesheet" />
-        <script>
-            // LINK TOKO
-            const urlToko = "https://ontrackppob.my.id";
 
-            // KATEGORI
-            const urlKategori = [
-                {
-                    // Indosat
-                    ISAT: {
-                        nama: "Indosat",
-                        gambar: "https://bukaolshop.s3-id-jkt-1.kilatstorage.id/125710/83841755.jpg",
-                        data: [
-                            {
-                                nama: "Pulsa Reguler",
-                                view: "list",
-                                img: "no",
-                                id_kategori: "542877",
-                                desc: "Menambah masa aktif"
-                            },
-                            {
-                                nama: "Pulsa Transfer",
-                                view: "list",
-                                img: "no",
-                                id_kategori: "342571",
-                                desc: "Tidak menambah masa aktif"
-                            }
-                        ]
-                    },
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pulsa</title>
+    <link href="https://fastly.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <script>
+        // LINK TOKO
+        const urlToko = "https://ontrackppob.my.id";
 
-                    // Telkomsel
-                    TSEL: {
-                        nama: "Telkomsel",
-                        gambar: "https://bukaolshop.s3-id-jkt-1.kilatstorage.id/125710/52711910.jpg",
-                        desc: "Kuota langsung aktif",
-                        data: [
-                            {
-                                nama: "Pulsa Reguler",
-                                view: "list",
-                                img: "no",
-                                id_kategori: "541084",
-                                desc: "Menambah masa aktif"
-                            },
-                            {
-                                nama: "Pulsa Transfer",
-                                view: "list",
-                                img: "no",
-                                id_kategori: "549074",
-                                desc: "Tidak menambah masa aktif"
-                            }
-                        ]
-                    },
+        // KATEGORI
+        const urlKategori = [
+            {
+                // Indosat
+                ISAT: {
+                    nama: "Indosat",
+                    gambar: "https://bukaolshop.s3-id-jkt-1.kilatstorage.id/125710/83841755.jpg",
+                    data: [
+                        {
+                            nama: "Pulsa Reguler",
+                            view: "list",
+                            img: "no",
+                            id_kategori: "542877",
+                            desc: "Menambah masa aktif"
+                        },
+                        {
+                            nama: "Pulsa Transfer",
+                            view: "list",
+                            img: "no",
+                            id_kategori: "342571",
+                            desc: "Tidak menambah masa aktif"
+                        }
+                    ]
+                },
 
-                    // Three
-                    THREE: {
-                        nama: "Three",
-                        gambar: "https://bukaolshop.s3-id-jkt-1.kilatstorage.id/125710/2457813.jpg",
-                        desc: "Kuota langsung aktif",
-                        data: [
-                            {
-                                nama: "Pulsa Reguler",
-                                view: "list",
-                                img: "no",
-                                id_kategori: "342508",
-                                desc: "Menambah masa aktif"
-                            },
-                            {
-                                nama: "Pulsa Transfer",
-                                view: "list",
-                                img: "no",
-                                id_kategori: "342569",
-                                desc: "Tidak menambah masa aktif"
-                            }
-                        ]
-                    },
+                // Telkomsel
+                TSEL: {
+                    nama: "Telkomsel",
+                    gambar: "https://bukaolshop.s3-id-jkt-1.kilatstorage.id/125710/52711910.jpg",
+                    desc: "Kuota langsung aktif",
+                    data: [
+                        {
+                            nama: "Pulsa Reguler",
+                            view: "list",
+                            img: "no",
+                            id_kategori: "541084",
+                            desc: "Menambah masa aktif"
+                        },
+                        {
+                            nama: "Pulsa Transfer",
+                            view: "list",
+                            img: "no",
+                            id_kategori: "549074",
+                            desc: "Tidak menambah masa aktif"
+                        }
+                    ]
+                },
 
-                    // XL
-                    XL: {
-                        nama: "XL Axiata",
-                        gambar: "https://bukaolshop.s3-id-jkt-1.kilatstorage.id/125710/636701219z.jpg",
-                        desc: "Kuota langsung aktif",
-                        data: [
-                            {
-                                nama: "Pulsa Reguler",
-                                view: "list",
-                                img: "no",
-                                id_kategori: "542876",
-                                desc: "Menambah masa aktif"
-                            },
-                            {
-                                nama: "Pulsa Transfer",
-                                view: "list",
-                                img: "no",
-                                id_kategori: "564301",
-                                desc: "Tidak menambah masa aktif"
-                            }
-                        ]
-                    },
+                // Three
+                THREE: {
+                    nama: "Three",
+                    gambar: "https://bukaolshop.s3-id-jkt-1.kilatstorage.id/125710/2457813.jpg",
+                    desc: "Kuota langsung aktif",
+                    data: [
+                        {
+                            nama: "Pulsa Reguler",
+                            view: "list",
+                            img: "no",
+                            id_kategori: "342508",
+                            desc: "Menambah masa aktif"
+                        },
+                        {
+                            nama: "Pulsa Transfer",
+                            view: "list",
+                            img: "no",
+                            id_kategori: "342569",
+                            desc: "Tidak menambah masa aktif"
+                        }
+                    ]
+                },
 
-                    // Axis
-                    AXIS: {
-                        nama: "Axis",
-                        gambar: "https://bukaolshop.s3-id-jkt-1.kilatstorage.id/125710/398175917q.jpg",
-                        desc: "Kuota langsung aktif",
-                        data: [
-                            {
-                                nama: "Pulsa Reguler",
-                                view: "list",
-                                img: "no",
-                                id_kategori: "544607",
-                                desc: "Menambah masa aktif"
-                            },
-                            {
-                                nama: "Pulsa Transfer",
-                                view: "list",
-                                img: "no",
-                                id_kategori: "342570",
-                                desc: "Tidak menambah masa aktif"
-                            }
-                        ]
-                    },
+                // XL
+                XL: {
+                    nama: "XL Axiata",
+                    gambar: "https://bukaolshop.s3-id-jkt-1.kilatstorage.id/125710/636701219z.jpg",
+                    desc: "Kuota langsung aktif",
+                    data: [
+                        {
+                            nama: "Pulsa Reguler",
+                            view: "list",
+                            img: "no",
+                            id_kategori: "542876",
+                            desc: "Menambah masa aktif"
+                        },
+                        {
+                            nama: "Pulsa Transfer",
+                            view: "list",
+                            img: "no",
+                            id_kategori: "564301",
+                            desc: "Tidak menambah masa aktif"
+                        }
+                    ]
+                },
 
-                    // Smartfren
-                    SFREN: {
-                        nama: "Smartfren",
-                        gambar: "https://bukaolshop.s3-id-jkt-1.kilatstorage.id/125710/258389271p.jpg",
-                        desc: "Kuota langsung aktif",
-                        data: [
-                            {
-                                nama: "Pulsa Reguler",
-                                view: "list",
-                                img: "no",
-                                id_kategori: "342507",
-                                desc: "Menambah masa aktif"
-                            },
-                            {
-                                nama: "Pulsa Transfer",
-                                view: "list",
-                                img: "no",
-                                id_kategori: "342572",
-                                desc: "Tidak menambah masa aktif"
-                            }
-                        ]
-                    },
+                // Axis
+                AXIS: {
+                    nama: "Axis",
+                    gambar: "https://bukaolshop.s3-id-jkt-1.kilatstorage.id/125710/398175917q.jpg",
+                    desc: "Kuota langsung aktif",
+                    data: [
+                        {
+                            nama: "Pulsa Reguler",
+                            view: "list",
+                            img: "no",
+                            id_kategori: "544607",
+                            desc: "Menambah masa aktif"
+                        },
+                        {
+                            nama: "Pulsa Transfer",
+                            view: "list",
+                            img: "no",
+                            id_kategori: "342570",
+                            desc: "Tidak menambah masa aktif"
+                        }
+                    ]
+                },
 
-                    // Byu
-                    BYU: {
-                        nama: "Byu",
-                        gambar: "https://bukaolshop.s3-id-jkt-1.kilatstorage.id/125710/862372891w.jpg",
-                        desc: "Kuota langsung aktif",
-                        data: [
-                            {
-                                nama: "Pulsa Reguler",
-                                view: "list",
-                                img: "no",
-                                id_kategori: "342765",
-                                desc: "Masa aktif permanen"
-                            }
-                        ]
-                    }
+                // Smartfren
+                SFREN: {
+                    nama: "Smartfren",
+                    gambar: "https://bukaolshop.s3-id-jkt-1.kilatstorage.id/125710/258389271p.jpg",
+                    desc: "Kuota langsung aktif",
+                    data: [
+                        {
+                            nama: "Pulsa Reguler",
+                            view: "list",
+                            img: "no",
+                            id_kategori: "342507",
+                            desc: "Menambah masa aktif"
+                        },
+                        {
+                            nama: "Pulsa Transfer",
+                            view: "list",
+                            img: "no",
+                            id_kategori: "342572",
+                            desc: "Tidak menambah masa aktif"
+                        }
+                    ]
+                },
+
+                // Byu
+                BYU: {
+                    nama: "Byu",
+                    gambar: "https://bukaolshop.s3-id-jkt-1.kilatstorage.id/125710/862372891w.jpg",
+                    desc: "Kuota langsung aktif",
+                    data: [
+                        {
+                            nama: "Pulsa Reguler",
+                            view: "list",
+                            img: "no",
+                            id_kategori: "342765",
+                            desc: "Masa aktif permanen"
+                        }
+                    ]
                 }
-            ];
+            }
+        ];
 
-            // ICON
-            const iconPilihan = [
-                {
-                    signal: "https://codingasikiconbusiness.files.wordpress.com/2023/08/20230821_185655.png",
-                    contact: "https://thumbs2.imgbox.com/e6/60/rJQfC700_t.png",
-                    scan: "https://thumbs2.imgbox.com/0a/06/kBwm3JAZ_t.png",
-                    grid: "https://cdn-icons-png.flaticon.com/128/238/238910.png",
-                    list: "https://cdn-icons-png.flaticon.com/128/8867/8867520.png",
-                    image: "https://cdn-icons-png.flaticon.com/128/739/739198.png",
-                    noImage: "https://cdn-icons-png.flaticon.com/128/3781/3781609.png",
-                    search: "https://cdn-icons-png.flaticon.com/128/151/151773.png",
-                    close: "https://cdn-icons-png.flaticon.com/128/9684/9684650.png"
-                }
-            ];
-            // ambil data dari openapi
-            var token = "eyJhcHAiOiIzMzkzMyIsImF1dGgiOiIyMDIwMDkwMyIsInNpZ24iOiI2NWhOM1dQQVRpTkZ1RzlEYU5MNVlnPT0ifQ==";
-            let allProduct = [];
-            var data_page = 100;
-        </script>
-        <style type="text/css">
-            /* SCRIPT BY UKI */
-            .ping {
-                --uib-size: 10rem;
-                --uib-speed: 2s;
-                --uib-color: #ff6f00;
-                position: relative;
-                height: var(--uib-size);
-                width: var(--uib-size);
+        // ICON
+        const iconPilihan = [
+            {
+                signal: "https://codingasikiconbusiness.files.wordpress.com/2023/08/20230821_185655.png",
+                contact: "https://thumbs2.imgbox.com/e6/60/rJQfC700_t.png",
+                scan: "https://thumbs2.imgbox.com/0a/06/kBwm3JAZ_t.png",
+                grid: "https://cdn-icons-png.flaticon.com/128/238/238910.png",
+                list: "https://cdn-icons-png.flaticon.com/128/8867/8867520.png",
+                image: "https://cdn-icons-png.flaticon.com/128/739/739198.png",
+                noImage: "https://cdn-icons-png.flaticon.com/128/3781/3781609.png",
+                search: "https://cdn-icons-png.flaticon.com/128/151/151773.png",
+                close: "https://cdn-icons-png.flaticon.com/128/9684/9684650.png"
+            }
+        ];
+        // ambil data dari openapi
+        var token = "eyJhcHAiOiIzMzkzMyIsImF1dGgiOiIyMDIwMDkwMyIsInNpZ24iOiI2NWhOM1dQQVRpTkZ1RzlEYU5MNVlnPT0ifQ==";
+        let allProduct = [];
+        var data_page = 100;
+    </script>
+    <style type="text/css">
+        /* SCRIPT BY UKI */
+        .ping {
+            --uib-size: 10rem;
+            --uib-speed: 2s;
+            --uib-color: #ff6f00;
+            position: relative;
+            height: var(--uib-size);
+            width: var(--uib-size);
+        }
+
+        .ping::before,
+        .ping::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            background-color: var(--uib-color);
+            animation: pulse7132 var(--uib-speed) linear infinite;
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        .ping::after {
+            animation-delay: calc(var(--uib-speed) / -2);
+        }
+
+        @keyframes pulse7132 {
+            0% {
+                transform: scale(0);
+                opacity: 1;
             }
 
-            .ping::before,
-            .ping::after {
-                content: "";
-                position: absolute;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 100%;
-                border-radius: 50%;
-                background-color: var(--uib-color);
-                animation: pulse7132 var(--uib-speed) linear infinite;
-                transform: scale(0);
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* SCRIPT BY UKI */
+        @import url("https://fastly.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+        * {
+            font-family: "Poppins", sans-serif;
+            user-select: none;
+        }
+
+        body {
+            background-color: #edf1fc;
+        }
+
+        p {
+            margin: 0;
+            font-size: 12px;
+        }
+
+        input {
+            border: none;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            outline: none;
+            width: 100%;
+            background-color: transparent;
+        }
+
+        a,
+        a:focus,
+        a:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        @-webkit-keyframes fadeEffect {
+            from {
                 opacity: 0;
             }
 
-            .ping::after {
-                animation-delay: calc(var(--uib-speed) / -2);
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeEffect {
+            from {
+                opacity: 0;
             }
 
-            @keyframes pulse7132 {
-                0% {
-                    transform: scale(0);
-                    opacity: 1;
-                }
-
-                100% {
-                    transform: scale(1);
-                    opacity: 0;
-                }
+            to {
+                opacity: 1;
             }
+        }
 
-            /* SCRIPT BY UKI */
-            @import url("https://fastly.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+        .my-bg {
+            background-color: #ff6f00;
+        }
 
-            * {
-                font-family: "Poppins", sans-serif;
-                user-select: none;
-            }
+        .my-color {
+            color: #ff6f00;
+        }
 
-            body {
-                background-color: #edf1fc;
-            }
+        .my-border {
+            border: 1px solid #ff6f00;
+        }
 
-            p {
-                margin: 0;
-                font-size: 12px;
-            }
+        .borad-5 {
+            border-radius: 5px;
+        }
 
-            input {
-                border: none;
-                -webkit-transition: 0.5s;
-                transition: 0.5s;
-                outline: none;
-                width: 100%;
-                background-color: transparent;
-            }
+        .borad-10 {
+            border-radius: 10px;
+        }
 
-            a,
-            a:focus,
-            a:hover {
-                text-decoration: none;
-                color: inherit;
-            }
+        .borad-15 {
+            border-radius: 15px;
+        }
 
-            @-webkit-keyframes fadeEffect {
-                from {
-                    opacity: 0;
-                }
+        .my-shadow {
+            box-shadow: rgba(0, 0, 0, 0.15) 0 0 5px 1px;
+        }
 
-                to {
-                    opacity: 1;
-                }
-            }
+        .bg-white {
+            background-color: #fff !important;
+        }
 
-            @keyframes fadeEffect {
-                from {
-                    opacity: 0;
-                }
+        .text-white {
+            color: #fff;
+        }
 
-                to {
-                    opacity: 1;
-                }
-            }
+        .f-11 {
+            font-size: 11px !important;
+        }
 
-            .my-bg {
-                background-color: #ff6f00;
-            }
+        .f-12 {
+            font-size: 12px !important;
+        }
 
-            .my-color {
-                color: #ff6f00;
-            }
+        .f-14 {
+            font-size: 14px !important;
+        }
 
-            .my-border {
-                border: 1px solid #ff6f00;
-            }
+        .f-16 {
+            font-size: 16px !important;
+        }
 
-            .borad-5 {
-                border-radius: 5px;
-            }
+        .f-18 {
+            font-size: 18px !important;
+        }
 
-            .borad-10 {
-                border-radius: 10px;
-            }
+        .f-20 {
+            font-size: 20px !important;
+        }
 
-            .borad-15 {
-                border-radius: 15px;
-            }
+        .f-22 {
+            font-size: 22px !important;
+        }
 
-            .my-shadow {
-                box-shadow: rgba(0, 0, 0, 0.15) 0 0 5px 1px;
-            }
+        .f-24 {
+            font-size: 24px !important;
+        }
 
-            .bg-white {
-                background-color: #fff !important;
-            }
+        .f-26 {
+            font-size: 26px !important;
+        }
 
-            .text-white {
-                color: #fff;
-            }
+        .f-28 {
+            font-size: 28px !important;
+        }
 
-            .f-11 {
-                font-size: 11px !important;
-            }
+        .fwb-5 {
+            font-weight: 500;
+        }
 
-            .f-12 {
-                font-size: 12px !important;
-            }
+        .fwb-6 {
+            font-weight: 600;
+        }
 
-            .f-14 {
-                font-size: 14px !important;
-            }
+        .op-7 {
+            opacity: 0.7;
+        }
 
-            .f-16 {
-                font-size: 16px !important;
-            }
+        .bg-head {
+            background-color: #ff6f00;
+            height: 5rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1;
+        }
 
-            .f-18 {
-                font-size: 18px !important;
-            }
+        .form-inp {
+            border: 1px solid #ededed;
+            font-size: 14px;
+            padding: 8px;
+            border-radius: 5px;
+        }
 
-            .f-20 {
-                font-size: 20px !important;
-            }
+        .form-inp:focus {
+            border: 1px solid #ff6f00;
+        }
 
-            .f-22 {
-                font-size: 22px !important;
-            }
+        .btn-pil {
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+        }
 
-            .f-24 {
-                font-size: 24px !important;
-            }
+        .pil-active {
+            background-color: #ff6f00;
+            color: #fff;
+            padding: 4px;
+            border-radius: 5px;
+            -webkit-animation: fadeEffect 1s;
+            animation: fadeEffect 1s;
+        }
 
-            .f-26 {
-                font-size: 26px !important;
-            }
+        .d-grid-1 {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1rem;
+        }
 
-            .f-28 {
-                font-size: 28px !important;
-            }
+        .d-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
 
-            .fwb-5 {
-                font-weight: 500;
-            }
+        .bg-produk {
+            background-color: #fff;
+            padding: 12px;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            border-radius: 5px;
+        }
 
-            .fwb-6 {
-                font-weight: 600;
-            }
+        .box-list {
+            display: flex;
+            align-items: center;
+        }
 
-            .op-7 {
-                opacity: 0.7;
-            }
+        .box-grid {
+            text-align: center;
+        }
 
-            .bg-head {
-                background-color: #ff6f00;
-                height: 5rem;
-                position: fixed;
-                width: 100%;
-                top: 0;
-                z-index: 1;
-            }
+        .poinz {
+            pointer-events: none;
+        }
 
-            .form-inp {
-                border: 1px solid #ededed;
-                font-size: 14px;
-                padding: 8px;
-                border-radius: 5px;
-            }
+        .bg-detail {
+            background-color: #ff6f00;
+            padding: 12px;
+            border-bottom-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+        }
 
-            .form-inp:focus {
-                border: 1px solid #ff6f00;
-            }
+        .btn-add {
+            border: 1px solid #cccccc;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 12px;
+            opacity: 0.7;
+            border-radius: 5px;
+            box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+        }
 
-            .btn-pil {
-                width: 100%;
-                text-align: center;
-                font-size: 14px;
-                font-weight: 500;
-            }
+        .add-active {
+            border: 1px solid #ff6f00;
+            pointer-events: none;
+        }
 
-            .pil-active {
-                background-color: #ff6f00;
-                color: #fff;
-                padding: 4px;
-                border-radius: 5px;
-                -webkit-animation: fadeEffect 1s;
-                animation: fadeEffect 1s;
-            }
+        .accordion {
+            --bs-accordion-bg: transparent;
+        }
 
-            .d-grid-1 {
-                display: grid;
-                grid-template-columns: repeat(1, 1fr);
-                gap: 1rem;
-            }
+        .input input {
+            color: #000000;
+            background: #ecf0f3;
+            width: 85%;
+            padding: 0.5em;
+            border-radius: 8px;
+            outline: none;
+            border: 1px solid #ecf0f3;
+            box-shadow:
+                inset -3px -3px 7px #ffffff,
+                inset 3px 3px 5px #ceced1;
+        }
+    </style>
+</head>
 
-            .d-grid-2 {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-
-            .bg-produk {
-                background-color: #fff;
-                padding: 12px;
-                box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-                border-radius: 5px;
-            }
-
-            .box-list {
-                display: flex;
-                align-items: center;
-            }
-
-            .box-grid {
-                text-align: center;
-            }
-
-            .poinz {
-                pointer-events: none;
-            }
-
-            .bg-detail {
-                background-color: #ff6f00;
-                padding: 12px;
-                border-bottom-left-radius: 50%;
-                border-bottom-right-radius: 50%;
-            }
-
-            .btn-add {
-                border: 1px solid #cccccc;
-                font-size: 14px;
-                font-weight: 500;
-                padding: 12px;
-                opacity: 0.7;
-                border-radius: 5px;
-                box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
-            }
-
-            .add-active {
-                border: 1px solid #ff6f00;
-                pointer-events: none;
-            }
-
-            .accordion {
-                --bs-accordion-bg: transparent;
-            }
-            .input input {
-                color: #000000;
-                background: #ecf0f3;
-                width: 85%;
-                padding: 0.5em;
-                border-radius: 8px;
-                outline: none;
-                border: 1px solid #ecf0f3;
-                box-shadow:
-                    inset -3px -3px 7px #ffffff,
-                    inset 3px 3px 5px #ceced1;
-            }
-        </style>
-    </head>
-
-    <body>
-        <section class="header">
-            <div class="bg-head"></div>
-            <div class="px-3 position-relative mt-1" style="z-index: 99">
-                <div style="background-color: #ff6f00; border: 2px solid white" class="p-3 pt-2 borad-5 shadow-sm">
-                    <div class="d-flex align-items-center r p-1">
-                        <img src="#" id="imgTop" width="30" class="borad-5 bg-white" />
-                        <p class="f-14 fwb-6 ms-2 text-white">Pulsa <span id="textTop"></span></p>
+<body>
+    <section class="header">
+        <div class="bg-head"></div>
+        <div class="px-3 position-relative mt-1" style="z-index: 99">
+            <div style="background-color: #ff6f00; border: 2px solid white" class="p-3 pt-2 borad-5 shadow-sm">
+                <div class="d-flex align-items-center r p-1">
+                    <img src="#" id="imgTop" width="30" class="borad-5 bg-white" />
+                    <p class="f-14 fwb-6 ms-2 text-white">Pulsa <span id="textTop"></span></p>
+                </div>
+                <div class="mt-2">
+                    <div class="input d-flex align-items-center">
+                        <input type="tel" class="form-inp {{hasil_kontak}}" id="nomoId"
+                            placeholder="Masukan nomor tujuan..." />
+                        <img src="https://thumbs2.imgbox.com/e6/60/rJQfC700_t.png" width="38" id="imgContact"
+                            class="ms-2 my-bg p- borad-5" onclick="getContact()" />
                     </div>
-                    <div class="mt-2">
-                        <div class="input d-flex align-items-center">
-                            <input
-                                type="tel"
-                                class="form-inp {{hasil_kontak}}"
-                                id="nomoId"
-                                placeholder="Masukan nomor tujuan..." />
-                            <img
-                                src="https://thumbs2.imgbox.com/e6/60/rJQfC700_t.png"
-                                width="38"
-                                id="imgContact"
-                                class="ms-2 my-bg p- borad-5"
-                                onclick="getContact()" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-3 pt-3 sticky-top d-none" id="boxPilihan">
+        <div class="bg-white p-3 borad-5 shadow-sm">
+            <div class="d-block">
+                <div class="p-2 borad-5" style="background-color: #f3f4f9">
+                    <div class="btn-pil pil-active" data-bs-toggle="modal" data-bs-target="#modalKategori" id="btn-kat">
+                        <span id="textOperator"></span>
+                        <span id="iconOperator" class="ms-1"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-3 d-flex align-items-center justify-content-between">
+                <div class="dropdown">
+                    <p class="fwb-6 f-14 icon-pil" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span id="namaPil"></span>
+                        <i class="fa-solid fa-caret-down ms-1"></i>
+                    </p>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item f-14 fwb-6" id="pil-Termurah" onclick="rubahData('Termurah')">
+                            Termurah
+                        </li>
+                        <li class="dropdown-item f-14 fwb-6" id="pil-Termahal" onclick="rubahData('Termahal')">
+                            Termahal
+                        </li>
+                        <li class="dropdown-item f-14 fwb-6" id="pil-A-Z" onclick="rubahData('A-Z')">A - Z</li>
+                        <li class="dropdown-item f-14 fwb-6" id="pil-Z-A" onclick="rubahData('Z-A')">Z - A</li>
+                    </ul>
+                </div>
+                <div class="ms-3">
+                    <img src="#" width="20" class="ms-3 icon-pil" id="imgTampilan" onclick="rubahTampilan()" />
+                    <img src="#" width="20" class="ms-3 icon-pil" id="imgGambar" onclick="rubahGambar()" />
+                    <img src="#" width="20" class="ms-3 icon-pil" id="imgPencarian" onclick="rubahPencarian()"
+                        data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="true"
+                        aria-controls="flush-collapseOne" />
+                </div>
+            </div>
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body p-0 pt-3">
+                            <input type="search" class="form-inp f-12" placeholder="Cari Produk..." id="search" />
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section class="px-3 pt-3 sticky-top d-none" id="boxPilihan">
-            <div class="bg-white p-3 borad-5 shadow-sm">
-                <div class="d-block">
-                    <div class="p-2 borad-5" style="background-color: #f3f4f9">
-                        <div
-                            class="btn-pil pil-active"
-                            data-bs-toggle="modal"
-                            data-bs-target="#modalKategori"
-                            id="btn-kat">
-                            <span id="textOperator"></span>
-                            <span id="iconOperator" class="ms-1"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="mt-3 d-flex align-items-center justify-content-between">
-                    <div class="dropdown">
-                        <p class="fwb-6 f-14 icon-pil" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span id="namaPil"></span>
-                            <i class="fa-solid fa-caret-down ms-1"></i>
+        </div>
+    </section>
+    <!-- Modal -->
+    <section class="modal fade" id="modalKategori" tabindex="-1" aria-labelledby="modalKategori"
+        data-bs-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content" style="max-height: 75% !important">
+                <div class="my-bg p-3 text-white" style="border-radius: 5px 5px 0 0">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="fwb-5 f-14">Pilihan Paket</p>
+                        <p class="fwb-5 f-16" onclick="rubahSrcPil()" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="true" aria-controls="flush-collapseTwo">
+                            <i class="fa-solid fa-magnifying-glass"></i>
                         </p>
-                        <ul class="dropdown-menu">
-                            <li class="dropdown-item f-14 fwb-6" id="pil-Termurah" onclick="rubahData('Termurah')">
-                                Termurah
-                            </li>
-                            <li class="dropdown-item f-14 fwb-6" id="pil-Termahal" onclick="rubahData('Termahal')">
-                                Termahal
-                            </li>
-                            <li class="dropdown-item f-14 fwb-6" id="pil-A-Z" onclick="rubahData('A-Z')">A - Z</li>
-                            <li class="dropdown-item f-14 fwb-6" id="pil-Z-A" onclick="rubahData('Z-A')">Z - A</li>
-                        </ul>
                     </div>
-                    <div class="ms-3">
-                        <img src="#" width="20" class="ms-3 icon-pil" id="imgTampilan" onclick="rubahTampilan()" />
-                        <img src="#" width="20" class="ms-3 icon-pil" id="imgGambar" onclick="rubahGambar()" />
-                        <img
-                            src="#"
-                            width="20"
-                            class="ms-3 icon-pil"
-                            id="imgPencarian"
-                            onclick="rubahPencarian()"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseOne"
-                            aria-expanded="true"
-                            aria-controls="flush-collapseOne" />
-                    </div>
-                </div>
-                <div class="accordion accordion-flush" id="accordionFlushExample">
-                    <div class="accordion-item">
-                        <div
-                            id="flush-collapseOne"
-                            class="accordion-collapse collapse"
-                            aria-labelledby="flush-headingOne"
-                            data-bs-parent="#accordionFlushExample">
-                            <div class="accordion-body p-0 pt-3">
-                                <input type="search" class="form-inp f-12" placeholder="Cari Produk..." id="search" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="p-3 position-relative" style="z-index: 0" id="dataProduk"></section>
-
-        <section
-            class="offcanvas offcanvas-bottom p-3 h-auto"
-            style="background-color: transparent; border: none !important"
-            tabindex="-1"
-            id="detailCanv"
-            aria-labelledby="detailCanv">
-            <div class="px-3 bg-white" style="border-radius: 5px 5px 0 0">
-                <div class="bg-detail">
-                    <p class="f-14 text-center text-white">Detail Transaksi</p>
-                </div>
-            </div>
-            <div class="offcanvas-body bg-white" style="border-radius: 0 0 5px 5px" id="bodyCanv"></div>
-        </section>
-
-        <!-- Modal -->
-        <section
-            class="modal fade"
-            id="modalKategori"
-            tabindex="-1"
-            aria-labelledby="modalKategori"
-            data-bs-keyboard="false"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                <div class="modal-content" style="max-height: 75% !important">
-                    <div class="my-bg p-3 text-white" style="border-radius: 5px 5px 0 0">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <p class="fwb-5 f-14">Pilihan Paket</p>
-                            <p
-                                class="fwb-5 f-16"
-                                id="iconSrcPil"
-                                onclick="rubahSrcPil()"
-                                data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseTwo"
-                                aria-expanded="true"
-                                aria-controls="flush-collapseTwo">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </p>
-                        </div>
-                        <div class="accordion accordion-flush" id="accordionFlushExampleTwo">
-                            <div class="accordion-item">
-                                <div
-                                    id="flush-collapseTwo"
-                                    class="accordion-collapse collapse"
-                                    aria-labelledby="flush-headingTwo"
-                                    data-bs-parent="#accordionFlushExampleTwo">
-                                    <div class="accordion-body p-0 pt-3">
-                                        <input
-                                            type="search"
-                                            class="form-inp f-12 bg-white"
-                                            placeholder="Cari Kategori..."
-                                            id="searchKategori" />
-                                    </div>
+                    <div class="accordion accordion-flush" id="accordionFlushExampleTwo">
+                        <div class="accordion-item">
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExampleTwo">
+                                <div class="accordion-body p-0 pt-3">
+                                    <input type="search" class="form-inp f-12 bg-white" placeholder="Cari Kategori..."
+                                        id="searchKategori" />
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="modal-body p-3 d-grid-1" style="border-radius: 0 0 5px 5px" id="isiPilihan"></div>
                 </div>
+                <div class="modal-body p-3 d-grid-1" style="border-radius: 0 0 5px 5px" id="isiPilihan"></div>
             </div>
-        </section>
+        </div>
+    </section>
+    <section class="p-3 position-relative" style="z-index: 0" id="dataProduk"></section>
 
-        <script
-            src="https://fastly.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-            crossorigin="anonymous"></script>
-        <script
-            src="https://code.jquery.com/jquery-3.6.3.min.js"
-            integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU="
-            crossorigin="anonymous"></script>
-        <script src="https://fastly.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script type="text/javascript">
-            // tampilkan modal kategori
-            //     $(document).ready(function () {
-            //    $("#modalKategori").modal("show")
-            //    })
+    <section class="offcanvas offcanvas-bottom p-3 h-auto"
+        style="background-color: transparent; border: none !important" tabindex="-1" id="detailCanv"
+        aria-labelledby="detailCanv">
+        <div class="px-3 bg-white" style="border-radius: 5px 5px 0 0">
+            <div class="bg-detail">
+                <p class="f-14 text-center text-white">Detail Transaksi</p>
+            </div>
+        </div>
+        <div class="offcanvas-body bg-white" style="border-radius: 0 0 5px 5px" id="bodyCanv"></div>
+    </section>
 
-            // Load Awal
-            const loadAwal = `
+
+
+    <script src="https://fastly.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://fastly.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+        
+
+        // Load Awal
+        const loadAwal = `
         <div class="text-center mt-3 animate__animated animate__fadeIn">
         <p class="f-16 fwb-6 op-7">Masukan No. Tujuan terlebih dahulu...</p>
         </div>
         `;
 
-            // Loader
-            const loads = `
+        // Loader
+        const loads = `
         <div class="d-flex justify-content-center py-5 align-items-center">
         <div class="ping"></div>
         </div>
         `;
 
-            // Nomor Salah
-            const noSalah = `
+        // Nomor Salah
+        const noSalah = `
         <div class="text-center animate__animated animate__fadeIn">
         <img src="https://thumbs2.imgbox.com/1f/cf/WPEraNdS_t.jpg" class="w-100 borad-5 shadow-sm">
         <p class="mt-3 f-16 fwb-6 op-7">Nomor yang dimasukan salah nih...</p>
         </div>
         `;
 
-            // Produk Kosong
-            const produkNone = `
+        // Produk Kosong
+        const produkNone = `
         <div class="text-center animate__animated animate__fadeIn">
         <img src="https://thumbs2.imgbox.com/1f/cf/WPEraNdS_t.jpg" class="w-100 borad-5 shadow-sm">
         <p class="mt-3 f-16 fwb-6 op-7">Sepertinya produk ini belum tersedia...</p>
         </div>
         `;
 
-            //---------- Sistem Data ----------//
-            // Kumpulan Data
-            let dataTampilan = 0;
-            let dataGambar = 0;
-            let dataPencarian = 0;
-            let dataProduk = null;
-            let dataDesc = null;
-            let urutanProduk = "Termurah";
+        //---------- Sistem Data ----------//
+        // Kumpulan Data
+        let dataTampilan = 0;
+        let dataGambar = 0;
+        let dataPencarian = 0;
+        let dataProduk = null;
+        let dataDesc = null;
+        let urutanProduk = "Termurah";
 
-            // Kontak
+        // Kontak
 
-            function getContact() {
-                window.location.href = urlToko + "/ambil_kontak";
+        function getContact() {
+            window.location.href = urlToko + "/ambil_kontak";
+        }
+
+        // Loop Kategori
+        function loopCat(data) {
+            $("#isiPilihan").html("");
+
+            if (data.length == 1) {
+                $("#iconOperator").html("");
+            } else {
+                $("#iconOperator").html(`<i class="fa-solid fa-caret-down"></i>`);
             }
-
-            // Loop Kategori
-            function loopCat(data) {
-                $("#isiPilihan").html("");
-
-                if (data.length == 1) {
-                    $("#iconOperator").html("");
-                } else {
-                    $("#iconOperator").html(`<i class="fa-solid fa-caret-down"></i>`);
-                }
-                $.each(data, function (i, v) {
-                    $("#isiPilihan").append(`
+            $.each(data, function (i, v) {
+                $("#isiPilihan").append(`
                     <div class="btn-add" id="btd-${i}" onclick="getData('${i}', '${v.id_kategori}', '${v.desc}', '${v.nama}', '${data.length}'); defaultData()" data-bs-dismiss="modal">${v.nama}</div>
                 `);
-                });
+            });
 
-                getData(0, data[0].id_kategori, data[0].desc, data[0].nama, data.length);
-                defaultData();
-            }
+            getData(0, data[0].id_kategori, data[0].desc, data[0].nama, data.length);
+            defaultData();
+        }
 
-            // Get Data
-            function getData(i, id_kategori, desc, nama, length) {
-                $("#dataProduk").html(loads);
+        // Get Data
+        function getData(i, id_kategori, desc, nama, length) {
+            $("#dataProduk").html(loads);
 
-                noZ = "200";
+            noZ = "200";
 
-                $("#textOperator").html(nama);
-                $(".btn-add").removeClass("add-active");
-                $("#btn-kat").addClass("poinz");
-                $("#btd-" + i).addClass("add-active");
+            $("#textOperator").html(nama);
+            $(".btn-add").removeClass("add-active");
+            $("#btn-kat").addClass("poinz");
+            $("#btd-" + i).addClass("add-active");
 
-                $(".icon-pil").addClass("poinz");
+            $(".icon-pil").addClass("poinz");
 
-                postGetData(id_kategori, desc, length);
-            }
+            postGetData(id_kategori, desc, length);
+        }
 
-            // Res Get Data
-            function resGetData(data, desc, length) {
-                $(".btn-pil").removeClass("poinz");
-                $(".icon-pil").removeClass("poinz");
-                if (data == null) {
-                    $("#dataProduk").html(produkNone);
+        // Res Get Data
+        function resGetData(data, desc, length) {
+            $(".btn-pil").removeClass("poinz");
+            $(".icon-pil").removeClass("poinz");
+            if (data == null) {
+                $("#dataProduk").html(produkNone);
+            } else {
+                if (length == 1) {
+                    $("#btn-kat").addClass("poinz");
                 } else {
-                    if (length == 1) {
-                        $("#btn-kat").addClass("poinz");
-                    } else {
-                        $("#btn-kat").removeClass("poinz");
-                    }
-                    let x;
-                    if (dataTampilan == 0) {
-                        x = "d-grid-1";
-                    } else {
-                        x = "d-grid-2";
-                    }
-                    $("#dataProduk").html(`<div class="animate__animated animate__fadeIn ${x}" id="isiProduk"></div>`);
-                    loopProduk(data, desc);
-
-                    dataProduk = data;
-                    dataDesc = desc;
+                    $("#btn-kat").removeClass("poinz");
                 }
-            }
-
-            // Loop Produk
-            function loopProduk(data, desc) {
-                // jika data adalah array kosong, maka tampilkan produk kosong
-                if (data.length == 0) {
-                    $("#dataProduk").html(produkNone);
-                    console.log("produk kosong " + data.length);
-                    console.log(produkNone);
-                }
-                // urutkan data berdasarkan harga_produk
-                if (urutanProduk == "Termurah") {
-                    data.sort((a, b) => parseFloat(a.harga_produk) - parseFloat(b.harga_produk));
-                } else if (urutanProduk == "Termahal") {
-                    data.sort((a, b) => parseFloat(b.harga_produk) - parseFloat(a.harga_produk));
-                } else if (urutanProduk == "A-Z") {
-                    data.sort((a, b) => a.nama_produk.localeCompare(b.nama_produk));
-                } else if (urutanProduk == "Z-A") {
-                    data.sort((a, b) => b.nama_produk.localeCompare(a.nama_produk));
-                }
-                console.log(data);
-                $("#isiProduk").html("");
-
-                let box, margin;
+                let x;
                 if (dataTampilan == 0) {
-                    box = "box-list";
-                    margin = "me-3";
+                    x = "d-grid-1";
                 } else {
-                    box = "box-grid";
-                    margin = "mb-3";
+                    x = "d-grid-2";
                 }
+                $("#dataProduk").html(`<div class="animate__animated animate__fadeIn ${x}" id="isiProduk"></div>`);
+                loopProduk(data, desc);
 
-                let block;
-                if (dataGambar == 0) {
-                    block = "";
+                dataProduk = data;
+                dataDesc = desc;
+            }
+        }
+
+        // Loop Produk
+        function loopProduk(data, desc) {
+            // jika data adalah array kosong, maka tampilkan produk kosong
+            if (data.length == 0) {
+                $("#dataProduk").html(produkNone);
+                console.log("produk kosong " + data.length);
+                console.log(produkNone);
+            }
+            // urutkan data berdasarkan harga_produk
+            if (urutanProduk == "Termurah") {
+                data.sort((a, b) => parseFloat(a.harga_produk) - parseFloat(b.harga_produk));
+            } else if (urutanProduk == "Termahal") {
+                data.sort((a, b) => parseFloat(b.harga_produk) - parseFloat(a.harga_produk));
+            } else if (urutanProduk == "A-Z") {
+                data.sort((a, b) => a.nama_produk.localeCompare(b.nama_produk));
+            } else if (urutanProduk == "Z-A") {
+                data.sort((a, b) => b.nama_produk.localeCompare(a.nama_produk));
+            }
+            console.log(data);
+            $("#isiProduk").html("");
+
+            let box, margin;
+            if (dataTampilan == 0) {
+                box = "box-list";
+                margin = "me-3";
+            } else {
+                box = "box-grid";
+                margin = "mb-3";
+            }
+
+            let block;
+            if (dataGambar == 0) {
+                block = "";
+            } else {
+                block = "d-none";
+            }
+
+            $.each(data, function () {
+                var i = data.indexOf(this);
+                var nama_produk = data[i].nama_produk;
+                var harga_produk = formatRupiah(data[i].harga_produk);
+                let hargaAsli;
+                if (data[i].harga_produk_asli != "0") {
+                    hargaAsli = `<p class="text-danger fwb-6"> <s>${data[i].harga_produk_asli}</s> <p> `;
                 } else {
-                    block = "d-none";
+                    hargaAsli = ``;
                 }
-
-                $.each(data, function () {
-                    var i = data.indexOf(this);
-                    var nama_produk = data[i].nama_produk;
-                    var harga_produk = formatRupiah(data[i].harga_produk);
-                    let hargaAsli;
-                    if (data[i].harga_produk_asli != "0") {
-                        hargaAsli = `<p class="text-danger fwb-6"> <s>${data[i].harga_produk_asli}</s> <p> `;
-                    } else {
-                        hargaAsli = ``;
-                    }
-                    $("#isiProduk").append(`
+                $("#isiProduk").append(`
                 <div class="bg-produk animate__animated animate__lightSpeedInLeft" id="bg-prod-${i}" onclick="nextDetail('${i}', '${data[i].deskripsi_panjang}')"  data-bs-toggle="offcanvas" data-bs-target="#detailCanv" aria-controls="detailCanv">
                     <div class="box-utama ${box}">
                         <img src="${data[i].url_gambar_produk}" class="box-img borad-5 ${margin} ${block}" width="40">
@@ -827,34 +776,34 @@
                     </div>
                 </div>
                 `);
-                });
+            });
+        }
+
+        // Next Detail
+        function nextDetail(i, desk, nick, code) {
+            var v = dataProduk[i];
+            var harga_produk = formatRupiah(v.harga_produk);
+
+            var no = $("#nomoId").val();
+            let nomor;
+            if (no == "") {
+                nomor = `<span class="text-danger"> Masukan nomor dahulu...</span>`;
+            } else {
+                nomor = no;
             }
 
-            // Next Detail
-            function nextDetail(i, desk, nick, code) {
-                var v = dataProduk[i];
-                var harga_produk = formatRupiah(v.harga_produk);
-
-                var no = $("#nomoId").val();
-                let nomor;
-                if (no == "") {
-                    nomor = `<span class="text-danger"> Masukan nomor dahulu...</span>`;
-                } else {
-                    nomor = no;
-                }
-
-                let btn;
-                if (no != "" && code != 0) {
-                    btn = `
+            let btn;
+            if (no != "" && code != 0) {
+                btn = `
                 <div class="w-100 my-bg p-2 borad-5 ms-3" onclick="getBeli('${v.url_produk}')">
                     <p class="f-14 text-center text-white">Lanjutkan</p>
                 </div>
                 `;
-                } else {
-                    btn = ``;
-                }
+            } else {
+                btn = ``;
+            }
 
-                $("#bodyCanv").html(`
+            $("#bodyCanv").html(`
                 <div class="text-center">
                     <img src="${v.url_gambar_produk}"
                         class="borad-5" width="50">
@@ -884,383 +833,384 @@
                     </div>
                 </div>  
             `);
-            }
+        }
 
-            // Tombol Beli
-            function getBeli(link) {
-                var no = $("#nomoId").val().replace("#", "%23");
-                window.location.href = link + "?catatan=" + no;
-            }
+        // Tombol Beli
+        function getBeli(link) {
+            var no = $("#nomoId").val().replace("#", "%23");
+            window.location.href = link + "?catatan=" + no;
+        }
 
-            // Seacrh Produk
-            $("#search").on("input", function () {
-                var value = $(this).val().toLowerCase();
-                $("#isiProduk .bg-produk").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-                });
+        // Seacrh Produk
+        $("#search").on("input", function () {
+            var value = $(this).val().toLowerCase();
+            $("#isiProduk .bg-produk").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
             });
+        });
 
-            // Seacrh Kategori
-            $("#searchKategori").on("input", function () {
-                var value = $(this).val().toLowerCase();
-                $("#isiPilihan .btn-add").filter(function () {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-                });
+        // Seacrh Kategori
+        $("#searchKategori").on("input", function () {
+            var value = $(this).val().toLowerCase();
+            $("#isiPilihan .btn-add").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
             });
+        });
 
-            //------------- SISTEM OPERATOR -------------//
+        //------------- SISTEM OPERATOR -------------//
 
-            // Manipulasi Data
-            let noX, noY, noZ, opera;
+        // Manipulasi Data
+        let noX, noY, noZ, opera;
 
-            // Clear Data
-            function clearData() {
-                var data = $("#dataProduk").html();
-                if (data != loadAwal) {
-                    $("#dataProduk").html(loadAwal);
+        // Clear Data
+        function clearData() {
+            var data = $("#dataProduk").html();
+            if (data != loadAwal) {
+                $("#dataProduk").html(loadAwal);
+            }
+            $("#boxPilihan").addClass("d-none");
+            $("#textTop").html("");
+            $("#imgTop").attr("src", iconPilihan[0].signal);
+            $("#imgTop").addClass("my-bg p-1");
+            noX = "";
+            noZ = "";
+            opera = "";
+        }
+
+        // Cek String
+        function cekStr(a) {
+            let b;
+            if (a.substr(0, 2) == "62") {
+                b = "0" + a.substr(2, 20);
+                return b;
+            } else if (a.substr(0, 3) == "+62") {
+                b = "0" + a.substr(3, 20);
+                return b;
+            } else {
+                return a;
+            }
+        }
+
+        // Cek Nomor Ulang
+        function cekNomorUlang(x, y) {
+            if (
+                y == "085154" ||
+                y == "085155" ||
+                y == "085156" ||
+                y == "085157" ||
+                y == "085158" ||
+                y == "085159" ||
+                y == "085160" ||
+                y == "085161" ||
+                y == "085162" ||
+                y == "085163" ||
+                y == "085171" ||
+                y == "085172" ||
+                y == "085173" ||
+                y == "085174" ||
+                y == "085175" ||
+                y == "085176" ||
+                y == "085177" ||
+                y == "085178" ||
+                y == "085179" ||
+                y == "085180"
+            ) {
+                loadOperator("BYU");
+            } else if (
+                x === "0811" ||
+                x === "0812" ||
+                x === "0813" ||
+                x === "0821" ||
+                x === "0822" ||
+                x === "0852" ||
+                x === "0853" ||
+                x === "0823" ||
+                x === "0851"
+            ) {
+                loadOperator("TSEL");
+            } else if (
+                x === "0814" ||
+                x === "0815" ||
+                x === "0816" ||
+                x === "0855" ||
+                x === "0856" ||
+                x === "0857" ||
+                x === "0858"
+            ) {
+                loadOperator("ISAT");
+            } else if (
+                x === "0818" ||
+                x === "0817" ||
+                x === "0819" ||
+                x === "0859" ||
+                x === "0877" ||
+                x === "0878"
+            ) {
+                loadOperator("XL");
+            } else if (x === "0838" || x === "0831" || x === "0832" || x === "0833") {
+                loadOperator("AXIS");
+            } else if (x === "0895" || x === "0896" || x === "0897" || x === "0898" || x === "0899") {
+                loadOperator("THREE");
+            } else if (
+                x === "0881" ||
+                x === "0882" ||
+                x === "0883" ||
+                x === "0884" ||
+                x === "0885" ||
+                x === "0886" ||
+                x === "0887" ||
+                x === "0888" ||
+                x === "0889"
+            ) {
+                loadOperator("SFREN");
+            } else {
+                loadOperator("SALAH");
+            }
+        }
+
+        // Load Operator
+        function loadOperator(nama) {
+            if (opera != nama) {
+                if (nama == "SALAH") {
+                    var dataSalah = $("#dataProduk").html();
+                    $("#textTop").html("");
+
+                    $("#imgTop").attr("src", iconPilihan[0].signal);
+                    $("#imgTop").addClass("my-bg p-1");
+
+                    $("#boxPilihan").addClass("d-none");
+
+                    if (dataSalah != noSalah) {
+                        $("#dataProduk").html(noSalah);
+                    }
+                } else {
+                    var v = urlKategori[0][nama];
+
+                    $("#textTop").html(v.nama);
+                    $("#imgTop").attr("src", v.gambar);
+                    $("#imgTop").removeClass("my-bg p-1");
+
+                    $("#boxPilihan").removeClass("d-none");
+                    loopCat(v.data);
                 }
-                $("#boxPilihan").addClass("d-none");
-                $("#textTop").html("");
-                $("#imgTop").attr("src", iconPilihan[0].signal);
-                $("#imgTop").addClass("my-bg p-1");
+                opera = nama;
+            }
+        }
+
+        // ============ ?? ENC OPERA ?? ============ //
+
+        // Oninput
+        $("#nomoId").on("input", function () {
+            var _0x255f22 = $("#nomoId").val();
+            if (_0x255f22.length <= 0x4) {
+                clearData();
                 noX = "";
-                noZ = "";
-                opera = "";
+                noY = "";
+                noZ = "404";
+            } else if (_0x255f22.length >= 0x4) {
+                cekInputan(0x1);
             }
+        });
 
-            // Cek String
-            function cekStr(a) {
-                let b;
-                if (a.substr(0, 2) == "62") {
-                    b = "0" + a.substr(2, 20);
-                    return b;
-                } else if (a.substr(0, 3) == "+62") {
-                    b = "0" + a.substr(3, 20);
-                    return b;
-                } else {
-                    return a;
-                }
+        // Onchange
+        $("#nomoId").on("change", function () {
+            var nomoId = $("#nomoId").val();
+            if (nomoId.length <= 0x4) {
+                clearData();
+                noX = "";
+                noY = "";
+                noZ = "404";
+            } else if (nomoId.length >= 0x4) {
+                cekInputan(0x2);
             }
+        });
 
-            // Cek Nomor Ulang
-            function cekNomorUlang(x, y) {
+        // Cek Input
+        function cekInputan(cekInput) {
+            var nomoId = $("#nomoId").val();
+            var _0x5ba041 = nomoId.replace(/[^\d]/g, "");
+            var _0x2a21fd = cekStr(_0x5ba041);
+            $("#nomoId").val(_0x2a21fd);
+            var _0x2dfaae = cekStr(_0x5ba041).substr(0x0, 0x4);
+            var _0x14e8d4 = cekStr(_0x5ba041).substr(0x0, 0x6);
+            if (cekInput == 0x1) {
                 if (
-                    y == "085154" ||
-                    y == "085155" ||
-                    y == "085156" ||
-                    y == "085157" ||
-                    y == "085158" ||
-                    y == "085159" ||
-                    y == "085160" ||
-                    y == "085161" ||
-                    y == "085162" ||
-                    y == "085163" ||
-                    y == "085171" ||
-                    y == "085172" ||
-                    y == "085173" ||
-                    y == "085174" ||
-                    y == "085175" ||
-                    y == "085176" ||
-                    y == "085177" ||
-                    y == "085178" ||
-                    y == "085179" ||
-                    y == "085180"
-                ) {
-                    loadOperator("BYU");
-                } else if (
-                    x === "0811" ||
-                    x === "0812" ||
-                    x === "0813" ||
-                    x === "0821" ||
-                    x === "0822" ||
-                    x === "0852" ||
-                    x === "0853" ||
-                    x === "0823" ||
-                    x === "0851"
-                ) {
-                    loadOperator("TSEL");
-                } else if (
-                    x === "0814" ||
-                    x === "0815" ||
-                    x === "0816" ||
-                    x === "0855" ||
-                    x === "0856" ||
-                    x === "0857" ||
-                    x === "0858"
-                ) {
-                    loadOperator("ISAT");
-                } else if (
-                    x === "0818" ||
-                    x === "0817" ||
-                    x === "0819" ||
-                    x === "0859" ||
-                    x === "0877" ||
-                    x === "0878"
-                ) {
-                    loadOperator("XL");
-                } else if (x === "0838" || x === "0831" || x === "0832" || x === "0833") {
-                    loadOperator("AXIS");
-                } else if (x === "0895" || x === "0896" || x === "0897" || x === "0898" || x === "0899") {
-                    loadOperator("THREE");
-                } else if (
-                    x === "0881" ||
-                    x === "0882" ||
-                    x === "0883" ||
-                    x === "0884" ||
-                    x === "0885" ||
-                    x === "0886" ||
-                    x === "0887" ||
-                    x === "0888" ||
-                    x === "0889"
-                ) {
-                    loadOperator("SFREN");
-                } else {
-                    loadOperator("SALAH");
-                }
-            }
-
-            // Load Operator
-            function loadOperator(nama) {
-                if (opera != nama) {
-                    if (nama == "SALAH") {
-                        var dataSalah = $("#dataProduk").html();
-                        $("#textTop").html("");
-
-                        $("#imgTop").attr("src", iconPilihan[0].signal);
-                        $("#imgTop").addClass("my-bg p-1");
-
-                        $("#boxPilihan").addClass("d-none");
-
-                        if (dataSalah != noSalah) {
-                            $("#dataProduk").html(noSalah);
-                        }
-                    } else {
-                        var v = urlKategori[0][nama];
-
-                        $("#textTop").html(v.nama);
-                        $("#imgTop").attr("src", v.gambar);
-                        $("#imgTop").removeClass("my-bg p-1");
-
-                        $("#boxPilihan").removeClass("d-none");
-                        loopCat(v.data);
-                    }
-                    opera = nama;
-                }
-            }
-
-            // ============ ?? ENC OPERA ?? ============ //
-
-            // Oninput
-            $("#nomoId").on("input", function () {
-                var _0x255f22 = $("#nomoId").val();
-                if (_0x255f22.length <= 0x4) {
-                    clearData();
-                    noX = "";
-                    noY = "";
-                    noZ = "404";
-                } else if (_0x255f22.length >= 0x4) {
-                    cekInputan(0x1);
-                }
-            });
-
-            // Onchange
-            $("#nomoId").on("change", function () {
-                var _0x3cb3f8 = $("#nomoId").val();
-                if (_0x3cb3f8.length <= 0x4) {
-                    clearData();
-                    noX = "";
-                    noY = "";
-                    noZ = "404";
-                } else if (_0x3cb3f8.length >= 0x4) {
-                    cekInputan(0x2);
-                }
-            });
-
-            // Cek Input
-            function cekInputan(_0x45142d) {
-                var _0x524336 = $("#nomoId").val();
-                var _0x5ba041 = _0x524336.replace(/[^\d]/g, "");
-                var _0x2a21fd = cekStr(_0x5ba041);
-                $("#nomoId").val(_0x2a21fd);
-                var _0x2dfaae = cekStr(_0x5ba041).substr(0x0, 0x4);
-                var _0x14e8d4 = cekStr(_0x5ba041).substr(0x0, 0x6);
-                if (_0x45142d == 0x1) {
-                    if (
-                        (_0x2dfaae.length == 0x4 && noX != _0x2dfaae) ||
-                        (_0x14e8d4.length == 0x6 && noY != _0x14e8d4)
-                    ) {
-                        noX = _0x2dfaae;
-                        noY = _0x14e8d4;
-                    }
-                    cekNomorUlang(noX, noY);
-                } else if (
                     (_0x2dfaae.length == 0x4 && noX != _0x2dfaae) ||
                     (_0x14e8d4.length == 0x6 && noY != _0x14e8d4)
                 ) {
                     noX = _0x2dfaae;
                     noY = _0x14e8d4;
-                    cekNomorUlang(noX, noY);
                 }
+                cekNomorUlang(noX, noY);
+            } else if (
+                (_0x2dfaae.length == 0x4 && noX != _0x2dfaae) ||
+                (_0x14e8d4.length == 0x6 && noY != _0x14e8d4)
+            ) {
+                noX = _0x2dfaae;
+                noY = _0x14e8d4;
+                cekNomorUlang(noX, noY);
             }
+        }
 
-            //------------- JANGAN DIRUBAH -------------//
+        //------------- JANGAN DIRUBAH -------------//
 
-            // Default Data
-            function defaultData() {
+        // Default Data
+        function defaultData() {
+            dataTampilan = 0;
+            dataGambar = 0;
+            dataPencarian = 0;
+
+            urutanProduk = "Termurah";
+
+            $(".dropdown-item").removeClass("my-color");
+            $("#pil-" + urutanProduk).addClass("my-color");
+            $("#namaPil").html(urutanProduk);
+
+            $("#search").val("");
+            $("#flush-collapseOne").removeClass("show");
+
+            $("#imgTampilan").attr("src", iconPilihan[0].list);
+            $("#imgGambar").attr("src", iconPilihan[0].image);
+            $("#imgPencarian").attr("src", iconPilihan[0].search);
+        }
+
+        // Rubah Tampilan
+        function rubahTampilan() {
+            if (dataTampilan == 0) {
+                dataTampilan = 1;
+                $("#imgTampilan").attr("src", iconPilihan[0].grid);
+
+                $("#isiProduk").removeClass("d-grid-1");
+                $("#isiProduk").addClass("d-grid-2");
+
+                $(".box-utama").removeClass("box-list");
+                $(".box-utama").addClass("box-grid");
+
+                $(".box-img").removeClass("me-3");
+                $(".box-img").addClass("mb-3");
+            } else {
                 dataTampilan = 0;
-                dataGambar = 0;
-                dataPencarian = 0;
-
-                urutanProduk = "Termurah";
-
-                $(".dropdown-item").removeClass("my-color");
-                $("#pil-" + urutanProduk).addClass("my-color");
-                $("#namaPil").html(urutanProduk);
-
-                $("#search").val("");
-                $("#flush-collapseOne").removeClass("show");
-
                 $("#imgTampilan").attr("src", iconPilihan[0].list);
+
+                $("#isiProduk").removeClass("d-grid-2");
+                $("#isiProduk").addClass("d-grid-1");
+
+                $(".box-utama").removeClass("box-grid");
+                $(".box-utama").addClass("box-list");
+
+                $(".box-img").removeClass("mb-3");
+                $(".box-img").addClass("me-3");
+            }
+        }
+
+        // Rubah Gambar
+        function rubahGambar() {
+            if (dataGambar == 0) {
+                dataGambar = 1;
+                $("#imgGambar").attr("src", iconPilihan[0].noImage);
+                $(".box-img").addClass("d-none");
+            } else {
+                dataGambar = 0;
                 $("#imgGambar").attr("src", iconPilihan[0].image);
+                $(".box-img").removeClass("d-none");
+            }
+        }
+
+        // Rubah Pencarian
+        function rubahPencarian() {
+            if (dataPencarian == 0) {
+                dataPencarian = 1;
+                $("#imgPencarian").attr("src", iconPilihan[0].close);
+            } else {
+                dataPencarian = 0;
                 $("#imgPencarian").attr("src", iconPilihan[0].search);
             }
+        }
 
-            // Rubah Tampilan
-            function rubahTampilan() {
-                if (dataTampilan == 0) {
-                    dataTampilan = 1;
-                    $("#imgTampilan").attr("src", iconPilihan[0].grid);
+        // Rubah Data
+        function rubahData(nama) {
+            $(".dropdown-item").removeClass("my-color");
+            $("#pil-" + nama).addClass("my-color");
+            $("#namaPil").html(nama);
 
-                    $("#isiProduk").removeClass("d-grid-1");
-                    $("#isiProduk").addClass("d-grid-2");
+            urutanProduk = nama;
 
-                    $(".box-utama").removeClass("box-list");
-                    $(".box-utama").addClass("box-grid");
+            var data = rubahUrutanData(nama, dataProduk);
+            var desc = dataDesc;
+            loopProduk(data, desc);
+        }
 
-                    $(".box-img").removeClass("me-3");
-                    $(".box-img").addClass("mb-3");
-                } else {
-                    dataTampilan = 0;
-                    $("#imgTampilan").attr("src", iconPilihan[0].list);
+        //------------- ENC SISTEM -------------//
 
-                    $("#isiProduk").removeClass("d-grid-2");
-                    $("#isiProduk").addClass("d-grid-1");
-
-                    $(".box-utama").removeClass("box-grid");
-                    $(".box-utama").addClass("box-list");
-
-                    $(".box-img").removeClass("mb-3");
-                    $(".box-img").addClass("me-3");
-                }
-            }
-
-            // Rubah Gambar
-            function rubahGambar() {
-                if (dataGambar == 0) {
-                    dataGambar = 1;
-                    $("#imgGambar").attr("src", iconPilihan[0].noImage);
-                    $(".box-img").addClass("d-none");
-                } else {
-                    dataGambar = 0;
-                    $("#imgGambar").attr("src", iconPilihan[0].image);
-                    $(".box-img").removeClass("d-none");
-                }
-            }
-
-            // Rubah Pencarian
-            function rubahPencarian() {
-                if (dataPencarian == 0) {
-                    dataPencarian = 1;
-                    $("#imgPencarian").attr("src", iconPilihan[0].close);
-                } else {
-                    dataPencarian = 0;
-                    $("#imgPencarian").attr("src", iconPilihan[0].search);
-                }
-            }
-
-            // Rubah Data
-            function rubahData(nama) {
-                $(".dropdown-item").removeClass("my-color");
-                $("#pil-" + nama).addClass("my-color");
-                $("#namaPil").html(nama);
-
-                urutanProduk = nama;
-
-                var data = rubahUrutanData(nama, dataProduk);
-                var desc = dataDesc;
-                loopProduk(data, desc);
-            }
-
-            //------------- ENC SISTEM -------------//
-
-            function rubahUrutanData(sortir, dataProduk) {
-                let urutan;
-                if (sortir == "Termurah") {
+        function rubahUrutanData(sortir, dataProduk) {
+            let urutan;
+            if (sortir == "Termurah") {
+                urutan = dataProduk.sort(function (a, b) {
+                    var murah = parseInt(a.harga_produk);
+                    var mahal = parseInt(b.harga_produk);
+                    return murah - mahal;
+                });
+            } else {
+                if (sortir == "Termahal") {
                     urutan = dataProduk.sort(function (a, b) {
                         var murah = parseInt(a.harga_produk);
                         var mahal = parseInt(b.harga_produk);
-                        return murah - mahal;
+                        return mahal - murah;
                     });
                 } else {
-                    if (sortir == "Termahal") {
+                    if (sortir == "A-Z") {
                         urutan = dataProduk.sort(function (a, b) {
-                            var murah = parseInt(a.harga_produk);
-                            var mahal = parseInt(b.harga_produk);
-                            return mahal - murah;
+                            var awal = a.nama_produk.toUpperCase();
+                            var akhir = b.nama_produk.toUpperCase();
+                            return awal.localeCompare(akhir);
                         });
-                    } else {
-                        if (sortir == "A-Z") {
-                            urutan = dataProduk.sort(function (a, b) {
-                                var awal = a.nama_produk.toUpperCase();
-                                var akhir = b.nama_produk.toUpperCase();
-                                return awal.localeCompare(akhir);
-                            });
-                        } else if (sortir == "Z-A") {
-                            urutan = dataProduk.sort(function (a, b) {
-                                var awal = a.nama_produk.toUpperCase();
-                                var akhir = b.nama_produk.toUpperCase();
-                                return akhir.localeCompare(awal);
-                            });
-                        }
+                    } else if (sortir == "Z-A") {
+                        urutan = dataProduk.sort(function (a, b) {
+                            var awal = a.nama_produk.toUpperCase();
+                            var akhir = b.nama_produk.toUpperCase();
+                            return akhir.localeCompare(awal);
+                        });
                     }
                 }
-                return urutan;
             }
+            return urutan;
+        }
 
-            function postGetData(id_kategori, desc, length) {
-                var id_kategori = id_kategori;
-                let xmlHttpRequest = new XMLHttpRequest();
-                let url = `https://openapi.bukaolshop.net/v1/app/produk?token=${token}&id_kategori=${id_kategori}&total_data=${data_page}`;
-                xmlHttpRequest.open("GET", url, true);
-                xmlHttpRequest.onreadystatechange = function () {
-                    if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
-                        let data = JSON.parse(xmlHttpRequest.responseText);
-                        dataProduk = data.data;
-                        console.log(dataProduk);
+        function postGetData(id_kategori, desc, length) {
+            var id_kategori = id_kategori;
+            let xmlHttpRequest = new XMLHttpRequest();
+            let url = `https://openapi.bukaolshop.net/v1/app/produk?token=${token}&id_kategori=${id_kategori}&total_data=${data_page}`;
+            xmlHttpRequest.open("GET", url, true);
+            xmlHttpRequest.onreadystatechange = function () {
+                if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
+                    let data = JSON.parse(xmlHttpRequest.responseText);
+                    dataProduk = data.data;
+                    console.log(dataProduk);
 
-                        // tampilkan data ke halaman
-                        resGetData(dataProduk, desc, length);
-                    }
-                };
-                xmlHttpRequest.send();
-            }
+                    // tampilkan data ke halaman
+                    resGetData(dataProduk, desc, length);
+                }
+            };
+            xmlHttpRequest.send();
+        }
 
-            function formatRupiah(angka) {
-                var formatter = new Intl.NumberFormat("id-ID", {
-                    style: "currency",
-                    currency: "IDR",
-                    minimumFractionDigits: 0
-                });
+        function formatRupiah(angka) {
+            var formatter = new Intl.NumberFormat("id-ID", {
+                style: "currency",
+                currency: "IDR",
+                minimumFractionDigits: 0
+            });
 
-                return formatter.format(angka).replace(/IDR/g, "Rp ");
-            }
+            return formatter.format(angka).replace(/IDR/g, "Rp ");
+        }
 
-            //------------- START SISTEM -------------//
+        //------------- START SISTEM -------------//
 
-            defaultData();
-            clearData();
+        defaultData();
+        clearData();
 
-            //------------- END SISTEM -------------//
-        </script>
-    </body>
+        //------------- END SISTEM -------------//
+    </script>
+</body>
+
 </html>
