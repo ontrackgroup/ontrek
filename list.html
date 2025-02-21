@@ -1,0 +1,926 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+            crossorigin="anonymous" />
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+        <title>Daftar Harga</title>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
+
+            :root {
+                --main: #ffffff;
+                --subMain: #ff6f00;
+                --subColor: #08e900;
+                --bgIn: rgb(48, 56, 63) --white: #ffffff;
+                --tabs: #4e4e4e;
+                --borderColor: #636363;
+                --animate-duration: 800ms;
+            }
+
+            body {
+                font-family: "Plus Jakarta Sans", sans-serif;
+                background: var(--main);
+                user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                -khtml-user-select: none;
+                -webkit-user-select: none;
+                padding: 0;
+                margin: 0;
+                animation: fade-in 2s linear;
+            }
+
+            /* Reset CSS */
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            .category {
+                background: white;
+                padding: 15px;
+                border-radius: 10px;
+                box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+            }
+
+            .category a {
+                color: black;
+                cursor: pointer;
+                text-decoration: none;
+            }
+
+            .category h3 {
+                font-size: 14px;
+                font-weight: bold;
+                margin: 0;
+                color: var(--subMain);
+            }
+
+            .btn--subcategory {
+                border: none;
+                background: transparent !important;
+                width: 100%;
+                text-align: left;
+                color: black;
+                background: white;
+                padding: 10px;
+                font-size: 14px;
+                border-bottom: 2px solid #f1f1f1 !important;
+                border-radius: 0px !important;
+            }
+
+            p {
+                margin: 0;
+                font-size: 12px !important;
+                color: gray;
+                margin-top: 5px;
+            }
+
+            .category-container {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                grid-gap: 10px;
+                margin-top: 15px;
+            }
+
+            .sub-categories {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 10px;
+            }
+
+            .grid2 {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                grid-gap: 10px;
+            }
+
+            .grid2 .product {
+                margin-top: 0 !important;
+            }
+
+            .grid1 .product {
+                margin-top: 0 !important;
+            }
+
+            .grid2 .deks {
+                display: none;
+            }
+
+            .grid2 button {
+                display: none;
+            }
+
+            .grid2 .harga {
+                font-size: 12px !important;
+            }
+
+            .grid1 {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                grid-gap: 10px;
+            }
+
+            .category-container p {
+                font-size: 15px;
+            }
+
+            select {
+                border: 2px solid #f1f1f1;
+                padding: 6px;
+                border-radius: 10px;
+                font-size: 13px;
+                width: 100%;
+                outline: none;
+                margin-top: 10px;
+            }
+
+            ul {
+                padding: 0;
+                margin: 0;
+                list-style: none;
+            }
+
+            li {
+                padding: 0;
+                margin: 0;
+            }
+
+            .product-container {
+                margin-top: 10px;
+            }
+
+            .labels {
+                font-size: 14px !important;
+                font-weight: bold !important;
+                margin-top: 10px;
+                color: black;
+                border-top: 1px solid white;
+                padding-top: 10px;
+            }
+
+            .product {
+                background: white;
+                border-radius: 10px;
+                padding: 15px;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                position: relative;
+                margin-top: 10px;
+            }
+
+            .nama--produk {
+                border-bottom: 1px solid #f1f1f1;
+                padding-bottom: 10px;
+            }
+
+            .nama--produk h4 {
+                font-size: 13px;
+                margin-bottom: 0px;
+                font-weight: bold;
+                width: 100%;
+            }
+
+            .nama--produk button {
+                border: none;
+                background: var(--subMain);
+                outline: none;
+                font-size: 12px;
+                color: white;
+                padding-right: 10px;
+                padding-left: 10px;
+                border-radius: 6px;
+            }
+
+            .product p {
+                width: 100%;
+                margin: 0;
+            }
+
+            .product img {
+                width: 30px;
+                border-radius: 10px;
+            }
+
+            #myBtn {
+                display: none;
+                position: fixed;
+                bottom: 15px;
+                right: 15px;
+                z-index: 99;
+                border: none;
+                outline: none;
+                background-color: transparent;
+                color: white;
+                cursor: pointer;
+                padding: 10px;
+                border-radius: 50%;
+            }
+
+            #myBtn img {
+                width: 35px;
+            }
+
+            #myBtn:hover {
+                background-color: red;
+            }
+
+            .offcanvas {
+                height: auto !important;
+                border-radius: 35px 35px 0px 0px;
+            }
+
+            .detail p {
+                width: 100%;
+            }
+
+            .bg-detail {
+                background: white;
+                position: relative;
+            }
+
+            .bg-detail h5 {
+                font-size: 14px;
+                font-weight: bold;
+                color: black;
+            }
+
+            .spek {
+                width: 40px;
+                border: none;
+                background: #f1f1f1;
+                border-radius: 100px;
+                padding: 3px;
+                top: -10px;
+                position: relative;
+            }
+
+            .close {
+                position: absolute;
+                right: 15px;
+                border: none;
+                background: transparent;
+                outline: none;
+                top: 10px;
+            }
+
+            .close img {
+                width: 20px;
+            }
+
+            #loading-overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.7);
+                z-index: 9999;
+                display: none;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .spinner-border {
+                width: 3rem;
+                height: 3rem;
+            }
+
+            .price--name p {
+                width: auto;
+            }
+
+            .label--buy {
+                padding-top: 10px;
+                border-top: 2px solid #f1f1f1;
+                margin-bottom: 10px;
+            }
+
+            input {
+                width: 100%;
+                border: 2px solid #f1f1f1;
+                border-radius: 10px;
+                padding: 8px;
+                font-size: 14px;
+                outline: none;
+                margin-bottom: 10px;
+            }
+
+            input:hover,
+            input:focus {
+                border: 2px solid var(--subMain);
+            }
+
+            .beliBtn {
+                background: var(--subMain);
+                color: white;
+                padding: 8px;
+                border-radius: 10px;
+                border: none;
+                font-size: 14px;
+                width: 100%;
+            }
+
+            .head--list {
+                margin-top: 10px;
+            }
+
+            .head--list p {
+                font-weight: bold !important;
+                color: black !important;
+                margin: 0 !important;
+                width: 100%;
+            }
+
+            .head--list button {
+                border: none;
+                background: var(--subMain);
+                border-radius: 10px;
+                color: white;
+                padding-right: 15px;
+                padding-left: 15px;
+                font-size: 13px;
+                margin-left: 10px;
+            }
+
+            .dropdown-menu button {
+                width: auto;
+                padding-right: 6px !important;
+                padding-left: 6px !important;
+                font-size: 11px;
+            }
+
+            .informasi {
+                position: absolute;
+                text-align: center;
+                margin-top: 15%;
+                width: 100%;
+                left: 0;
+                font-size: 14px;
+            }
+
+            .informasi img {
+                width: 55px;
+                opacity: 0.3;
+                margin-bottom: 10px;
+                animation: myAnim 2s ease 0s infinite normal forwards;
+            }
+
+            .btn--pilihan {
+                width: 100%;
+                margin-top: 15px;
+                padding: 10px;
+                border-radius: 10px;
+                background: var(--subMain);
+                font-size: 14px;
+                color: white;
+                border: none;
+                font-weight: bold;
+            }
+
+            @keyframes myAnim {
+                0%,
+                100% {
+                    transform: rotate(0deg);
+                    transform-origin: 50% 50%;
+                }
+
+                10% {
+                    transform: rotate(8deg);
+                }
+
+                20%,
+                40%,
+                60% {
+                    transform: rotate(-10deg);
+                }
+
+                30%,
+                50%,
+                70% {
+                    transform: rotate(10deg);
+                }
+
+                80% {
+                    transform: rotate(-8deg);
+                }
+
+                90% {
+                    transform: rotate(8deg);
+                }
+            }
+
+            #header {
+                background: var(--subMain);
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 1;
+                height: 80px;
+                border-radius: 0px 0px 30% 30%;
+            }
+
+            .pad {
+                position: sticky;
+                position: -webkit-sticky;
+                top: 0;
+                padding: 10px;
+                background: transparent;
+                z-index: 99;
+            }
+
+            .bg-modal {
+                background: white;
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            .bg-modal button {
+                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                border: 1px solid #f1f1f1;
+            }
+
+            .bg-modal p {
+                font-weight: bold;
+                color: black;
+                opacity: 1;
+                margin-top: 0px;
+                margin-bottom: 0px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+            }
+
+            .mode--change {
+                border: none !important;
+                background: transparent !important;
+                padding: 0px !important;
+            }
+
+            .mode--change img {
+                width: 25px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="header"></div>
+        <div class="pad">
+            <div class="bg-modal">
+                <p>Pilih Produk</p>
+                <button
+                    id="modalButton"
+                    type="button"
+                    class="btn--pilihan"
+                    data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"
+                    style="margin-top: 5px">
+                    Pilih Kategori Produk
+                </button>
+            </div>
+        </div>
+        <div class="container content">
+            <div
+                class="modal fade"
+                id="exampleModal"
+                tabindex="-1"
+                aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title" style="font-size: 14px" id="exampleModalLabel">
+                                Pilih Kategori Produk
+                            </h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <input
+                                type="text"
+                                id="categoryFilter"
+                                onkeyup="filterCategories()"
+                                placeholder="Filter Kategori..." />
+                            <div class="category-container" id="category-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center head--list">
+                <p>Daftar Produk</p>
+                <div class="btn-group dropstart">
+                    <button
+                        type="button"
+                        class="btn btn-secondary dropdown-toggle"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Filter
+                    </button>
+                    <!-- <button onclick="convertToExcel()" class="mode--change">
+          <img src="https://cdn-icons-png.flaticon.com/128/11612/11612906.png" alt="">
+        </button> -->
+                    <ul class="dropdown-menu">
+                        <button type="button" class="btn btn-secondary" onclick="filterProducts('asc')">
+                            Termurah
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="filterProducts('desc')">
+                            Termahal
+                        </button>
+                    </ul>
+                </div>
+            </div>
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+
+            <div class="product-container grid1" id="product-container">
+                <div class="informasi">
+                    <img src="https://cdn-icons-png.flaticon.com/128/2040/2040523.png" alt="" />
+                    <p>Silahkan Pilih Produk</p>
+                </div>
+            </div>
+        </div>
+        <div id="loading-overlay">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+        <br />
+
+        <div
+            class="offcanvas offcanvas-bottom"
+            tabindex="-1"
+            id="offcanvasBottom"
+            aria-labelledby="offcanvasBottomLabel">
+            <div class="offcanvas-body small detail">
+                <div class="bg-detail">
+                    <center>
+                        <button class="spek"></button>
+                        <h5>Detail Produk</h5>
+                    </center>
+
+                    <div class="d-flex align-items-center">
+                        <p>Produk</p>
+                        <p id="detail_nama_produk" class="text-end"></p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <p>Harga</p>
+                        <p id="detail_harga_produk" class="text-end"></p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <p>Tanggal Rilis</p>
+                        <p id="tanggal_produk" class="text-end"></p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <p>Stok</p>
+                        <p class="text-end">Unlimited</p>
+                    </div>
+                    <p style="font-weight: bold; border-top: 2px solid #f1f1f1; padding-top: 10px; margin-top: 10px">
+                        Deskripsi
+                    </p>
+                    <p id="detail_deskripsi"></p>
+
+                    <p class="label--buy">Ingin Membeli Produk ini?</p>
+                    <input type="text" id="id" name="catatan" value="" placeholder="ID / Nomor " />
+                    <button class="beliBtn">BELI SEKARANG</button>
+
+                    <button data-bs-dismiss="offcanvas" class="close">
+                        <img src="https://cdn-icons-png.flaticon.com/128/9068/9068699.png" alt="" />
+                    </button>
+                </div>
+            </div>
+        </div>
+        <button onclick="topFunction()" id="myBtn" title="Go to top">
+            <img src="https://cdn-icons-png.flaticon.com/128/11034/11034338.png" alt="" />
+        </button>
+
+        <script>
+            function stripHtmlTags(html) {
+                var doc = new DOMParser().parseFromString(html, "text/html");
+                return doc.body.textContent || "";
+            }
+
+            function convertToExcel() {
+                var productsToConvert = [];
+                var productList = document.querySelectorAll(".product");
+                productList.forEach(function (product) {
+                    var productName = product.getAttribute("data-product-name");
+                    var productPrice = product.getAttribute("data-product-price");
+                    var productDescription = decodeURIComponent(product.getAttribute("data-product-description"));
+                    productDescription = stripHtmlTags(productDescription);
+                    var productDate = product.getAttribute("data-product-date");
+                    var productData = {
+                        "Nama Produk": productName,
+                        Harga: productPrice,
+                        Keterangan: productDescription,
+                        Tanggal: productDate
+                    };
+                    productsToConvert.push(productData);
+                });
+                if (productsToConvert.length > 0) {
+                    var workbook = XLSX.utils.book_new();
+                    var worksheet = XLSX.utils.json_to_sheet(productsToConvert);
+                    XLSX.utils.book_append_sheet(workbook, worksheet, "Products");
+                    XLSX.writeFile(workbook, "products.xlsx");
+                    Toastify({
+                        text: `Data berhasil diunduh`,
+                        duration: 1000,
+                        close: false,
+                        gravity: "bottom",
+                        position: "center",
+                        backgroundColor: "linear-gradient(to right, green, green)",
+                        stopOnFocus: true,
+                        style: {
+                            fontSize: "12px",
+                            fontWeight: "bold",
+                            borderRadius: "10px"
+                        }
+                    }).showToast();
+                } else {
+                    Toastify({
+                        text: `Produk Belum Dipilih / Kosong`,
+                        duration: 1000,
+                        close: false,
+                        gravity: "bottom",
+                        position: "center",
+                        backgroundColor: "linear-gradient(to right, red, red)",
+                        stopOnFocus: true,
+                        style: {
+                            fontSize: "12px",
+                            fontWeight: "bold",
+                            borderRadius: "10px"
+                        }
+                    }).showToast();
+                }
+            }
+        </script>
+        <script>
+            function changeGridClass() {
+                var container = document.getElementById("product-container");
+                var icon = document.getElementById("gridIcon");
+
+                if (container.classList.contains("grid1")) {
+                    container.classList.remove("grid1");
+                    container.classList.add("grid2");
+                    icon.src = "https://cdn-icons-png.flaticon.com/128/747/747327.png";
+                    icon.alt = "Grid 2";
+                    Toastify({
+                        text: "Grid Mode Aktif",
+                        duration: 900,
+                        close: false,
+                        gravity: "top",
+                        position: "right",
+                        backgroundColor: "linear-gradient(to right, #00FF00, #00FF00)",
+                        stopOnFocus: true,
+                        style: {
+                            fontSize: "13px",
+                            fontWeight: "400",
+                            borderRadius: "10px",
+                            color: "#000000"
+                        }
+                    }).showToast();
+                } else {
+                    container.classList.remove("grid2");
+                    container.classList.add("grid1");
+                    icon.src = "https://cdn-icons-png.flaticon.com/128/3856/3856806.png";
+                    icon.alt = "Grid 1";
+                    Toastify({
+                        text: "List Mode Aktif",
+                        duration: 900,
+                        close: false,
+                        gravity: "top",
+                        position: "right",
+                        backgroundColor: "linear-gradient(to right, #00FF00, #00FF00)",
+                        stopOnFocus: true,
+                        style: {
+                            fontSize: "13px",
+                            fontWeight: "400",
+                            borderRadius: "10px",
+                            color: "#000000"
+                        }
+                    }).showToast();
+                }
+            }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+            crossorigin="anonymous"></script>
+        <script>
+            var TokenApiMu =
+                "eyJhcHAiOiIzMzkzMyIsImF1dGgiOiIyMDIwMDkwMyIsInNpZ24iOiI2NWhOM1dQQVRpTkZ1RzlEYU5MNVlnPT0ifQ==";
+            var kategoriDefault = "Produk Fisik";
+            document.addEventListener("DOMContentLoaded", function () {
+                fetchCategories();
+            });
+
+            function fetchCategories() {
+                document.getElementById("loading-overlay").style.display = "flex";
+
+                var xmlHttpRequest = new XMLHttpRequest();
+                xmlHttpRequest.open("GET", "https://openapi.bukaolshop.net/v1/app/kategori?token=" + TokenApiMu, true);
+                xmlHttpRequest.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var categoriesData = JSON.parse(this.responseText);
+                        displayCategories(categoriesData.data);
+                        document.getElementById("loading-overlay").style.display = "none";
+                    }
+                };
+                xmlHttpRequest.send();
+            }
+
+            var selectedCategory = "";
+
+            function displayCategories(categories) {
+                var categoryContainer = document.getElementById("category-container");
+                categories.forEach(function (categoryData) {
+                    var categoryDiv = document.createElement("div");
+                    categoryDiv.classList.add("category");
+
+                    var categoryName = document.createElement("h3");
+                    categoryName.textContent = categoryData.nama_kategori;
+                    categoryDiv.appendChild(categoryName);
+
+                    var subCategories = categoryData.sub_kategori;
+                    if (subCategories.length > 0) {
+                        var subCategoryList = document.createElement("ul");
+                        subCategoryList.classList.add("sub-categories");
+
+                        subCategories.forEach(function (subCategoryData) {
+                            var subCategoryItem = document.createElement("button");
+                            subCategoryItem.textContent = subCategoryData.nama_kategori;
+                            subCategoryItem.classList.add("btn", "btn--subcategory");
+                            subCategoryItem.setAttribute("type", "button");
+                            subCategoryItem.setAttribute("data-bs-dismiss", "modal");
+                            subCategoryItem.addEventListener("click", function () {
+                                selectedCategory = subCategoryData.nama_kategori;
+                                updateModalButton();
+                                fetchProducts(subCategoryData.id_kategori);
+                            });
+                            subCategoryList.appendChild(subCategoryItem);
+                        });
+                        subCategoryList.style.display = "block";
+
+                        categoryDiv.appendChild(subCategoryList);
+                    } else {
+                        var alertMsg = document.createElement("p");
+                        alertMsg.textContent = "Produk Belum Tersedia";
+                        categoryDiv.appendChild(alertMsg);
+                    }
+                    categoryContainer.appendChild(categoryDiv);
+                    if (categoryData.nama_kategori === kategoriDefault) {
+                        if (subCategories.length > 0) {
+                            selectedCategory = subCategories[0].nama_kategori;
+                            fetchProducts(subCategories[0].id_kategori);
+                            updateModalButton();
+                        }
+                    }
+                });
+            }
+
+            function updateModalButton() {
+                var modalButton = document.getElementById("modalButton");
+                modalButton.textContent = selectedCategory || "Pilih Kategori";
+            }
+
+            function fetchProducts(id_kategori) {
+                document.getElementById("loading-overlay").style.display = "flex";
+                var total_data = "100";
+                var xmlHttpRequest = new XMLHttpRequest();
+                var apiUrl =
+                    "https://openapi.bukaolshop.net/v1/app/produk?token=" +
+                    TokenApiMu +
+                    "&total_data=" +
+                    total_data +
+                    "&id_kategori=" +
+                    id_kategori;
+                xmlHttpRequest.open("GET", apiUrl, true);
+                xmlHttpRequest.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var productsData = JSON.parse(this.responseText);
+                        if (productsData.data.length === 0) {
+                            document.getElementById("loading-overlay").style.display = "none";
+                            displayInfoMessage("Belum Tersedia");
+                            return;
+                        }
+                        productsData.data.sort((a, b) => a.harga_produk - b.harga_produk);
+                        displayProducts(productsData.data);
+                        document.getElementById("loading-overlay").style.display = "none";
+                    }
+                };
+                xmlHttpRequest.send();
+            }
+
+            function displayInfoMessage(message) {
+                var productContainer = document.getElementById("product-container");
+                productContainer.innerHTML = "";
+                var informasiDiv = document.createElement("div");
+                informasiDiv.classList.add("informasi");
+                var informasiImg = document.createElement("img");
+                informasiImg.src = "https://cdn-icons-png.flaticon.com/128/6916/6916259.png";
+                informasiImg.alt = "";
+                var informasiText = document.createElement("p");
+                informasiText.textContent = message;
+                informasiDiv.appendChild(informasiImg);
+                informasiDiv.appendChild(informasiText);
+                productContainer.appendChild(informasiDiv);
+            }
+
+            function displayProducts(products) {
+                const productContainer = document.getElementById("product-container");
+                productContainer.innerHTML = "";
+
+                products.forEach(function (product) {
+                    const deskripsi = encodeURIComponent(product.deskripsi_panjang);
+                    let hargaFormatted = formatRupiah(product.harga_produk);
+                    let hargaResellerFormatted = "";
+                    const membership = "reseller";
+                    if (membership === "reseller") {
+                        const hargaReseller = product.harga_produk - 100;
+                        hargaResellerFormatted = formatRupiah(hargaReseller);
+                    }
+
+                    const listItem = document.createElement("div");
+                    listItem.classList.add("box", "product", "animate__animated", "animate__flipInX");
+                    listItem.setAttribute("data-product-name", product.nama_produk);
+                    listItem.setAttribute("data-product-price", hargaFormatted);
+                    listItem.setAttribute("data-product-description", deskripsi);
+                    listItem.setAttribute("data-product-date", product.tanggal);
+                    listItem.setAttribute("data-product-url", product.url_produk);
+                    listItem.innerHTML = `
+          <div class="pil-produk" onclick="redirectToProduct('${product.url_produk}')">
+            <div class="w-100">
+              <div class="d-flex align-items-center nama--produk">
+                <h4>${product.nama_produk}</h4>
+                <button style="background:transparent;color:black;">Detail</button>
+              </div>
+              <div class="d-flex align-items-center mt-2 price--name">
+                <div style="border-right:1px solid #f1f1f1;padding-right:10px;margin-right:10px;width:150px;">
+                  <p style="white-space: pre-wrap;">Harga</p>
+                  <p style="white-space: pre-wrap;font-weight:bold" class="harga">${hargaFormatted}</p>
+                </div>
+                <div class="w-100 deks">
+                  <h6 style="font-size:11px;margin:0;color:gray;">Deskripsi singkat</h6>
+                  <p>${product.deskripsi_singkat}</p>
+                </div>
+                <img src="${product.url_gambar_produk}" alt="Product Icon" class="product-icon">
+              </div>
+            </div>
+          </div>
+        `;
+
+                    productContainer.appendChild(listItem);
+                });
+            }
+
+            function redirectToProduct(urlProduk) {
+                window.location.href = urlProduk;
+            }
+
+            function formatRupiah(price) {
+                return "Rp " + price.toLocaleString("id-ID");
+            }
+
+            window.onscroll = function () {
+                scrollFunction();
+            };
+
+            function scrollFunction() {
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("myBtn").style.display = "block";
+                } else {
+                    document.getElementById("myBtn").style.display = "none";
+                }
+            }
+
+            function topFunction() {
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }
+
+            function filterCategories() {
+                var input, filter, categoryContainer, subCategoryItems, i, txtValue;
+                input = document.getElementById("categoryFilter");
+                filter = input.value.toUpperCase();
+                categoryContainer = document.getElementById("category-container");
+                subCategoryItems = categoryContainer.getElementsByClassName("btn--subcategory");
+
+                for (i = 0; i < subCategoryItems.length; i++) {
+                    txtValue = subCategoryItems[i].textContent || subCategoryItems[i].innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        subCategoryItems[i].style.display = "";
+                    } else {
+                        subCategoryItems[i].style.display = "none";
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
