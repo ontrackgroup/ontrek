@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>REKAP TRANSAKSI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Poppins", sans-serif;
+        }
+
+        :root {
+            user-select: none;
+            --primary-color: #ff6f00;
+        }
+
+        .my-border {
+            background-color: #ffffffe0;
+            border: 2px dotted var(--primary-color);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+        }
+
+        .bg-primary {
+            background-color: var(--primary-color);
+            opacity: 0.2;
+        }
+
+        .loader {
+            height: 100px;
+            width: 20%;
+            text-align: center;
+            padding: 1em;
+            display: inline-block;
+            vertical-align: top;
+            z-index: 9999;
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin: 0;
+            /* Hilangkan margin agar tidak mengganggu */
+        }
+
+        /* Warna ikon */
+        svg path,
+        svg rect {
+            fill: var(--primary-color);
+        }
+
+        #search-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 2px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            transition: border-color 0.3s;
+            /* Tambahkan transisi untuk efek halus */
+        }
+
+        #search-container input[type="text"] {
+            flex: 1;
+            font-size: 12px;
+            padding: 5px;
+            border: none;
+            outline: none;
+        }
+
+        #search-container i {
+            margin-left: 5px;
+            font-size: 12px;
+            padding: 5px;
+        }
+
+        #search-container:focus-within {
+            border-color: var(--primary-color) !important;
+        }
+
+        .form-control {
+            font-size: 14px;
+        }
+
+        .form-control:focus {
+            font-size: 12px;
+            border-color: var(--primary-color) !important;
+            box-shadow: none;
+        }
+
+        .form-select {
+            font-size: 12px;
+        }
+
+        .form-select:focus {
+            border-color: var(--primary-color) !important;
+            box-shadow: none;
+        }
+
+        .form-label {
+            font-size: 12px;
+        }
+
+        .card {
+            border-radius: solid 1px;
+            margin-top: 10px;
+            position: relative;
+        }
+
+        .card-title {
+            font-size: 12px;
+            font-weight: 500;
+            opacity: 0.7;
+            margin-top: 10px;
+        }
+
+        .card p {
+            font-size: 15px;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .card span {
+            font-size: 10px;
+            font-weight: 700;
+            margin-top: 10px;
+        }
+
+        .card .icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 15px;
+        }
+
+        .nama-produk {
+            font-weight: 600;
+        }
+
+        .harga-produk {
+            font-weight: 500;
+        }
+
+        .harga-jual {
+            font-weight: 500;
+            ;
+        }
+
+        .tanggal-beli {
+            opacity: 0.7;
+        }
+
+        .edit-icon {
+            margin-left: 5px;
+        }
+
+        .list-group-item {
+            margin-bottom: 10px;
+        }
+
+        .kanan {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .kecil {
+            font-size: small;
+            margin: auto;
+        }
+
+        .detail {
+            font-size: 13px;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        .detail-produk {
+            font-size: 15px;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+
+        .strong {
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .tanggal {
+            font-size: 10px;
+            font-weight: 400;
+            margin-top: 3px;
+        }
+
+        .fs {
+            font-size: 14px;
+        }
+
+        .offcanvas-top {
+            width: 95%;
+            margin: auto;
+            border-radius: 5px;
+            margin-top: 10px;
+            margin-bottom: 70px;
+        }
+
+        .offcanvas-header {
+            margin: 0px;
+        }
+
+        .bg-detail {
+            background-color: var(--primary-color);
+            padding: 10px;
+            margin-top: -16px;
+        }
+
+        .list-group-item {
+            cursor: pointer;
+            border-radius: 15px;
+            background-color: #fff;
+
+        }
+
+        .sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: white;
+            padding-top: 5px;
+            padding-bottom: 0px;
+        }
+
+        .header {
+            height: 50px;
+            padding-top: 10px;
+            width: 100%;
+            color: white;
+            background-color: var(--primary-color);
+            text-align: center;
+        }
+
+        .modal-header .btn-close {
+            background-color: white;
+            border: 1px solid transparent;
+        }
+
+        .modal-header .btn-close::after {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- navbar -->
+    <section>
+        <div class="header">
+            <h6>REKAP TRANSAKSI</h6>
+        </div>
+    </section>
+
+    <!-- header -->
+    <section>
+        <div class="container-md">
+            <div class="row">
+                <div class="col-6 col-md-6 col-lg-3">
+                    <div class="card">
+                        <div style="width: 35px;height: 35px;background: var(--primary-color);" class="icon text-white text-center p-2 rounded-circle">
+                        <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title">Penjualan</h6>
+                            <p class="card-text" id="totalOmset">Rp 0</p>
+                       </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3">
+                    <div class="card">
+                        <div style="width: 35px;height: 35px;background: var(--primary-color);" class="icon icon  text-white text-center p-2 rounded-circle"><i class="fas fa-wallet"></i></div>
+                        <div class="card-body">
+                            <h6 class="card-title">Transaksi</h6>
+                            <p class="card-text" id="jumlahDataTransaksi">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3">
+                    <div class="card">
+                        <div style="width: 35px;height: 35px;background: var(--primary-color);" class="icon icon text-white text-center p-2 rounded-circle"><i class="fas fa-receipt"></i></div>
+                        <div class="card-body">
+                            <h6 class="card-title">Hutang</h6>
+                            <p class="card-text" id="totalHutang">0</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-6 col-lg-3">
+                    <div class="card">
+                        <div style="width: 35px;height: 35px; background: var(--primary-color);" class="icon icon text-white text-center p-2 rounded-circle"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="card-body">
+                            <h6 class="card-title">Keuntungan</h6>
+                            <p class="card-text" id="totalKeuntungan">Rp 0</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- cari transaksi -->
+    <section class="sticky-top mt-3">
+        <div class="container-md">
+            <div class="bg-white p-0 rounded shadow-sm">
+                <!-- Dropdown dan Tombol Kalender -->
+                <div class="mt-2 d-flex align-items-center">
+                    <select class="form-control p-2 strong" id="dataDropdown">
+                        <option value="hari-ini">Hari Ini</option>
+                        <option value="minggu-ini">Minggu Ini</option>
+                        <option value="bulan-ini">Bulan Ini</option>
+                        <option value="custom">Custom</option>
+                        <option value="lunas">Lunas</option>
+                        <option value="hutang">Hutang</option>
+                    </select>
+                    <!-- tombol kalender -->
+                    <button onclick="displayDates()" id="btn-kalender" class="btn btn-outline-primary d-none" style="margin-left: 5px;">
+                        <i class="bi bi-calendar-day" aria-hidden="true"></i>
+                    </button>
+                </div>
+
+                <div class="mt-2">
+                    <div id="customDates" style="display: none;">
+                        <label for="startDate">Start Date:</label>
+                        <input type="date" id="startDate" class="form-control">
+                        <label for="endDate">End Date:</label>
+                        <input type="date" id="endDate" class="form-control">
+                        <button class="btn btn-primary p-1 mt-2" onclick="tampilkanDataTransaksi('custom')">Submit</button>
+                    </div>
+                </div>
+                <!-- Pencarian Catatan-->
+                <div class="mb-1">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="search-bar" onkeyup="searchList()" placeholder="Cari data..." aria-label="Search"><span class="input-group-text"><i class="bi bi-search"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Animasi Loading -->
+    <section>
+        <div id="load" class="loader loader--style4" title="3" style="display:none;">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+                <rect x="0" y="0" width="4" height="7" fill="#333">
+                    <animateTransform attributeType="xml" attributeName="transform" type="scale" values="1,1; 1,3; 1,1" begin="0s" dur="0.6s" repeatCount="indefinite" />
+                </rect>
+                <rect x="10" y="0" width="4" height="7" fill="#333">
+                    <animateTransform attributeType="xml" attributeName="transform" type="scale" values="1,1; 1,3; 1,1" begin="0.2s" dur="0.6s" repeatCount="indefinite" />
+                </rect>
+                <rect x="20" y="0" width="4" height="7" fill="#333">
+                    <animateTransform attributeType="xml" attributeName="transform" type="scale" values="1,1; 1,3; 1,1" begin="0.4s" dur="0.6s" repeatCount="indefinite" />
+                </rect>
+            </svg>
+        </div>
+    </section>
+
+    <section>
+        <div class="container-md mt-4">
+            <ul class="list-group" id="listTransaksi">
+            </ul>
+        </div>
+    </section>
+
+    <!-- detail transaksi -->
+    <section>
+        <div class="modal fade" id="detailTransaksiModal" tabindex="-1" aria-labelledby="" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header header">
+                        <h3 class="modal-title fs-5">Detail Transaksi</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mt-0">
+                            <div class="d-flex justify-content-between">
+                                <div class="detail-produk">Produk</div>
+                                <div class="detail-produk" id="detailNamaProduk"></div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="tanggal">Tanggal</div>
+                                <div class="tanggal" id="detailTanggalTrx"></div>
+                            </div>
+                            <hr style="border-top: 2px dashed #ccc; opacity: 1;">
+                            <div class="d-flex justify-content-between">
+                                <div class="detail">ID Transaksi</div>
+                                <div class="strong" id="detailNomorPembayaran"></div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="detail">Tujuan</div>
+                                <div class="strong" id="detailCatatanTrx"></div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="detail">Pelanggan</div>
+                                <div class="strong" id="detailNamaPelanggan"></div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="detail">Harga Jual</div>
+                                <div class="strong" id="detailHargaJual"></div>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <div class="detail">Harga Modal</div>
+                                <div class="strong" id="detailHargaModal"></div>
+                            </div>
+                            <hr style="border-top: 2px dashed #ccc; opacity: 1;">
+                            <div class="d-flex justify-content-between">
+                                <div class="detail">Keuntungan</div>
+                                <div class="strong" id="detailKeuntungan"></div>
+                            </div>
+                            <hr style="border-top: 2px dashed #ccc; opacity: 1;">
+                            <div class="d-flex justify-content-between">
+                                <div class="detail">Status Bayar</div>
+                                <div class="strong" id="detailStatusBayar"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-between">
+                        <!-- Tombol kiri -->
+                        <button class="btn text-danger" data-bs-dismiss="modal" onclick="hapusData()">
+                            <i class='fas fa-trash-alt'></i>
+                        </button>
+                        <!-- Tombol kanan -->
+                        <div>
+                            <button class="btn btn-primary" data-bs-dismiss="modal" onclick="editHargaJual()">Edit</button>
+                            <button class="btn btn-success" data-bs-dismiss="modal" onclick="lihatTransaksi()">Detail</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- edit data -->
+    <section>
+        <div class="modal fade" id="editHargaJualModal" tabindex="-1" aria-labelledby="editTransaksiTitle" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header header">
+                        <h3 class="modal-title fs-5" id="editTransaksiTitle">Edit Transaksi</h3>
+                        <p class="d-none" id="detailNomorPembayaran"></p>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-0">
+                            <p class="d-none" id="namaProduk"></p>
+                        </div>
+                        <div class="mb-3">
+                            <label for="nama" class="form-label">Nama Pembeli</label>
+                            <input type="text" class="form-control" id="namaPelanggan" placeholder="Nama pelanggan">
+                        </div>
+                        <div class="mb-3">
+                            <label for="hargaJual" class="form-label">Edit Harga Jual</label>
+                            <input type="tel" oninput="cekInputan(this)" onchange="cekInputan(this)" class="form-control" id="hargaJual" placeholder="1000">
+                        </div>
+                        <div class="mb-3">
+                            <!-- opsi status bayar -->
+                            <label for="statusBayar" class="form-label">Status Bayar</label>
+                            <select class="form-select" id="statusBayar">
+                                <option value="" hidden selected>Sudah Bayar?</option>
+                                <option value="Lunas">Lunas</option>
+                                <option value="Hutang">Hutang</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer d-flex justify-content-end">
+                        <div class="mt-0">
+                            <div class="d-flex align-items-center">
+                                <button class="btn btn-primary p-2 m-1" id="saveData">Oke</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <section>
+        <script>
+            // baseUrl
+            var baseUrl = 'https://mitra-scbo.my.id/endpoint.php';
+
+            // Produk Kosong
+            const dataNone = `
+          <div class="text-center animate__animated animate__fadeIn">
+          <img src="https://mitra-scbo.my.id/wordpress/wp-content/uploads/2024/08/Desain-24-1.png" class="w-100 borad-5 shadow-sm">
+          <p class="mt-3 f-16 fwb-6 op-7">No Data..</p>
+          </div>
+          `
+            // Data Awal load
+            var id_user = '{{id_user}}';
+            var filtered = 'hari-ini';
+
+            function tampilkanDataTransaksi(filter) {
+                var listTransaksi = document.getElementById("listTransaksi");
+                var totalOmset = 0;
+                var totalHutang = 0;
+                var totalKeuntungan = 0;
+                var startDate, endDate;
+
+                document.getElementById("btn-kalender").classList.add("d-none");
+
+                // Mengatur tanggal berdasarkan filter yang dipilih
+                if (filter === "hari-ini") {
+                    $("#load").show();
+                    document.getElementById("btn-kalender").classList.add("d-none");
+                    var today = new Date();
+                    startDate = formatDate(today) + " 00:00:00";
+                    endDate = formatDate(today) + " 23:59:59";
+                } else if (filter === "minggu-ini") {
+                    $("#load").show();
+                    document.getElementById("btn-kalender").classList.add("d-none");
+                    var sevenDaysAgo = new Date();
+                    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+                    startDate = formatDate(sevenDaysAgo) + " 00:00:00";
+                    endDate = formatDate(new Date()) + " 23:59:59";
+                } else if (filter === "bulan-ini") {
+                    $("#load").show();
+                    document.getElementById("btn-kalender").classList.add("d-none");
+                    var firstDayOfMonth = new Date();
+                    firstDayOfMonth.setDate(1);
+                    startDate = formatDate(firstDayOfMonth) + " 00:00:00";
+                    endDate = formatDate(new Date()) + " 23:59:59";
+                } else if (filter === "custom") {
+                    var startDateInput = document.getElementById("startDate").value;
+                    var endDateInput = document.getElementById("endDate").value;
+
+                    if (startDateInput === "" || endDateInput === "") {
+                        console.error("Masukkan tanggal yang valid");
+                        return;
+                    }
+
+                    startDate = startDateInput + " 00:00:00";
+                    endDate = endDateInput + " 23:59:59";
+                    $("#load").show();
+                    document.getElementById("customDates").classList.add("d-none");
+                    document.getElementById("btn-kalender").classList.remove("d-none");
+                } else if (filter === "lunas" || filter === "hutang") {
+                    startDate = "2024-01-01 00:00:00";
+                    endDate = "2050-12-31 23:59:59";
+                    $("#load").show();
+                    document.getElementById("btn-kalender").classList.add("d-none");
+                } else {
+                    startDate = "";
+                    endDate = "";
+                    $("#load").show();
+                    document.getElementById("btn-kalender").classList.add("d-none");
+                }
+
+                // Menggunakan AJAX untuk mengambil data dari server
+                $.ajax({
+                    url: baseUrl,
+                    method: 'POST',
+                    data: {
+                        koneksi: 'get_transaksi_member_by_filter',
+                        id_user: id_user,
+                        start_date: startDate,
+                        end_date: endDate
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        $("#load").hide();
+                        if (response.success) {
+                            var transaksiArray = response.data;
+                            listTransaksi.innerHTML = ""; // Kosongkan list sebelumnya
+
+                            // Proses data berdasarkan filter
+                            transaksiArray.forEach(function(transaksi) {
+                                var status_bayar = transaksi.status_bayar;
+
+                                // Filter berdasarkan status_bayar
+                                if ((filter === "lunas" && status_bayar === "Lunas") ||
+                                    (filter === "hutang" && status_bayar === "Hutang") ||
+                                    (filter !== "lunas" && filter !== "hutang")) {
+
+                                    var jsonTransaksi = JSON.stringify(transaksi);
+                                    var {
+                                        total_transaksi,
+                                        harga_jual,
+                                        status_bayar,
+                                        tanggal_buat,
+                                        nama_barang,
+                                        catatan,
+                                        nama_pelanggan,
+                                        nomor_pembayaran
+                                    } = transaksi;
+
+                                    // Kalkulasi Omset, Keuntungan, dan Hutang
+                                    totalOmset += parseInt(total_transaksi);
+                                    if (status_bayar === "Hutang") {
+                                        totalHutang += parseInt(harga_jual);
+                                    }
+                                    totalKeuntungan += parseInt(harga_jual) - parseInt(total_transaksi);
+
+                                    // Menyiapkan warna status
+                                    var bg = status_bayar === "Lunas" ? "success" : "danger";
+                                    var listItem = document.createElement("div");
+                                    listItem.innerHTML = `
+                                  <div class="card">
+                                      <div class="px-3">
+                                          <div class="d-flex justify-content-between align-items-center">
+                                              <div class="d-flex flex-column">
+                                                  <div class="mt-2 nama-produk" style="font-size:13px;">${nama_barang}</div>
+                                                  <div class="tanggal-beli" style="font-size: 10px;">${tanggal_buat}</div>
+                                                  <div class="mb-2 harga-produk" style="font-size:12px;">Harga Modal : ${formatRupiah(total_transaksi)}</div>
+                                              </div>
+                                              <div class="d-flex flex-column text-end">
+                                                  <div class="tanggal-beli idTrx" style="font-size: 10px;">#${nomor_pembayaran}</div>
+                                                  <div class="mt-2 nama-produk text-${bg}" style="font-size:13px;">${status_bayar}</div>
+                                                  <div class="tanggal-beli namaPelanggan" style="font-size: 12px;">${nama_pelanggan}</div>                            
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="card-header d-flex justify-content-between align-items-center">
+                                          <div class="d-flex flex-column">
+                                              <div class="tanggal-beli" style="font-size:10px;">Harga jual</div>
+                                              <div class="harga-produk" style="font-size:12px;">${formatRupiah(harga_jual)}</div>
+                                          </div>
+                                          <div class="d-flex flex-column">
+                                              <div class="tanggal-beli" style="font-size:10px;">Keuntungan</div>
+                                              <div class="harga-produk" style="font-size:12px;">${formatRupiah(harga_jual - total_transaksi)}</div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              `;
+
+                                    listTransaksi.appendChild(listItem);
+                                    listItem.onclick = function() {
+                                        detailTransaksi(transaksi, filter);
+                                    };
+                                }
+                            });
+
+                            // Menampilkan total Omset, Keuntungan, dan Hutang
+                            document.getElementById("totalOmset").innerText = formatRupiah(totalOmset);
+                            document.getElementById("totalKeuntungan").innerText = formatRupiah(totalKeuntungan);
+                            document.getElementById("totalHutang").innerText = formatRupiah(totalHutang);
+                            document.getElementById("jumlahDataTransaksi").innerHTML = `${transaksiArray.length} <span>Trx</span>`;
+
+                        } else {
+                            console.error("Error:", response.error);
+                        }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.error("Terjadi kesalahan saat mengambil data transaksi:", textStatus, errorThrown);
+                    }
+                });
+            }
+
+
+
+
+            // displayDates
+            function displayDates() {
+                document.getElementById("customDates").classList.toggle("d-none");
+            }
+
+            // Fungsi hapus data
+            function hapusData() {
+                var nomor_pembayaran = document.getElementById("detailNomorPembayaran").innerText;
+                var filter = document.getElementById("dataDropdown").value;
+                Swal.fire({
+                    title: 'Apakah Anda yakin?',
+                    text: "Data yang dihapus tidak dapat dikembalikan!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Ya, hapus!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: baseUrl,
+                            method: 'POST',
+                            data: {
+                                koneksi: 'delete_transaksi',
+                                id_user: id_user, // Pastikan id_user didefinisikan
+                                nomor_pembayaran: nomor_pembayaran
+                            },
+                            dataType: 'json',
+                            success: function(response) {
+                                if (response.code === 200) {
+                                    Swal.fire(
+                                        'Terhapus!',
+                                        'Data transaksi berhasil dihapus.',
+                                        'success'
+                                    );
+                                } else {
+                                    Swal.fire(
+                                        'Gagal!',
+                                        'Terjadi kesalahan saat menghapus data transaksi.',
+                                        'error'
+                                    );
+                                }
+                                tampilkanDataTransaksi(filter);
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                console.error("Terjadi kesalahan saat menghapus data transaksi:", textStatus, errorThrown);
+                            }
+                        });
+                    }
+                });
+            }
+
+            // lihat Transaksi
+            function lihatTransaksi() {
+                var nomor_pembayaran = document.getElementById("detailNomorPembayaran").innerText;
+                var url = `https://ontrackppob.my.id/akun/?page=transaksi&nomor=${nomor_pembayaran}`;
+                window.open(url, '_blank');
+            }
+
+            function cekInputan(input) {
+                // Hapus karakter selain digit
+                var nilai = input.value.replace(/[^\d]/g, '');
+
+                // Konversi nilai menjadi angka
+                var parsedValue = parseInt(nilai, 10);
+
+                // Cek apakah nilai yang diinput adalah angka valid
+                if (!isNaN(parsedValue)) {
+                    // Format nilai menjadi format rupiah
+                    var formattedValue = new Intl.NumberFormat('id-ID', {
+                        style: 'currency',
+                        currency: 'IDR'
+                    }).format(parsedValue);
+
+                    // Update nilai input dengan format rupiah tanpa "Rp" dan ",00"
+                    input.value = formattedValue.replace(/Rp|,00/g, '');
+                } else {
+                    // Jika nilai tidak valid atau kosong, kosongkan input
+                    input.value = '';
+                }
+            }
+
+            // Edit harga jual
+            function editHargaJual() {
+                var offcanvas = new bootstrap.Modal(document.getElementById('editHargaJualModal'));
+                offcanvas.show();
+
+                var nama_barang = document.getElementById("detailNamaProduk").innerText;
+                var nomor_pembayaran = document.getElementById("detailNomorPembayaran").innerText;
+                var harga_jual = document.getElementById("detailHargaJual").innerText;
+                var nama_pelanggan = document.getElementById("detailNamaPelanggan").innerText;
+                var status_bayar = document.getElementById("detailStatusBayar").innerText;
+
+                // hapus Rp dari harga jual
+                var harga_jual_int = harga_jual.replace("Rp", "");
+
+                var filter = document.getElementById("dataDropdown").value;
+
+                // isi data
+                document.getElementById("namaProduk").innerText = nama_barang;
+                document.getElementById("namaPelanggan").value = nama_pelanggan;
+                document.getElementById("hargaJual").value = harga_jual_int;
+                document.getElementById("statusBayar").value = status_bayar;
+
+                // saat tombol saveData ditekan
+                document.getElementById("saveData").onclick = function() {
+                    var namaPelanggan = document.getElementById("namaPelanggan").value;
+                    var hargaJual = document.getElementById("hargaJual").value;
+                    var statusBayar = document.getElementById("statusBayar").value;
+
+                    // bersihkan harga jual dari karakter non-angka
+                    var hargaJualInt = hargaJual.replace(/\D/g, "");
+
+                    $.ajax({
+                        url: baseUrl,
+                        method: 'POST',
+                        data: {
+                            koneksi: 'update_transaksi',
+                            id_user: id_user, // Pastikan id_user didefinisikan
+                            nomor_pembayaran: nomor_pembayaran,
+                            nama_pelanggan: namaPelanggan,
+                            harga_jual: hargaJualInt,
+                            status_bayar: statusBayar
+                        },
+                        dataType: 'json',
+                        success: function(response) {
+                            if (response.code === 200) {
+                                Swal.fire(
+                                    'Berhasil!',
+                                    'Data transaksi berhasil diubah.',
+                                    'success'
+                                );
+                                offcanvas.hide();
+                            } else {
+                                Swal.fire(
+                                    'Gagal!',
+                                    'Terjadi kesalahan saat mengubah data transaksi.',
+                                    'error'
+                                );
+                            }
+                            // hapus semua form dan jalankan filter lagi
+                            document.getElementById("namaPelanggan").value = "";
+                            document.getElementById("hargaJual").value = "";
+                            document.getElementById("statusBayar").value = "";
+                            tampilkanDataTransaksi(filter);
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            console.error("Terjadi kesalahan saat mengubah data transaksi:", textStatus, errorThrown);
+                        }
+                    });
+                };
+            }
+
+            // Detail Transaksi
+            function detailTransaksi(transaksi, filter) {
+                var offcanvas = new bootstrap.Modal(document.getElementById('detailTransaksiModal'));
+                offcanvas.show();
+
+                // isi data
+                document.getElementById("detailNomorPembayaran").innerText = transaksi.nomor_pembayaran;
+                document.getElementById("detailNamaProduk").innerText = transaksi.nama_barang;
+                document.getElementById("detailCatatanTrx").innerText = transaksi.catatan;
+                document.getElementById("detailTanggalTrx").innerText = transaksi.tanggal_buat;
+                document.getElementById("detailNamaPelanggan").innerText = transaksi.nama_pelanggan;
+                document.getElementById("detailHargaJual").innerText = formatRupiah(transaksi.harga_jual);
+                document.getElementById("detailHargaModal").innerText = formatRupiah(transaksi.total_transaksi);
+                document.getElementById("detailKeuntungan").innerText = formatRupiah(transaksi.harga_jual - transaksi.total_transaksi);
+                document.getElementById("detailStatusBayar").innerText = transaksi.status_bayar;
+
+                // Menentukan kelas warna berdasarkan status_bayar
+                var status_bayar = transaksi.status_bayar;
+                var bg;
+
+                if (status_bayar === "Lunas") {
+                    bg = "success";
+                } else if (status_bayar === "Hutang") {
+                    bg = "danger";
+                } else if (status_bayar === "pending") {
+                    bg = "warning";
+                } else {
+                    bg = "secondary";
+                }
+
+                // Ambil elemen dengan id "detailStatusBayar"
+                var detailStatusBayarElement = document.getElementById("detailStatusBayar");
+
+                // Hapus kelas warna sebelumnya (jika ada)
+                detailStatusBayarElement.classList.remove("text-success", "text-danger", "text-warning", "text-secondary");
+
+                // Tambahkan kelas warna baru berdasarkan status_bayar
+                detailStatusBayarElement.classList.add(`text-${bg}`);
+
+                // Setel teks di dalam elemen tersebut menjadi status_bayar
+                detailStatusBayarElement.innerText = status_bayar;
+            }
+
+            function formatDate(date) {
+                var year = date.getFullYear();
+                var month = ("0" + (date.getMonth() + 1)).slice(-2);
+                var day = ("0" + date.getDate()).slice(-2);
+                return year + "-" + month + "-" + day;
+            }
+
+            // Event listener untuk dropdown
+            document.getElementById("dataDropdown").addEventListener("change", function() {
+                filtered = this.value;
+
+                if (filtered === "custom") {
+                    document.getElementById("customDates").style.display = "block";
+                } else {
+                    document.getElementById("customDates").style.display = "none";
+                }
+
+                tampilkanDataTransaksi(filtered);
+            });
+
+            tampilkanDataTransaksi(filtered);
+        </script>
+
+        <script>
+            // fungsi cari list
+            function searchList() {
+                var input = document.getElementById("search-bar").value.toLowerCase();
+                var listTransaksi = document.getElementById("listTransaksi");
+                var transaksiItems = listTransaksi.getElementsByClassName("card");
+                // Jika input kosong, tampilkan kembali semua transaksi
+                if (input === "") {
+                    for (var i = 0; i < transaksiItems.length; i++) {
+                        transaksiItems[i].style.display = "";
+                    }
+                    return;
+                }
+
+                var noMatch = true;
+
+                for (var i = 0; i < transaksiItems.length; i++) {
+                    var namaProdukElement = transaksiItems[i].querySelector(".nama-produk");
+                    var namaPelangganElement = transaksiItems[i].querySelector(".idTrx");
+                    var tanggalBeliElement = transaksiItems[i].querySelector(".namaPelanggan");
+
+                    // Memastikan elemen yang diharapkan ada sebelum mengakses innerText
+                    var namaProduk = namaProdukElement ? namaProdukElement.innerText.toLowerCase() : "";
+                    var namaPelanggan = namaPelangganElement ? namaPelangganElement.innerText.toLowerCase() : "";
+                    var tanggalBeli = tanggalBeliElement ? tanggalBeliElement.innerText.toLowerCase() : "";
+
+                    // Jika input cocok dengan nama produk, nama pelanggan, atau tanggal beli
+                    if (namaProduk.includes(input) || namaPelanggan.includes(input) || tanggalBeli.includes(input)) {
+                        transaksiItems[i].style.display = ""; // Tampilkan elemen transaksi
+                        noMatch = false; // Menandakan ada transaksi yang cocok
+                    } else {
+                        transaksiItems[i].style.display = "none"; // Sembunyikan elemen transaksi
+                    }
+                }
+
+            }
+
+            // formatRupiah
+            function formatRupiah(angka) {
+                var formatter = new Intl.NumberFormat("id-ID", {
+                    style: "currency",
+                    currency: "IDR",
+                    minimumFractionDigits: 0,
+                });
+
+                return formatter.format(angka).replace(/IDR/g, "");
+            }
+        </script>
+    </section>
+</body>
+
+</html>
