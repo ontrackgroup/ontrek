@@ -148,7 +148,7 @@
                         "<div class='kiri'>" +
                         "<span style='font-size:13px'>" +
                         "<b>" +
-                        PLN +
+                        transaction.nama_barang +
                         "</b>" +
                         "</span>" +
                         "<br>" +
@@ -183,7 +183,7 @@
 
             links.forEach((link) => {
                 let text = link.textContent.toUpperCase();
-                let display = text.includes(input) ? "flex" : "none";
+                let display = text.includes("PLN") ? "flex" : "none";
                 link.style.display = display;
             });
         }
