@@ -3,13 +3,16 @@
 
 <head>
     <title>REKAP TRANSAKSI</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
     <style>
         body {
             font-family: "Poppins", sans-serif;
@@ -271,18 +274,21 @@
             <div class="row">
                 <div class="col-6 col-md-6 col-lg-3">
                     <div class="card">
-                        <div style="width: 35px;height: 35px;background: var(--primary-color);" class="icon text-white text-center p-2 rounded-circle">
-                        <i class="fas fa-shopping-cart"></i>
+                        <div style="width: 35px;height: 35px;background: var(--primary-color);"
+                            class="icon text-white text-center p-2 rounded-circle">
+                            <i class="fas fa-shopping-cart"></i>
                         </div>
                         <div class="card-body">
                             <h6 class="card-title">Penjualan</h6>
                             <p class="card-text" id="totalOmset">Rp 0</p>
-                       </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-6 col-md-6 col-lg-3">
                     <div class="card">
-                        <div style="width: 35px;height: 35px;background: var(--primary-color);" class="icon icon  text-white text-center p-2 rounded-circle"><i class="fas fa-wallet"></i></div>
+                        <div style="width: 35px;height: 35px;background: var(--primary-color);"
+                            class="icon icon  text-white text-center p-2 rounded-circle"><i class="fas fa-wallet"></i>
+                        </div>
                         <div class="card-body">
                             <h6 class="card-title">Transaksi</h6>
                             <p class="card-text" id="jumlahDataTransaksi">0</p>
@@ -291,7 +297,9 @@
                 </div>
                 <div class="col-6 col-md-6 col-lg-3">
                     <div class="card">
-                        <div style="width: 35px;height: 35px;background: var(--primary-color);" class="icon icon text-white text-center p-2 rounded-circle"><i class="fas fa-receipt"></i></div>
+                        <div style="width: 35px;height: 35px;background: var(--primary-color);"
+                            class="icon icon text-white text-center p-2 rounded-circle"><i class="fas fa-receipt"></i>
+                        </div>
                         <div class="card-body">
                             <h6 class="card-title">Hutang</h6>
                             <p class="card-text" id="totalHutang">0</p>
@@ -300,7 +308,9 @@
                 </div>
                 <div class="col-6 col-md-6 col-lg-3">
                     <div class="card">
-                        <div style="width: 35px;height: 35px; background: var(--primary-color);" class="icon icon text-white text-center p-2 rounded-circle"><i class="fas fa-dollar-sign"></i></div>
+                        <div style="width: 35px;height: 35px; background: var(--primary-color);"
+                            class="icon icon text-white text-center p-2 rounded-circle"><i
+                                class="fas fa-dollar-sign"></i></div>
                         <div class="card-body">
                             <h6 class="card-title">Keuntungan</h6>
                             <p class="card-text" id="totalKeuntungan">Rp 0</p>
@@ -326,7 +336,8 @@
                         <option value="hutang">Hutang</option>
                     </select>
                     <!-- tombol kalender -->
-                    <button onclick="displayDates()" id="btn-kalender" class="btn btn-outline-primary d-none" style="margin-left: 5px;">
+                    <button onclick="displayDates()" id="btn-kalender" class="btn btn-outline-primary d-none"
+                        style="margin-left: 5px;">
                         <i class="bi bi-calendar-day" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -337,13 +348,16 @@
                         <input type="date" id="startDate" class="form-control">
                         <label for="endDate">End Date:</label>
                         <input type="date" id="endDate" class="form-control">
-                        <button class="btn btn-primary p-1 mt-2" onclick="tampilkanDataTransaksi('custom')">Submit</button>
+                        <button class="btn btn-primary p-1 mt-2"
+                            onclick="tampilkanDataTransaksi('custom')">Submit</button>
                     </div>
                 </div>
                 <!-- Pencarian Catatan-->
                 <div class="mb-1">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="search-bar" onkeyup="searchList()" placeholder="Cari data..." aria-label="Search"><span class="input-group-text"><i class="bi bi-search"></i></span>
+                        <input type="text" class="form-control" id="search-bar" onkeyup="searchList()"
+                            placeholder="Cari data..." aria-label="Search"><span class="input-group-text"><i
+                                class="bi bi-search"></i></span>
                     </div>
                 </div>
             </div>
@@ -353,15 +367,20 @@
     <!-- Animasi Loading -->
     <section>
         <div id="load" class="loader loader--style4" title="3" style="display:none;">
-            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px" viewBox="0 0 24 24" style="enable-background:new 0 0 50 50;" xml:space="preserve">
+            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="24px" height="24px"
+                viewBox="0 0 24 24" style="enable-background:new 0 0 50 50;" xml:space="preserve">
                 <rect x="0" y="0" width="4" height="7" fill="#333">
-                    <animateTransform attributeType="xml" attributeName="transform" type="scale" values="1,1; 1,3; 1,1" begin="0s" dur="0.6s" repeatCount="indefinite" />
+                    <animateTransform attributeType="xml" attributeName="transform" type="scale" values="1,1; 1,3; 1,1"
+                        begin="0s" dur="0.6s" repeatCount="indefinite" />
                 </rect>
                 <rect x="10" y="0" width="4" height="7" fill="#333">
-                    <animateTransform attributeType="xml" attributeName="transform" type="scale" values="1,1; 1,3; 1,1" begin="0.2s" dur="0.6s" repeatCount="indefinite" />
+                    <animateTransform attributeType="xml" attributeName="transform" type="scale" values="1,1; 1,3; 1,1"
+                        begin="0.2s" dur="0.6s" repeatCount="indefinite" />
                 </rect>
                 <rect x="20" y="0" width="4" height="7" fill="#333">
-                    <animateTransform attributeType="xml" attributeName="transform" type="scale" values="1,1; 1,3; 1,1" begin="0.4s" dur="0.6s" repeatCount="indefinite" />
+                    <animateTransform attributeType="xml" attributeName="transform" type="scale" values="1,1; 1,3; 1,1"
+                        begin="0.4s" dur="0.6s" repeatCount="indefinite" />
                 </rect>
             </svg>
         </div>
@@ -433,8 +452,10 @@
                         </button>
                         <!-- Tombol kanan -->
                         <div>
-                            <button class="btn btn-primary" data-bs-dismiss="modal" onclick="editHargaJual()">Edit</button>
-                            <button class="btn btn-success" data-bs-dismiss="modal" onclick="lihatTransaksi()">Detail</button>
+                            <button class="btn btn-primary" data-bs-dismiss="modal"
+                                onclick="editHargaJual()">Edit</button>
+                            <button class="btn btn-success" data-bs-dismiss="modal"
+                                onclick="lihatTransaksi()">Detail</button>
                         </div>
                     </div>
                 </div>
@@ -445,7 +466,8 @@
 
     <!-- edit data -->
     <section>
-        <div class="modal fade" id="editHargaJualModal" tabindex="-1" aria-labelledby="editTransaksiTitle" aria-hidden="true">
+        <div class="modal fade" id="editHargaJualModal" tabindex="-1" aria-labelledby="editTransaksiTitle"
+            aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header header">
@@ -463,7 +485,8 @@
                         </div>
                         <div class="mb-3">
                             <label for="hargaJual" class="form-label">Edit Harga Jual</label>
-                            <input type="tel" oninput="cekInputan(this)" onchange="cekInputan(this)" class="form-control" id="hargaJual" placeholder="1000">
+                            <input type="tel" oninput="cekInputan(this)" onchange="cekInputan(this)"
+                                class="form-control" id="hargaJual" placeholder="1000">
                         </div>
                         <div class="mb-3">
                             <!-- opsi status bayar -->
@@ -490,7 +513,9 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
 
     <section>
         <script>
@@ -575,14 +600,14 @@
                         end_date: endDate
                     },
                     dataType: 'json',
-                    success: function(response) {
+                    success: function (response) {
                         $("#load").hide();
                         if (response.success) {
                             var transaksiArray = response.data;
                             listTransaksi.innerHTML = ""; // Kosongkan list sebelumnya
 
                             // Proses data berdasarkan filter
-                            transaksiArray.forEach(function(transaksi) {
+                            transaksiArray.forEach(function (transaksi) {
                                 var status_bayar = transaksi.status_bayar;
 
                                 // Filter berdasarkan status_bayar
@@ -642,7 +667,7 @@
                               `;
 
                                     listTransaksi.appendChild(listItem);
-                                    listItem.onclick = function() {
+                                    listItem.onclick = function () {
                                         detailTransaksi(transaksi, filter);
                                     };
                                 }
@@ -658,7 +683,7 @@
                             console.error("Error:", response.error);
                         }
                     },
-                    error: function(jqXHR, textStatus, errorThrown) {
+                    error: function (jqXHR, textStatus, errorThrown) {
                         console.error("Terjadi kesalahan saat mengambil data transaksi:", textStatus, errorThrown);
                     }
                 });
@@ -695,7 +720,7 @@
                                 nomor_pembayaran: nomor_pembayaran
                             },
                             dataType: 'json',
-                            success: function(response) {
+                            success: function (response) {
                                 if (response.code === 200) {
                                     Swal.fire(
                                         'Terhapus!',
@@ -711,7 +736,7 @@
                                 }
                                 tampilkanDataTransaksi(filter);
                             },
-                            error: function(jqXHR, textStatus, errorThrown) {
+                            error: function (jqXHR, textStatus, errorThrown) {
                                 console.error("Terjadi kesalahan saat menghapus data transaksi:", textStatus, errorThrown);
                             }
                         });
@@ -772,7 +797,7 @@
                 document.getElementById("statusBayar").value = status_bayar;
 
                 // saat tombol saveData ditekan
-                document.getElementById("saveData").onclick = function() {
+                document.getElementById("saveData").onclick = function () {
                     var namaPelanggan = document.getElementById("namaPelanggan").value;
                     var hargaJual = document.getElementById("hargaJual").value;
                     var statusBayar = document.getElementById("statusBayar").value;
@@ -792,7 +817,7 @@
                             status_bayar: statusBayar
                         },
                         dataType: 'json',
-                        success: function(response) {
+                        success: function (response) {
                             if (response.code === 200) {
                                 Swal.fire(
                                     'Berhasil!',
@@ -813,7 +838,7 @@
                             document.getElementById("statusBayar").value = "";
                             tampilkanDataTransaksi(filter);
                         },
-                        error: function(jqXHR, textStatus, errorThrown) {
+                        error: function (jqXHR, textStatus, errorThrown) {
                             console.error("Terjadi kesalahan saat mengubah data transaksi:", textStatus, errorThrown);
                         }
                     });
@@ -871,7 +896,7 @@
             }
 
             // Event listener untuk dropdown
-            document.getElementById("dataDropdown").addEventListener("change", function() {
+            document.getElementById("dataDropdown").addEventListener("change", function () {
                 filtered = this.value;
 
                 if (filtered === "custom") {
@@ -934,6 +959,7 @@
                 return formatter.format(angka).replace(/IDR/g, "");
             }
         </script>
+        
     </section>
 </body>
 
