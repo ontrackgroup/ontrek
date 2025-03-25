@@ -105,17 +105,19 @@
 </head>
 
 <body>
+
     <nav class="navbar">
         <div class="navbar-brand d-flex align-items-center">
             <img src="https://i.imgur.com/ELouE2v.png" alt="Logo" width="40" height="40" class="d-inline-block ">
-            
-                <div class=" fw-bold mx-1" id="saldo_user" style="font-size: 15px;">{{saldo_user}}</div>
-            
+
+            <div class=" fw-bold mx-1" id="saldo_user" style="font-size: 15px;">{{saldo_user}}</div>
+
             <div id="iconShow" onclick="myFunction()">
                 <i class="fa-solid fa-eye" style="font-size: 15px;"></i>
             </div>
         </div>
     </nav>
+
 
     <div class="container text-center">
         <div class="row  mb-3 m-0 pt-3 box-shadow"
@@ -182,7 +184,8 @@
                     </a>
                 </div>
 
-                <div class="col">
+                <div class="hide col" id="hide">
+                    <div id="hidemenu">{{nama_membership}}</div>
                     <a href="https://ontrackppob.my.id/digital/331349">
                         <img src="https://i.imgur.com/OvofrRu.png" alt="" />
                         <div>Game</div>
@@ -289,7 +292,20 @@
             </div>
         </div>
     </div>
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        var text = document.getElementById('hidemenu');
+        var hide = document.getElementById('hide');
 
+        $('.hide div').each(function () {
+            let text = $(this).text();
+            if (mitra == '') {
+                $(hide).css('display', 'none');
+            }
+
+        });
+    </script>
     <script type="text/javascript">
         let saldoAsli = document.getElementById("saldo_user").textContent.trim();
         let saldoTersembunyi = true;
@@ -318,5 +334,6 @@
         }
     </script>
 </body>
+
 
 </html>
