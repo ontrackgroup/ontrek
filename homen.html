@@ -185,7 +185,7 @@
                 </div>
 
                 <div class="hide col" id="hide">
-                    <div id="hidemenu">{{nama_membership}}</div>
+                    <div id="hidemenu" style="display: none;">{{nama_membership}}</div>
                     <a href="https://ontrackppob.my.id/digital/331349">
                         <img src="https://i.imgur.com/OvofrRu.png" alt="" />
                         <div>Game</div>
@@ -300,7 +300,7 @@
 
         $('.hide div').each(function () {
             let text = $(this).text();
-            if (mitra == '') {
+            if (text == 'Biasa') {
                 $(hide).css('display', 'none');
             }
 
