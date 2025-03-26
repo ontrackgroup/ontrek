@@ -1,0 +1,162 @@
+<html lang="en">
+    <head>
+        <title>LOGIN</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+        <style media="screen">
+            @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+            body {
+                margin: 0;
+                font-family: arial;
+            }
+
+            form {
+                background-color: white;
+                padding: 10px;
+                position: relative;
+                top: -20px;
+                border-radius: 20px;
+            }
+            .cardform {
+                margin: 20px 15px;
+            }
+            .myButton {
+                font-weight: bold;
+                box-shadow: 1px 1px 2px 1px #9fb4f2;
+                background-color: #ff6f00;
+                border-radius: 30px;
+                color: #ffffff;
+                font-size: 19px;
+                width: 100%;
+                padding: 10px 20px;
+                border: none;
+                margin-bottom: 20px;
+            }
+
+            .myButton:hover {
+                background-color: #c05300;
+            }
+
+            .myButtonDaftar {
+                box-shadow: 1px 1px 2px 1px #9fb4f2;
+                background-color: #ff6f00;
+                border-radius: 30px;
+                color: #ffffff;
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+
+            .myButtonDaftar:hover {
+                background-color: #c05300;
+            }
+
+            .myButtonDaftar:active {
+                position: relative;
+                top: 1px;
+            }
+            .formdaftar {
+                text-align: center;
+                margin-top: 50px;
+                padding: 0 20px;
+            }
+            .daftar {
+            }
+            .img {
+                display: flex;
+                border-radius: 10px;
+                justify-content: center;
+                align-items: center;
+                background-color: white;
+                box-shadow:
+                    inset -3px -3px 5px #ffffff,
+                    inset 3px 3px 4px #ceced1;
+            }
+
+            .img img {
+                margin-right: 5px;
+                height: 20px;
+            }
+            a {
+                text-decoration: none;
+                color: black;
+            }
+
+            .header {
+                background-color: #ff6f00;
+                text-align: center;
+                padding-top: 10px;
+                padding-bottom: 30px;
+                z-index: -1;
+                position: relative;
+                color: white;
+                font-size: 30px;
+                font-weight: bold;
+            }
+            .input-text {
+                display: flex;
+                align-items: center;
+                border-radius: 12px;
+                border-color: #ff6f00;
+                font-size: 16pt;
+                border: 2px solid #ff6f00;
+                margin-bottom: 10px;
+            }
+            .input-text .bi {
+                padding: 5px;
+            }
+            .input-text input {
+                background-color: white;
+                border-color: #ff6f00;
+                border: none;
+                border-radius: 0px 10px 10px 0px;
+                box-shadow:
+                    inset -3px -3px 5px #ffffff,
+                    inset 3px 3px 4px #ceced1;
+                width: 100%;
+                padding: 10px;
+                font-size: 12pt;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="header">
+            <img style="height: 80px" src="https://i.ibb.co.com/qj4p3CN/logoputih.png" />
+            <div>ONTREK</div>
+        </div>
+
+        <form method="get" action="https://ontrackppob.my.id/akun/start_login/">
+            <div class="cardform animate__animated animate__bounceInUp">
+                <div class="input-text">
+                    <i class="bi bi-person-fill"></i>
+                    <input id="email" type="email" name="email" placeholder="Email" required />
+                </div>
+                <div class="input-text">
+                    <i class="bi bi-key-fill"></i>
+                    <input id="password" type="password" name="password" placeholder="Password" required />
+                </div>
+                <a href="https://ontrackppob.my.id/akun/lupa_password/">
+                    <div style="float: right"><b>Lupa Password ?</b></div>
+                </a>
+
+                <div class="formdaftar">
+                    <button type="submit" class="myButton">Login</button>
+                    <p>Belum punya akun?</p>
+                    <a href="https://ontrackppob.my.id/akun/daftar/">
+                        <div class="myButtonDaftar">Buat Akun Baru</div>
+                    </a>
+                    <p>Atau lanjut dengan</p>
+                    <a href="https://ontrackppob.my.id/akun/login_dengan_google/">
+                        <div class="img">
+                            <img src="https://i.ibb.co.com/zbGQRdX/pngwing-com.png" />
+                            <p>Google</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </form>
+    </body>
+</html>
