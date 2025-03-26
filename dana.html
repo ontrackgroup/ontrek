@@ -74,29 +74,25 @@
         }
 
         .group-button {
-            display: flex;
+
             align-items: center;
         }
 
-        .btn-group {
-            width: 100%;
-            background: #ffffff;
-            z-index: -99;
-        }
 
         .group-button button {
-            width: 100%;
-            margin: 19px 10px 0px 10px;
-            border: none;
+          
+            margin: 5px 5px ;
+            border: 1px solid;
             border-radius: 10px;
             cursor: pointer;
             outline: none;
-            color: #ffffff;
-            background: #ff6f00;
+            color: #ff6f00;
+            background: #ffffff;
             box-shadow:
                 -3px -3px 7px #ffffff,
                 3px 3px 5px #ceced1;
         }
+       
 
         ul {
             display: grid;
@@ -238,36 +234,14 @@
                     <div class="modal-value text-right" id="result">xxxxxx</div>
                 </div>
             </div>
-
-
-
         </div>
     </header>
-
-    <div class="bg-modal">
-        <p>Pilih Produk</p>
-        <button id="modalButton" type="button" class="btn--pilihan" data-bs-toggle="modal"
-            data-bs-target="#exampleModal" style="margin-top: 5px">
-
-        </button>
+    <div class="container">
+        <div>Pilih Kategori</div>
+        <nav class="group-button" id="kategoriContainer"></nav>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title" style="font-size: 14px" id="exampleModalLabel">
-                        Pilih Kategori Produk
-                    </h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <input type="text" id="categoryFilter" onkeyup="filterCategories()"
-                        placeholder="Filter Kategori..." />
-                    <div class="category-container" id="kategoriContainer"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+
     <div style="padding: 0px 15px; margin-top: 25px">
         <ul id="produk-list"></ul>
     </div>
@@ -346,10 +320,10 @@
 
 
         function displayKategori(response, selectedKategori) {
-            const modalButton = document.getElementById("modalButton");
+
             const kategoriContainer = document.getElementById("kategoriContainer");
             let subkategoriHTML = "";
-            let selectedCategory = "";
+
 
             const kategoriData = response.data.find((kategori) => kategori.url_kategori === selectedKategori.Urlkategori);
 
@@ -357,19 +331,16 @@
                 kategoriData.sub_kategori.sort((b, a) => a.nama_kategori.localeCompare(b.nama_kategori));
 
                 kategoriData.sub_kategori.forEach((subkategori) => {
-                    selectedCategory += `${subkategori.nama_kategori}`;
-                    subkategoriHTML += `<div data-bs-dismiss="modal"  onclick='handleSubkategoriClick("${subkategori.url_kategori}")'>${subkategori.nama_kategori}</div>`;
+
+                    subkategoriHTML += `<button  onclick='handleSubkategoriClick("${subkategori.url_kategori}")'>${subkategori.nama_kategori}</button>`;
                 });
-                modalButton.textContent = selectedCategory;
+
                 kategoriContainer.innerHTML = subkategoriHTML;
                 produkList = document.getElementById("produk-list");
                 handleSubkategoriClick(kategoriData.sub_kategori[0].url_kategori);
 
             }
         }
-
-
-
 
         let subkategoriProducts = {};
         let allProducts = [];
