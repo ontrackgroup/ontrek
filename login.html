@@ -138,6 +138,8 @@
                     <i class="bi bi-key-fill"></i>
                     <input id="password" type="password" name="password" placeholder="Password" required />
                 </div>
+                <input type="checkbox" onclick="showHide()"> Tampilkan Password 
+    
                 <a href="https://ontrackppob.my.id/akun/lupa_password/">
                     <div style="float: right"><b>Lupa Password ?</b></div>
                 </a>
@@ -158,5 +160,15 @@
                 </div>
             </div>
         </form>
+        <script>
+            function showHide() {
+              var inputan = document.getElementById("password");
+              if (inputan.type === "password") {
+                inputan.type = "text";
+              } else {
+                inputan.type = "password";
+              }
+            } 
+            </script>
     </body>
 </html>
