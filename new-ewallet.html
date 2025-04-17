@@ -20,10 +20,13 @@
 
     <style type="text/css">
         /* SCRIPT BY DUNIADIGITAL */
+        :root {
+            --primary-color: #ff6f00;
+        }
+
         .loader {
             --uib-size: 10rem;
             --uib-speed: 2s;
-            --uib-color: #1565c0;
             position: relative;
             height: var(--uib-size);
             width: var(--uib-size);
@@ -38,7 +41,7 @@
             height: 100%;
             width: 100%;
             border-radius: 50%;
-            background-color: var(--uib-color);
+            background-color: var(--primary-color);
             animation: pulse7132 var(--uib-speed) linear infinite;
             transform: scale(0);
             opacity: 0;
@@ -113,15 +116,15 @@
         }
 
         .u-bg {
-            background-color: #1565c0
+            background-color: var(--primary-color)
         }
 
         .u-color {
-            color: #1565c0
+            color: var(--primary-color)
         }
 
         .u-border {
-            border: 1px solid #1565c0;
+            border: 1px solid var(--primary-color);
         }
 
         .borad-5 {
@@ -148,10 +151,6 @@
             color: #fff
         }
 
-        .f-11 {
-            font-size: 11px !important
-        }
-
         .f-12 {
             font-size: 12px !important
         }
@@ -164,9 +163,7 @@
             font-size: 16px !important
         }
 
-        .f-18 {
-            font-size: 18px !important
-        }
+
 
         .f-20 {
             font-size: 20px !important
@@ -201,10 +198,9 @@
         }
 
         .bg-head {
-            background-color: #1565c0;
+            background-color: var(--primary-color);
             height: 5rem;
-            border-bottom-left-radius: 50%;
-            border-bottom-right-radius: 50%;
+
             position: fixed;
             width: 100%;
             top: 0;
@@ -219,7 +215,7 @@
         }
 
         .form-inp:focus {
-            border: 1px solid #1565c0;
+            border: 1px solid var(--primary-color);
         }
 
         .btn-pil {
@@ -230,7 +226,7 @@
         }
 
         .pil-active {
-            background-color: #1565c0;
+            background-color: var(--primary-color);
             color: #fff;
             padding: 4px;
             border-radius: 5px;
@@ -271,7 +267,7 @@
         }
 
         .bg-detail {
-            background-color: #1565c0;
+            background-color: var(--primary-color);
             padding: 12px;
             border-bottom-left-radius: 50%;
             border-bottom-right-radius: 50%;
@@ -288,7 +284,7 @@
         }
 
         .add-active {
-            border: 1px solid #1565c0;
+            border: 1px solid var(--primary-color);
             pointer-events: none;
         }
 
@@ -332,9 +328,8 @@
         <div class="px-3 position-relative mt-3" style="z-index: 99;">
             <div class="bg-white p-3 borad-5 shadow-sm">
                 <div class="d-flex align-items-center">
-                    <img src=""
-                        id="imgTop" width="30" class="borad-5">
-                        
+                    <img src="" id="imgTop" width="30" class="borad-5">
+
                     <p class="f-14 fwb-6 ms-2"><span id="textTop"></span></p>
                 </div>
                 <div class="mt-3">
@@ -443,7 +438,7 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"
         integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://fastly.jsdelivr.net/npm/sweetalert2@11"></script>
-    
+
     <script type="text/javascript">
         // LINK TOKO
         const urlToko = "{{url_website_baru}}";
@@ -725,7 +720,7 @@
               <p class="fwb-6">${v.nama_produk}</p>
             </div>
           </div>
-          <div class="p-3 mt-3 mb-2 borad-5" style="background-color: #f6f8ff; border: 2px dotted #1565c0;">
+          <div class="p-3 mt-3 mb-2 borad-5" style="background-color: #f6f8ff; border: 2px dotted var(--primary-color);">
             <p class="fwb-5 op-7">Deskripsi Produk :</p>
             <p class="fwb-6">${deskripsiBersih}</p>
           </div>
@@ -936,9 +931,9 @@
         // ======= INISIALISASI =======
         defaultData();
         clearData();
-        loadOperator("Voucher");
+        loadOperator("Ewallet");
         $(document).ready(function () {
-         //   $("#modalKategori").modal("show");
+            //   $("#modalKategori").modal("show");
 
             $(".btn-add").removeClass("add-active");
             $("#textOperator").html("Pilih Kategori");
