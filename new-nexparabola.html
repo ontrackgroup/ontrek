@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kembali</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4.0.2/dist/tesseract.min.js"></script>
+
+    <style type="text/css">
+        /* SCRIPT BY DUNIADIGITAL */
+        :root {
+            --primary-color: #ff6f00;
+        }
+
+        .loader {
+            --uib-size: 10rem;
+            --uib-speed: 2s;
+            position: relative;
+            height: var(--uib-size);
+            width: var(--uib-size);
+        }
+
+        .loader::before,
+        .loader::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            animation: pulse7132 var(--uib-speed) linear infinite;
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        .loader::after {
+            animation-delay: calc(var(--uib-speed) / -2);
+        }
+
+        @keyframes pulse7132 {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* SCRIPT BY DUNIADIGITAL */
+        @import url("https://fastly.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #EDF1FC;
+        }
+
+        p {
+            margin: 0;
+            font-size: 12px
+        }
+
+        input {
+            border: none;
+            -webkit-transition: 0.5s;
+            transition: 0.5s;
+            outline: none;
+            width: 100%;
+            background-color: transparent;
+        }
+
+        a,
+        a:focus,
+        a:hover {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        @-webkit-keyframes fadeEffect {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeEffect {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .u-bg {
+            background-color: var(--primary-color)
+        }
+
+        .u-color {
+            color: var(--primary-color)
+        }
+
+        .u-border {
+            border: 1px solid var(--primary-color);
+        }
+
+        .borad-5 {
+            border-radius: 5px
+        }
+
+        .borad-10 {
+            border-radius: 10px
+        }
+
+        .borad-15 {
+            border-radius: 15px
+        }
+
+        .u-shadow {
+            box-shadow: rgba(0, 0, 0, 0.15) 0 0 5px 1px;
+        }
+
+        .bg-white {
+            background-color: #fff !important
+        }
+
+        .text-white {
+            color: #fff
+        }
+
+        .f-12 {
+            font-size: 12px !important
+        }
+
+        .f-14 {
+            font-size: 14px !important
+        }
+
+        .f-16 {
+            font-size: 16px !important
+        }
+
+        .f-20 {
+            font-size: 20px !important
+        }
+
+        .f-22 {
+            font-size: 22px !important
+        }
+
+        .f-24 {
+            font-size: 24px !important
+        }
+
+        .f-26 {
+            font-size: 26px !important
+        }
+
+        .f-28 {
+            font-size: 28px !important
+        }
+
+        .fwb-5 {
+            font-weight: 700
+        }
+
+        .fwb-6 {
+            font-weight: 700
+        }
+
+        .op-7 {
+            opacity: 0.7
+        }
+
+        .bg-head {
+            background-color: var(--primary-color);
+            height: 5rem;
+
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1
+        }
+
+        .form-inp {
+            border: 1px solid #ededed;
+            font-size: 14px;
+            padding: 8px;
+            border-radius: 5px;
+        }
+
+        .form-inp:focus {
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-pil {
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .pil-active {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 4px;
+            border-radius: 5px;
+            -webkit-animation: fadeEffect 1s;
+            animation: fadeEffect 1s;
+        }
+
+        .d-grid-1 {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1rem;
+        }
+
+        .d-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .bg-produk {
+            background-color: #fff;
+            padding: 12px;
+            box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+            border-radius: 5px;
+        }
+
+        .box-list {
+            display: flex;
+            align-items: center;
+        }
+
+        .box-grid {
+            text-align: center;
+        }
+
+        .pointer {
+            pointer-events: none;
+        }
+
+        .bg-detail {
+            background-color: var(--primary-color);
+            padding: 12px;
+            border-bottom-left-radius: 50%;
+            border-bottom-right-radius: 50%;
+        }
+
+        .btn-add {
+            border: 1px solid #cccccc;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 12px;
+            opacity: 0.7;
+            border-radius: 5px;
+            box-shadow: 0 .125rem .25rem rgba(0, 0, 0, .075);
+        }
+
+        .add-active {
+            border: 1px solid var(--primary-color);
+            pointer-events: none;
+        }
+
+        .accordion {
+            --bs-accordion-bg: transparent;
+        }
+
+        .btn-secondary1 {
+            background: red;
+        }
+
+        .text-rigt {
+            text-align: right;
+        }
+
+        .pill-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pill-button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .pill-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="header">
+        <div class="bg-head"></div>
+        <div class="px-3 position-relative mt-3" style="z-index: 99;">
+            <div class="bg-white p-3 borad-5 shadow-sm">
+                <div class="d-flex align-items-center">
+                    <img src="" id="imgTop" width="30" class="borad-5">
+
+                    <p class="f-14 fwb-6 ms-2"><span id="textTop"></span></p>
+                </div>
+                <div class="mt-3">
+                    <p class="op-7 fwb-6 mb-1">Nomor Tujuan</p>
+                    <!-- Menghapus tombol Get Galeri -->
+                    <div class="d-flex align-items-center">
+                        <input type="tel" class="form-inp {{hasil_kontak}}" id="nomoId"
+                            placeholder="Masukan nomor tujuan...">
+                        <img src="" width="38" id="imgContact" class="ms-3 u-bg p-1 borad-5" onclick="getContact()">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-3 pt-3 sticky-top d-none" id="boxPilihan">
+        <div class="bg-white p-3 borad-5 shadow-sm">
+            <div class="d-block">
+                <div class="p-2 borad-5" style="background-color: #ffffff;">
+                    <div class="btn-pil pil-active" data-bs-toggle="modal" data-bs-target="#modalKategori" id="btn-kat">
+                        <span id="textOperator"></span>
+                        <span id="iconOperator" class="ms-1"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3 d-flex align-items-center justify-content-between">
+                <div class="dropdown">
+                    <p class="fwb-6 f-14 icon-pil" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span id="namaPil"></span>
+                        <i class="fa-solid fa-caret-down ms-1"></i>
+                    </p>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-item f-14 fwb-6" id="pil-Termurah" onclick="rubahData('Termurah')">Termurah
+                        </li>
+                        <li class="dropdown-item f-14 fwb-6" id="pil-Termahal" onclick="rubahData('Termahal')">Termahal
+                        </li>
+                        <li class="dropdown-item f-14 fwb-6" id="pil-A-Z" onclick="rubahData('A-Z')">A - Z</li>
+                        <li class="dropdown-item f-14 fwb-6" id="pil-Z-A" onclick="rubahData('Z-A')">Z - A</li>
+                    </ul>
+                </div>
+                <div class="ms-3">
+                    <img src="" width="20" class="ms-3 icon-pil" id="imgTampilan" onclick="rubahTampilan()">
+                    <img src="" width="20" class="ms-3 icon-pil" id="imgGambar" onclick="rubahGambar()">
+                </div>
+            </div>
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
+                        data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body p-0 pt-3">
+                            <input type="search" class="form-inp f-12" placeholder="Cari Produk..." id="search">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="p-3 position-relative" style="z-index: 0;" id="dataProduk">
+    </section>
+
+    <section class="offcanvas offcanvas-bottom p-3 h-auto"
+        style="background-color: transparent; border: none !important;" tabindex="-1" id="detailCanv"
+        aria-labelledby="detailCanv">
+        <div class="px-3 bg-white" style="border-radius: 5px 5px 0 0 ;">
+            <div class="bg-detail">
+                <p class="f-14 text-center text-white">Detail Transaksi</p>
+            </div>
+        </div>
+        <div class="offcanvas-body bg-white" style="border-radius: 0 0 5px 5px;" id="bodyCanv">
+        </div>
+    </section>
+    <!-- Modal -->
+    <section class="modal fade" id="modalKategori" tabindex="-1" aria-labelledby="modalKategori"
+        data-bs-keyboard="false" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="u-bg p-3 text-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p class="fwb-5 f-14">Daftar Kategori <span id="textTop1"></span></p>
+                        <p class="fwb-5 f-16" id="iconSrcPil" onclick="rubahSrcPil()" data-bs-toggle="collapse"
+                            data-bs-target="#flush-collapseTwo" aria-expanded="true" aria-controls="flush-collapseTwo">
+                        </p>
+                    </div>
+                    <div class="accordion accordion-flush" id="accordionFlushExampleTwo">
+                        <div class="accordion-item">
+                            <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                                aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExampleTwo">
+                                <div class="accordion-body p-0 pt-3">
+                                    <input type="search" class="form-inp f-12 bg-white" placeholder="Cari Kategori..."
+                                        id="searchKategori">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body p-3 d-grid-1" style="border-radius: 0 0 5px 5px;" id="isiPilihan">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"
+        integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://fastly.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script type="text/javascript">
+        // LINK TOKO
+        const urlToko = "{{url_website_baru}}";
+        // Token API – Ganti dengan token API yang valid
+        var token = "eyJhcHAiOiIzMzkzMyIsImF1dGgiOiIyMDIwMDkwMyIsInNpZ24iOiI2NWhOM1dQQVRpTkZ1RzlEYU5MNVlnPT0ifQ==";
+        var data_page = 100;
+        // ======= MODIFIKASI BAGIAN LOAD OPERATOR =======
+        // Fungsi loadOperator sekarang mengambil kategori dan subkategori secara dinamis dari API
+        function loadOperator(nama) {
+            if (opera !== nama) {
+                if (nama === "SALAH") {
+                    let dataSalah = $("#dataProduk").html();
+                    $("#textTop").html("");
+                    $("#imgTop").attr("src", iconPilihan[0].signal);
+                    $("#imgTop").addClass("u-bg p-1");
+                    $("#boxPilihan").addClass("d-none");
+                    if (dataSalah !== noSalah) { $("#dataProduk").html(noSalah); }
+                } else {
+                    fetch(`https://openapi.bukaolshop.net/v1/app/kategori?token=${token}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            let kategori = data.data.find(cat =>
+                                cat.nama_kategori.trim().toUpperCase() === nama.toUpperCase()
+                            );
+                            if (kategori) {
+                                $("#textTop1").html(kategori.nama_kategori);
+                                $("#textTop").html(kategori.nama_kategori);
+                                $("#imgTop").attr("src", kategori.gambar ? kategori.gambar : iconPilihan[0].signal);
+                                $("#imgTop").removeClass("u-bg p-1");
+                                $("#boxPilihan").removeClass("d-none");
+
+                                // Mapping manual menggunakan fungsi getMappedSubKategori:
+                                let subKategori = kategori.sub_kategori.map(item => getMappedSubKategori(item));
+                                dataKategori = subKategori; // Simpan dataKategori untuk referensi getData()
+                                loopCat(subKategori);
+                            } else {
+                                $("#dataProduk").html(noSalah);
+                                $("#boxPilihan").addClass("d-none");
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error:", error);
+                            $("#dataProduk").html(noSalah);
+                            $("#boxPilihan").addClass("d-none");
+                        });
+                }
+                opera = nama;
+            }
+        }
+        // ICON
+        const iconPilihan = [
+            {
+                "signal": "gambar_kategori",
+                "contact": "https://uki.my.id/assets/images/phone-book.png",
+                "scan": "https://uki.my.id/assets/images/barcode.png",
+                "imgscan": "https://uki.my.id/assets/images/imgscan.png",
+                "grid": "https://cdn-icons-png.flaticon.com/128/238/238910.png",
+                "list": "https://cdn-icons-png.flaticon.com/128/8867/8867520.png",
+                "image": "https://cdn-icons-png.flaticon.com/128/739/739198.png",
+                "noImage": "https://cdn-icons-png.flaticon.com/128/3781/3781609.png",
+                "search": "https://cdn-icons-png.flaticon.com/128/151/151773.png",
+                "close": "https://cdn-icons-png.flaticon.com/128/9684/9684650.png",
+            }
+        ];
+
+        let allProduct = [];
+    </script>
+    <script type="text/javascript">
+        // Loader, Produk Kosong, dan template lainnya tetap seperti semula
+        const loadAwal = `
+        <div class="text-center mt-3 animate__animated animate__fadeIn">
+          <p class="f-16 fwb-6 op-7">Pilih kategori terlebih dahulu...</p>
+        </div>
+        `;
+        const loads = `
+        <div class="d-flex justify-content-center py-5 align-items-center">
+          <div class="loader"></div>
+        </div>
+        `;
+        const noSalah = `
+        <div class="text-center animate__animated animate__fadeIn">
+          <img src="https://uki.my.id/assets/images/produk-eror.jpg" class="w-100 borad-5 shadow-sm">
+          <p class="mt-3 f-16 fwb-6 op-7">Nomor yang dimasukan salah nih...</p>
+        </div>
+        `;
+        const produkNone = `
+        <div class="text-center animate__animated animate__fadeIn">
+          <img src="https://giffiles.alphacoders.com/362/36218.gif" class="w-100 borad-5 shadow-sm">
+          <p class="mt-3 f-16 fwb-6 op-7">Kami Sedang Menyiapkan Produk Ini Ya Juragan 😃...</p>
+        </div>
+        `;
+
+        // Variabel global untuk data produk, kategori, dan state tampilan
+        let dataTampilan = 0;
+        let dataGambar = 0;
+        let dataPencarian = 0;
+        let dataProduk = null;
+        let dataDesc = null;
+        let cekUser = null;
+        let urutanProduk = "Termurah";
+        let opera = ""; // state operator yang sedang aktif
+
+        // Kontak
+        $("#imgContact").attr("src", iconPilihan[0].contact);
+        function getContact() {
+            window.location.href = urlToko + "/ambil_kontak";
+        }
+
+        // Fungsi untuk menampilkan dialog file picker dan OCR (tetap sama)
+        function getGaleri() {
+            document.getElementById('fileInput').click();
+            document.getElementById('fileInput').value = '';
+            document.getElementById('ocrResult').innerHTML = '';
+        }
+        function previewImage(event) {
+            document.getElementById('ocrResult').innerHTML = '';
+            document.getElementById('ocrInfo').classList.remove('d-none');
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                extractTextFromImage(e.target.result);
+            };
+            reader.readAsDataURL(file);
+        }
+        function extractTextFromImage(imageSrc) {
+            Tesseract.recognize(
+                imageSrc,
+                'eng',
+                { logger: m => console.log(m) }
+            ).then(({ data: { text } }) => {
+                displayPillButtons(text);
+            }).catch(err => {
+                console.error(err);
+                document.getElementById('ocrResult').innerText = "OCR gagal dilakukan.";
+            });
+        }
+        function displayPillButtons(text) {
+            const ocrContainer = document.getElementById('ocrResult');
+            ocrContainer.innerHTML = '';
+            const regex = /\b\d{2,}(?:[-.\d]*)\b/g;
+            const numbers = text.match(regex);
+            if (numbers) {
+                numbers.forEach(number => {
+                    const pillButton = document.createElement('button');
+                    pillButton.className = 'pill-button';
+                    pillButton.innerText = number;
+                    pillButton.onclick = () => insertToInput(number);
+                    ocrContainer.appendChild(pillButton);
+                });
+            } else {
+                ocrContainer.innerText = 'Tidak ada nomor yang ditemukan.';
+            }
+            document.getElementById('ocrInfo').classList.add('d-none');
+        }
+        function insertToInput(number) {
+            const input = document.getElementById('nomoId');
+            input.value = number;
+            var event = new Event('change');
+            input.dispatchEvent(event);
+        }
+
+        // Fungsi loopCat utk menampilkan subkategori ke modal
+        function loopCat(data) {
+
+            // dataKategori diassign dengan data subkategori
+            $("#isiPilihan").html("");
+            if (data.length == 1) {
+                $("#iconOperator").html("");
+            } else {
+                $("#iconOperator").html(`<i class="fa-solid fa-caret-down"></i>`);
+            }
+            $.each(data, function (i, v) {
+                $("#isiPilihan").append(`
+          <div class="btn-add" id="btd-${i}" onclick="getData('${i}')" data-bs-dismiss="modal">
+      
+            ${v.nama}</div>
+        `);
+            });
+            defaultData();
+        }
+
+        // Fungsi getData untuk load produk berdasarkan subkategori yang diklik
+        function getData(i) {
+            console.log(dataKategori[i]);
+            var id_kategori = dataKategori[i].id_kategori;
+            var desc = dataKategori[i].desc;
+            var nama = dataKategori[i].nama;
+
+            var cekUser = dataKategori[i].cekUser;
+            var bankCode = dataKategori[i].bankCode;
+            var length = dataKategori.length;
+            $("#dataProduk").html(loads);
+            $("#textOperator").html(nama);
+            $(".btn-add").removeClass("add-active");
+            $("#btn-kat").addClass("poinz");
+            $("#btd-" + i).addClass("add-active");
+            $(".icon-pil").addClass("poinz");
+            postGetData(id_kategori, desc, length, cekUser, bankCode);
+        }
+
+        // Res Get Data dan loop Produk (tetap sama)
+        function resGetData(data, desc, length, cekUser, bankCode) {
+            console.log(cekUser);
+            $(".btn-pil").removeClass("pointer");
+            $(".icon-pil").removeClass("pointer");
+            if (data == null) {
+                $("#dataProduk").html(produkNone);
+            } else {
+                if (length == 1) { $("#btn-kat").addClass("pointer"); }
+                else { $("#btn-kat").removeClass("pointer"); }
+                let x = (dataTampilan == 0) ? "d-grid-1" : "d-grid-2";
+                $("#dataProduk").html(`<div class="animate__animated animate__fadeIn ${x}" id="isiProduk"></div>`);
+                loopProduk(data, desc, cekUser, bankCode);
+                dataProduk = data;
+                dataDesc = desc;
+            }
+        }
+        function loopProduk(data, desc, cekUser, bankCode) {
+            console.log(data);
+            console.log(cekUser);
+            if (data.length == 0) {
+                $("#dataProduk").html(produkNone);
+                console.log("produk kosong " + data.length);
+            }
+            if (urutanProduk == "Termurah") {
+                data.sort((a, b) => parseFloat(a.harga_produk) - parseFloat(b.harga_produk));
+            } else if (urutanProduk == "Termahal") {
+                data.sort((a, b) => parseFloat(b.harga_produk) - parseFloat(a.harga_produk));
+            } else if (urutanProduk == "A-Z") {
+                data.sort((a, b) => a.nama_produk.localeCompare(b.nama_produk));
+            } else if (urutanProduk == "Z-A") {
+                data.sort((a, b) => b.nama_produk.localeCompare(a.nama_produk));
+            }
+            $("#isiProduk").html("");
+            let box = (dataTampilan == 0) ? "box-list" : "box-grid";
+            let margin = (dataTampilan == 0) ? "me-3" : "mb-3";
+            let block = (dataGambar == 0) ? "" : "d-none";
+            $.each(data, function () {
+                var i = data.indexOf(this);
+                var nama_produk = data[i].nama_produk;
+                var harga_produk = formatRupiah(data[i].harga_produk);
+                let hargaAsli = (data[i].harga_produk_asli != "0") ? `<p class="text-danger fwb-6 format-rupiah"> <s>${data[i].harga_produk_asli}</s></p>` : ``;
+                $("#isiProduk").append(`
+          <div class="bg-produk animate__animated animate__flipInX" id="bg-prod-${i}" onclick="nextDetail('${i}', '${cekUser}', '${bankCode}')" data-bs-toggle="offcanvas" data-bs-target="#detailCanv" aria-controls="detailCanv">
+            <div class="box-utama ${box}">
+              <img src="${data[i].url_gambar_produk}" class="box-img borad-5 ${margin} ${block}" width="40">
+              <div class="text-start">
+                <p class="fwb-6">${nama_produk}</p>
+                <p class="fwb-6 op-7">${desc}</p>
+                ${hargaAsli}
+                <p class="fwb-6 f-14 u-color format-rupiah">${harga_produk}</p>
+              </div>
+            </div>
+          </div>
+        `);
+            });
+        }
+        function cleanHTML(input) {
+            return input.replace(/<(?!\/?(br|b|i|u|strong|em|ul|ol|li)\b)[^>]+>/gi, '');
+        }
+        function nextDetail(i, cekUser, bankCode) {
+            var v = dataProduk[i];
+            var harga_produk = formatRupiah(v.harga_produk);
+            var deskripsiBersih = v.deskripsi_panjang;
+            var no = $("#nomoId").val();
+            let nomor, btn;
+            if (no != "") {
+                nomor = no;
+                btn = `<div class="w-100 u-bg p-2 borad-5 ms-3" onclick="getBeli('${v.url_produk}')">
+                  <p class="f-14 text-center text-white">Lanjutkan</p>
+               </div>`;
+            } else {
+                btn = ``;
+                nomor = `<span class="text-danger"> Masukan nomor dahulu...</span>`;
+            }
+            $("#bodyCanv").html(`
+          <div class="text-center">
+            <img src="${v.url_gambar_produk}" class="borad-5" width="50">
+            <div class="mt-3">
+              <p class="fwb-6">${v.nama_produk}</p>
+            </div>
+          </div>
+          <div class="p-3 mt-3 mb-2 borad-5" style="background-color: #f6f8ff; border: 2px dotted var(--primary-color);">
+            <p class="fwb-5 op-7">Deskripsi Produk :</p>
+            <p class="fwb-6">${deskripsiBersih}</p>
+          </div>
+          <div class="d-flex justify-content-between py-2" style="border-bottom: dotted #ededed;">
+            <p class="fwb-5 op-7">Nomor Pelanggan :</p>
+            <p class="fwb-6">${nomor}</p>
+          </div>
+          <div class="d-flex justify-content-between py-2" style="border-bottom: dotted #ededed;">
+            <p class="fwb-5 op-7">Nama Pelanggan :</p>
+            <p style="text-align: right" class="fwb-6" id="CekUser">Loading...</p>
+          </div>
+          <div class="py-2" style="border-bottom: dotted #ededed;">
+            <p class="fwb-5 op-7">Harga : </p>
+            <p class="fwb-6 u-color">${harga_produk}</p>
+          </div>
+          <div class="mt-3">
+            <div class="d-flex align-items-center">
+              <div class="w-100 btn-secondary1 p-2 borad-5 ms-3" data-bs-dismiss="offcanvas" aria-label="Close">
+                <p class="f-14 text-center text-white">Ubah</p>
+              </div>
+              ${btn}
+            </div>
+          </div>
+      `);
+            if (no != "") { cekIdGame(cekUser, no, bankCode); }
+            else { $("#CekUser").html("Masukin Nomor nya Dulu ?"); }
+        }
+        const api = '11bbaeb7d98a3db';
+        function cekIdGame(cekUser, no, bankCode) {
+            console.log("Cek ID parameters:", cekUser, no, bankCode);
+            if ((cekUser && cekUser.trim() !== "") || (bankCode && bankCode.trim() !== "")) {
+                let codeParam = (bankCode && bankCode.trim() !== "") ? bankCode : cekUser;
+                fetch(`https://cekid.lapakpayment.my.id/v2/ewallet/?code=${codeParam}&hp=${no}&key=${api}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log("Cek ID response:", data);
+                        if (data.status === true || data.status === "true" || data.status === "success" || data.status === 200) {
+                            let namaUser = data.name || data.nama || "Tanpa Nama";
+                            $("#CekUser").html(namaUser);
+                        } else { $("#CekUser").html("ID tidak ditemukan..."); }
+                    })
+                    .catch(error => {
+                        console.error("Error fetching cek ID:", error);
+                        $("#CekUser").html("Terjadi error pada cek ID");
+                    });
+            } else { $("#CekUser").html("Tidak support cek Nomor..."); }
+        }
+        function getBeli(link) {
+            var no = $("#nomoId").val().replace("#", "%23");
+            window.location.href = link + "?catatan=" + no;
+        }
+        function rubahTampilan() {
+            if (dataTampilan == 0) {
+                dataTampilan = 1;
+                $("#imgTampilan").attr("src", iconPilihan[0].grid);
+                $("#isiProduk").removeClass("d-grid-1").addClass("d-grid-2");
+                $(".box-utama").removeClass("box-list").addClass("box-grid");
+                $(".box-img").removeClass("me-3").addClass("mb-3");
+            } else {
+                dataTampilan = 0;
+                $("#imgTampilan").attr("src", iconPilihan[0].list);
+                $("#isiProduk").removeClass("d-grid-2").addClass("d-grid-1");
+                $(".box-utama").removeClass("box-grid").addClass("box-list");
+                $(".box-img").removeClass("mb-3").addClass("me-3");
+            }
+        }
+        function rubahGambar() {
+            if (dataGambar == 0) {
+                dataGambar = 1;
+                $("#imgGambar").attr("src", iconPilihan[0].noImage);
+                $(".box-img").addClass("d-none");
+            } else {
+                dataGambar = 0;
+                $("#imgGambar").attr("src", iconPilihan[0].image);
+                $(".box-img").removeClass("d-none");
+            }
+        }
+        function rubahData(nama) {
+            $(".dropdown-item").removeClass("u-color");
+            $("#pil-" + nama).addClass("u-color");
+            $("#namaPil").html(nama);
+            urutanProduk = nama;
+            var data = rubahUrutanData(nama, dataProduk);
+            var desc = dataDesc;
+            loopProduk(data, desc, cekUser);
+        }
+        function rubahUrutanData(sortir, dataProduk) {
+            let urutan;
+            if (sortir == "Termurah") {
+                urutan = dataProduk.sort((a, b) => parseInt(a.harga_produk) - parseInt(b.harga_produk));
+            } else if (sortir == 'Termahal') {
+                urutan = dataProduk.sort((a, b) => parseInt(b.harga_produk) - parseInt(a.harga_produk));
+            } else if (sortir == 'A-Z') {
+                urutan = dataProduk.sort((a, b) => a.nama_produk.toUpperCase().localeCompare(b.nama_produk.toUpperCase()));
+            } else if (sortir == "Z-A") {
+                urutan = dataProduk.sort((a, b) => b.nama_produk.toUpperCase().localeCompare(a.nama_produk.toUpperCase()));
+            }
+            return urutan;
+        }
+        function postGetData(id_kategori, desc, length, cekUser, bankCode) {
+            $("#dataProduk").html(loads);
+            let xmlHttpRequest = new XMLHttpRequest();
+            let url = `https://openapi.bukaolshop.net/v1/app/produk?token=${token}&id_kategori=${id_kategori}&total_data=${data_page}`;
+            xmlHttpRequest.open("GET", url, true);
+            xmlHttpRequest.onreadystatechange = function () {
+                if (xmlHttpRequest.readyState == 4 && xmlHttpRequest.status == 200) {
+                    let data = JSON.parse(xmlHttpRequest.responseText);
+                    dataProduk = data.data;
+                    console.log(dataProduk);
+                    resGetData(dataProduk, desc, length, cekUser, bankCode);
+                }
+            }
+            xmlHttpRequest.send();
+        }
+        function formatRupiah(angka) {
+            var formatter = new Intl.NumberFormat("id-ID", {
+                style: "currency",
+                currency: "IDR",
+                minimumFractionDigits: 0,
+            });
+            return formatter.format(angka).replace(/IDR/g, "Rp ");
+        }
+        function defaultData() {
+            dataTampilan = 0;
+            dataGambar = 0;
+            dataPencarian = 0;
+            urutanProduk = "Termurah";
+            $(".dropdown-item").removeClass("u-color");
+            $("#pil-" + urutanProduk).addClass("u-color");
+            $("#namaPil").html(urutanProduk);
+            $("#search").val("");
+            $("#flush-collapseOne").removeClass("show");
+            $("#imgTampilan").attr("src", iconPilihan[0].list);
+            $("#imgGambar").attr("src", iconPilihan[0].image);
+        }
+        //mapping nya bee disni 
+
+        function getMappedSubKategori(item) {
+            const mapping = {
+                "Dana": { bankCode: "dana", cekUser: "dana" },
+                "Gopay": { bankCode: "gopay", cekUser: "gopay" },
+                "OVO": { bankCode: "", cekUser: "OVO" },
+                "Shopeepay": { bankCode: "shopeepay", cekUser: "shopeepay" },
+                "LinkAja": { bankCode: "linkaja", cekUser: "LINKAJA" },
+                "Isaku": { bankCode: "isaku", cekUser: "isaku" },
+                // Tambahkan mapping lainnya jika diperlukan
+            };
+            const map = mapping[item.nama_kategori.trim()];
+            return {
+                nama: item.nama_kategori,
+                id_kategori: item.id_kategori,
+                desc: item.desc || "Saldo Masuk Sesuai Denom",
+                cekUser: (item.cekUser !== undefined) ? item.cekUser : (map ? map.cekUser : ""),
+                bankCode: (item.bankCode !== undefined) ? item.bankCode : (map ? map.bankCode : "")
+            };
+        }
+
+        // ======= END LOAD OPERATOR =======
+        // ======= EVENT PADA NOMOR TUJUAN =======
+        $("#nomoId").on("input", function () {
+            var _0x255f22 = $("#nomoId").val();
+            if (_0x255f22.length <= 3) {
+                noA = '';
+                noB = '';
+                noC = "404";
+            } else if (_0x255f22.length >= 6) {
+                cekInputan(1);
+            }
+        });
+        $("#nomoId").on("change", function () {
+            var _0x3cb3f8 = $("#nomoId").val();
+            if (_0x3cb3f8.length <= 3) {
+                noA = '';
+                noB = '';
+                noC = "404";
+            } else if (_0x3cb3f8.length >= 6) {
+                cekInputan(2);
+            }
+        });
+        function cekInputan(mode) {
+            var nomor = $("#nomoId").val().replace(/[^\d]/g, '');
+            var formatted = cekStr(nomor);
+            $('#nomoId').val(formatted);
+            var prefix4 = formatted.substr(0, 4);
+            var prefix6 = formatted.substr(0, 6);
+            if (mode == 1) {
+                if (prefix4.length == 4 && noA != prefix4 || prefix6.length == 6 && noB != prefix6) {
+                    noA = prefix4;
+                    noB = prefix6;
+                }
+            } else if (prefix4.length == 4 && noA != prefix4 || prefix6.length == 6 && noB != prefix6) {
+                noA = prefix4;
+                noB = prefix6;
+            }
+        }
+        function cekStr(a) {
+            if (a.substr(0, 2) == "62") {
+                return "0" + a.substr(2);
+            } else if (a.substr(0, 3) == "+62") {
+                return "0" + a.substr(3);
+            } else if (a.substr(0, 1) == "8") {
+                return "0" + a;
+            } else {
+                return a;
+            }
+        }
+
+        // ======= INISIALISASI =======
+        defaultData();
+        clearData();
+        loadOperator("Tagihan");
+        $(document).ready(function () {
+            //   $("#modalKategori").modal("show");
+
+            $(".btn-add").removeClass("add-active");
+            $("#textOperator").html("Pilih Kategori");
+        });
+
+        function clearData() {
+            var data = $("#dataProduk").html();
+            if (data != loadAwal) {
+                $("#dataProduk").html(loadAwal);
+            }
+            $("#boxPilihan").addClass("d-none");
+            $("#textTop").html("");
+            $("#imgTop").attr("src", iconPilihan[0].signal).addClass("u-bg p-1");
+            noA = "";
+            noC = "";
+            opera = "";
+        }
+    </script>
+
+</body>
+
+</html>
