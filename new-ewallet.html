@@ -619,7 +619,7 @@
 
         // Fungsi loopCat utk menampilkan subkategori ke modal
         function loopCat(data) {
-            console.log(data);
+            
             // dataKategori diassign dengan data subkategori
             $("#isiPilihan").html("");
             if (data.length == 1) {
@@ -630,7 +630,7 @@
             $.each(data, function (i, v) {
                 $("#isiPilihan").append(`
           <div class="btn-add" id="btd-${i}" onclick="getData('${i}')" data-bs-dismiss="modal">
-         ${v.gambar}
+         ${v.nama}
             ${v.nama}</div>
         `);
             });
