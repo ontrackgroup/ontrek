@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Free Fire</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <style>
+            body {
+                background: #ecf0f3;
+            }
+
+            header {
+                background: #ecf0f3;
+                margin-top: 5px;
+            }
+
+            .box-in-header {
+                background-color: #ff6f00;
+                width: 95%;
+                padding: 15px;
+                border-radius: 10px;
+                display: inline-block;
+                border: 2px solid aliceblue;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .box-in-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 0 auto;
+            }
+
+            .box-codingqu {
+                display: flex;
+                background: #ecf0f3;
+                padding: 3px;
+                border-radius: 12px;
+                box-shadow:
+                    inset -3px -3px 7px #ffffff,
+                    inset 3px 3px 5px #ceced1;
+            }
+
+            .box-in-header input {
+                text-align: center;
+                width: 100%;
+                height: 40px;
+                margin-top: 12px;
+                margin-right: 8px;
+                padding: 3px;
+                color: #000000;
+                font-size: 17px;
+                font-weight: 600;
+                background: #ffffff;
+                border: 2px solid #ff6f00;
+                border-radius: 2px 8px 8px 2px;
+                outline: none;
+            }
+
+            .box-in-header img {
+                width: 65px;
+                background: #ffa000;
+                border-radius: 12px 0 0 12px;
+                margin-right: 5px;
+            }
+
+            @media (max-width: 768px) {
+                header {
+                    height: 130px;
+                }
+
+                .box-in-header {
+                    top: 20px;
+                }
+            }
+
+            #kategoriContainer {
+                text-align: right;
+                overflow-x: scroll;
+                white-space: nowrap;
+            }
+
+            .btn-group {
+                width: 100%;
+                background: #ecf0f3;
+                margin-top: -7px;
+            }
+
+            .btn-group button {
+                flex: 1;
+                border: none;
+                font-weight: bold;
+                font-size: 13px;
+                color: #ffffff;
+                cursor: pointer;
+                outline: none;
+                transition:
+                    background-color 0.3s ease-in-out,
+                    transform 0.1s ease-in-out,
+                    box-shadow 0.3s ease-in-out;
+                min-width: 140px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+
+            .btn-group button:hover {
+                background-color: #ff6f00;
+                color: #fff;
+                transform: scale(1.05);
+                box-shadow: 0px 2px 6px 1px rgba(0, 0, 0, 0.1);
+            }
+
+            .btn-group button:active {
+                transform: scale(0.95);
+            }
+
+            .group-button {
+                justify-content: center;
+                display: flex;
+                margin-top: 0;
+            }
+
+            .group-button button {
+                width: 100%;
+                background: #ff6f00;
+                padding: 7px;
+                margin: 17px;
+                border: none;
+                border-radius: 10px;
+                box-shadow:
+                    -3px -3px 7px #ffffff,
+                    3px 3px 5px #ceced1;
+                outline: none;
+            }
+
+            .group-button button:hover {
+                background-color: #fab541;
+                color: #fff;
+                transform: scale(1.05);
+                box-shadow:
+                    -3px -3px 7px #ffffff,
+                    3px 3px 5px #ceced1;
+            }
+
+            .group-button button:active {
+                transform: scale(0.95);
+                box-shadow: none;
+            }
+
+            ul {
+                list-style: none;
+                padding: 0;
+            }
+
+            .product-item {
+                display: flex;
+                flex-direction: column;
+                align-items: left;
+                margin: 15px 0;
+                padding: 10px;
+                border-radius: 8px;
+                font-size: 13.5px;
+                box-shadow:
+                    -3px -3px 7px #ffffff,
+                    3px 3px 5px #ceced1;
+                height: 78px;
+                border-radius: 10px;
+                background-color: #ecf0f3;
+            }
+
+            .product-item p {
+                font-size: 12px;
+                font-weight: 700;
+                color: #000000;
+                background: #ecf0f3;
+                box-shadow:
+                    inset -3px -3px 7px #ffffff,
+                    inset 3px 3px 5px #ceced1;
+                padding: 3px;
+                padding-left: 10px;
+                border-radius: 15px;
+            }
+
+            h2 {
+                color: #ff6f00;
+                font-size: 15px;
+                font-weight: 700;
+            }
+
+            .modal.fade .modal-dialog.modal-dialog-scrollable {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                margin: 0;
+                width: 100%;
+                transform: translate(0, 100%);
+                transition: transform 0.3s ease-out;
+                border-radius: 0;
+            }
+
+            .modal-content {
+                border-radius: 15px 15px 0 0;
+                border: 0px solid #ccc;
+                background-color: #fff;
+            }
+
+            .modal-content h5 {
+                font-size: 15px;
+            }
+
+            .modal-header {
+                background-color: #ff6f00;
+                color: #fff;
+                padding: 2px;
+                padding-left: 20px;
+            }
+
+            .modal.show .modal-dialog.modal-dialog-scrollable {
+                transform: translate(0, 0);
+            }
+
+            .modal-body .table {
+                border: none;
+            }
+
+            .modal-body .table tbody tr td {
+                border: none;
+            }
+
+            .modal-body .table tbody tr td {
+                padding: 8px 0px;
+            }
+
+            .loading-spinner {
+                border: 8px solid rgba(144, 176, 223, 1);
+                border-top: 8px solid #ffa000;
+                border-radius: 30%;
+                width: 40px;
+                height: 40px;
+                animation: spin 1s linear infinite;
+                margin: 20px auto;
+            }
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header style="position: sticky; top: 0; z-index: 1000">
+            <div class="header-box">
+                <div class="box-in-header">
+                    <div class="box-codingqu">
+                        <img src="https://bukaolshop.s3-id-jkt-1.kilatstorage.id/34912/617700027g.jpg" alt="Logo" />
+                        <input
+                            type="tel"
+                            id="inputNumber"
+                            class="{{hasil_kontak}}"
+                            name="catatan"
+                            placeholder="masukan ID Player" />
+                    </div>
+                </div>
+                <div class="group-button" id="kategoriContainer"></div>
+            </div>
+        </header>
+        <div id="produk-list-container" style="margin-top: 15px; padding: 20px">
+            <ul id="produk-list"></ul>
+        </div>
+        <div
+            class="modal fade"
+            id="productModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Detail Produk</h5>
+                    </div>
+                    <div class="modal-body" style="padding: 0 10px">
+                        <table class="table">
+                            <tbody>
+                                <tr>
+                                    <td class="modal-label" style="font-size: 13px; font-weight: bold">No Tujuan :</td>
+                                    <td class="modal-value text-right" id="nomorTujuanModal"></td>
+                                </tr>
+                                <tr style="border-top: 1px dashed #333">
+                                    <td class="modal-label" style="font-size: 13px; font-weight: bold">Nickname :</td>
+                                    <td class="modal-value text-right" id="result"></td>
+                                </tr>
+                                <tr style="border-top: 1px dashed #333">
+                                    <td class="modal-label" style="font-size: 13px; font-weight: bold">Produk:</td>
+                                    <td class="modal-value text-right" id="productNameModal"></td>
+                                </tr>
+                                <tr style="border-top: 1px dashed #333">
+                                    <td class="modal-label" style="font-size: 13px; font-weight: bold">Harga:</td>
+                                    <td class="modal-value text-right" id="productPriceModal"></td>
+                                </tr>
+                                <tr style="border-top: 0px dashed #333">
+                                    <td
+                                        colspan="2"
+                                        style="padding: 15px; font-size: 10px; font-weight: bold"
+                                        id="deskripsiPanjangModal"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="group-button" style="background: white">
+                            <button data-dismiss="modal" style="color: red">Batal</button>
+                            <button class="" style="color: white">Proses</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // ganti token open api olshop
+            const token =
+                "eyJhcHAiOiIzMzkzMyIsImF1dGgiOiIyMDIwMDkwMyIsInNpZ24iOiI2NWhOM1dQQVRpTkZ1RzlEYU5MNVlnPT0ifQ==";
+            const kategoriUrls = [
+                {
+                    // url katagori utama yang memiliki sub katagori
+                    Urlkategori: "https://ontrackppob.my.id/kategori/free-fire-548032"
+                }
+            ];
+            let produkList;
+
+            // url katagori sama yang di atas
+            getKategori("https://ontrackppob.my.id/kategori/free-fire-548032");
+            async function getKategori(url) {
+                try {
+                    const selectedKategori = kategoriUrls.find((kategori) => kategori.Urlkategori === url);
+                    if (!selectedKategori) throw new Error("Kategori tidak ditemukan");
+
+                    const response = await fetch(`https://openapi.bukaolshop.net/v1/app/kategori?token=${token}`);
+                    const data = await response.json();
+                    displayKategori(data, selectedKategori);
+                } catch (error) {
+                    console.error(error.message);
+                }
+            }
+
+            function displayKategori(response, selectedKategori) {
+                const kategoriContainer = document.getElementById("kategoriContainer");
+                let subkategoriHTML = "";
+
+                const kategoriData = response.data.find(
+                    (kategori) => kategori.url_kategori === selectedKategori.Urlkategori
+                );
+
+                if (kategoriData && kategoriData.sub_kategori.length > 0) {
+                    kategoriData.sub_kategori.sort((a, b) => a.nama_kategori.localeCompare(b.nama_kategori));
+
+                    subkategoriHTML += "<div class='btn-group'>";
+                    kategoriData.sub_kategori.forEach((subkategori) => {
+                        subkategoriHTML += `<button onclick='handleSubkategoriClick("${subkategori.url_kategori}")'>${subkategori.nama_kategori}</button>`;
+                    });
+                    subkategoriHTML += "</div>";
+                    kategoriContainer.innerHTML = subkategoriHTML;
+                    produkList = document.getElementById("produk-list");
+                    handleSubkategoriClick(kategoriData.sub_kategori[0].url_kategori);
+                }
+            }
+
+            let subkategoriProducts = {};
+            let allProducts = [];
+            let selectedSubkategoriUrl = "";
+            async function handleSubkategoriClick(url) {
+                if (url === selectedSubkategoriUrl) {
+                    return;
+                }
+                try {
+                    const kategoriResponse = await fetch(
+                        `https://openapi.bukaolshop.net/v1/app/kategori?token=${token}`
+                    );
+                    const kategoriData = await kategoriResponse.json();
+                    const subkategori = kategoriData.data
+                        .flatMap((kategori) => kategori.sub_kategori)
+                        .find((subkategori) => subkategori.url_kategori === url);
+                    if (!subkategori) {
+                        console.error("Subkategori tidak ditemukan");
+                        return;
+                    }
+                    selectedSubkategoriUrl = url;
+                    subkategoriProducts[url] = [];
+                    for (let i = 1; i <= 4; i++) {
+                        const produkResponse = await fetch(
+                            `https://openapi.bukaolshop.net/v1/app/produk?token=${token}&id_kategori=${subkategori.id_kategori}&page=${i}`
+                        );
+                        const produkData = await produkResponse.json();
+                        subkategoriProducts[url] = subkategoriProducts[url].concat(produkData.data);
+                    }
+                    displayProducts(subkategoriProducts[url]);
+                } catch (error) {
+                    console.error("Error fetching data:", error.message);
+                }
+            }
+
+            function handleInput() {
+                console.log("Menangani input...");
+            }
+
+            function displayProducts(products) {
+                produkList.innerHTML = "";
+                const loadingSpinner = document.createElement("div");
+                loadingSpinner.className = "loading-spinner";
+                produkList.appendChild(loadingSpinner);
+                setTimeout(() => {
+                    produkList.removeChild(loadingSpinner);
+                    products.sort((a, b) => a.harga_produk - b.harga_produk);
+                    if (products.length > 0) {
+                        products.forEach(function (product) {
+                            const productItem = document.createElement("div");
+                            productItem.className = "product-item";
+                            const productName = document.createElement("h2");
+                            productName.textContent = product.nama_produk;
+                            const formattedPrice = parseFloat(product.harga_produk).toLocaleString("id-ID", {
+                                style: "currency",
+                                currency: "IDR",
+                                minimumFractionDigits: 0
+                            });
+                            const productPrice = document.createElement("p");
+                            productPrice.textContent = `${formattedPrice}`;
+                            const additionalText = document.createElement("p1");
+                            productItem.dataset.product = JSON.stringify(product);
+                            productItem.addEventListener("click", function () {
+                                document.querySelectorAll(".product-item").forEach(function (item) {
+                                    item.classList.remove("active");
+                                });
+                                productItem.classList.add("active");
+                                const selectedProduct = JSON.parse(productItem.dataset.product);
+                                document.getElementById("productNameModal").textContent = selectedProduct.nama_produk;
+                                document.getElementById("productPriceModal").textContent = `${formattedPrice}`;
+                                const inputNumber = document.getElementById("inputNumber").value;
+                                document.getElementById("nomorTujuanModal").textContent = inputNumber;
+                                const descriptionContainer = document.getElementById("deskripsiPanjangModal");
+                                descriptionContainer.textContent = "";
+                                console.log("Deskripsi Produk Dipilih:", selectedProduct.deskripsi_panjang);
+                                const wrapperDiv = document.createElement("div");
+                                wrapperDiv.innerHTML = selectedProduct.deskripsi_panjang;
+                                wrapperDiv.childNodes.forEach(function (node) {
+                                    descriptionContainer.appendChild(node.cloneNode(true));
+                                });
+                                $("#productModal").modal("show");
+                            });
+                            productItem.appendChild(productName);
+                            productItem.appendChild(productPrice);
+                            productItem.appendChild(additionalText);
+                            produkList.appendChild(productItem);
+                        });
+                    } else {
+                        const noProductMessage = document.createElement("p");
+                        noProductMessage.textContent = "Tidak ada produk yang tersedia untuk kategori ini.";
+                        produkList.appendChild(noProductMessage);
+                    }
+                }, 1500);
+            }
+
+            $("#inputNumber").on("change", function () {
+                var no = $(this).val();
+                var newno = no.replace("-", "").trim();
+                var cek = newno.substring(0, 3).replace("-", "").trim();
+                var ceka = newno.substring(3, 16).replace("-", "").trim();
+
+                if (cek == "+62") {
+                    let result = 0;
+                    $(this).val(result + ceka);
+                    getNmr(result + ceka);
+                } else {
+                    $(this).val(cek + ceka);
+                    getNmr(cek + ceka);
+                }
+            });
+
+            function getNmr(nomor) {
+                console.log("Nomor Telepon yang Dipilih: " + nomor);
+                $("#hasil_kontak").val(nomor);
+                $("#nomorTujuanModal").text(nomor);
+                handleInput();
+            }
+
+            var bayarButton = document.querySelector(".modal-body .group-button button:last-child");
+            bayarButton.addEventListener("click", function () {
+                var activeProductItem = document.querySelector(".product-item.active");
+                if (activeProductItem) {
+                    var selectedProduct = JSON.parse(activeProductItem.dataset.product);
+                    var catatanIsi = inputNumber.value;
+                    var urlProduk = selectedProduct.url_produk + "?catatan=" + encodeURIComponent(catatanIsi);
+                    window.location.href = urlProduk;
+                } else {
+                    console.error("Elemen produk tidak ditemukan atau tidak aktif.");
+                }
+            });
+
+            $("#inputNumber").on("change", function () {
+                var no = $(this).val();
+                var newno = no.replace("-", "").trim();
+                var cek = newno.substring(0, 3).replace("-", "").trim();
+                var ceka = newno.substring(3, 16).replace("-", "").trim();
+                if (cek == "+62") {
+                    let result = 0;
+                    $(this).val(result + ceka);
+                    getNmr(result + ceka);
+                } else {
+                    $(this).val(cek + ceka);
+                    getNmr(cek + ceka);
+                }
+            });
+
+            $(".ambil_kontak").on("click", function (event) {
+                event.preventDefault();
+
+                var nomorKontak = $(this).data("nomor-kontak");
+                $("#inputNumber").val(nomorKontak);
+                var no = $("#inputNumber").val();
+                var newno = no.replace("-", "").trim();
+                var cek = newno.substring(0, 3).replace("-", "").trim();
+                var ceka = newno.substring(3, 16).replace("-", "").trim();
+                // CodingQu
+                if (cek == "+62") {
+                    let result = 0;
+                    $("#inputNumber").val(result + ceka);
+                    getNmr(result + ceka);
+                } else {
+                    $("#inputNumber").val(cek + ceka);
+                    getNmr(cek + ceka);
+                }
+                console.log("Elemen Ambil Kontak diklik. Nomor Kontak: " + nomorKontak);
+                window.location.href = $(this).attr("href");
+            });
+        </script>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const idInput = document.getElementById("inputNumber");
+                idInput.addEventListener("input", getData);
+            });
+
+            function getData() {
+                const idValue = document.getElementById("inputNumber").value;
+                const keyValue = "11bbaeb7d98a3db"; // Ganti dengan nilai Key yang sesuai
+                const gameEndpoint = "FREEFIRE";
+
+                fetch(`https://cekid.lapakpayment.my.id/v2/game/?code=${gameEndpoint}&id=${idValue}&key=${keyValue}`)
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error(`Kesalahan HTTP! Status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
+                    .then((data) => {
+                        const resultDiv = document.getElementById("result");
+                        const nickname = data.nickname || "Loading";
+                        resultDiv.innerHTML = `${nickname}`;
+                    })
+                    .catch((error) => console.error("Kesalahan:", error));
+            }
+        </script>
+    </body>
+</html>
